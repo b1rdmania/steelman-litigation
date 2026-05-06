@@ -143,7 +143,7 @@ const SplashPage = () => {
             Or find out it's a strawman.
           </h1>
           <p style={{ ...sub, marginBottom: '20px' }}>
-            Steelman runs your active matter through a multi-model, multi-agent pipeline. Optimistic analyst first — the strongest version of your case the evidence supports. Then specialist sub-agents inspect the evidence in parallel. Then a four-way adversarial premortem on Opus, splitting failure modes across procedural, substantive, evidentiary and strategic. A synthesizer produces the brief: ranked failure scenarios, evidence inconsistencies, blind spots, mitigations, and a single brutal sentence.
+            Upload your case file. Eight specialists read it from different angles — first arguing your side, then deliberately trying to break it. You get back a stress-test brief with the failure modes you haven't seen, ranked by impact. Roughly three minutes.
           </p>
           <p style={{
             fontSize: '14px', color: 'rgba(235, 235, 245, 0.55)',
@@ -206,61 +206,69 @@ const SplashPage = () => {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* HOW IT WORKS — plain English walkthrough */}
       <section style={section('#131314')}>
         <div style={inner}>
           <div style={eyebrow}>How it works</div>
-          <h2 style={h2}>Four orchestrated stages. Sub-agents in parallel.</h2>
+          <h2 style={h2}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
           <p style={{ ...sub, marginBottom: '48px' }}>
-            Steelman is not a single LLM with a clever prompt. It's a parent orchestrator coordinating specialised sub-agents, each running on the model best suited to its role. The architecture is the product.
+            You think your case is strong because you've been thinking about it for weeks. The problem is your own brain — you've optimism-biased the file. Steelman runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
           </p>
 
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '14px',
-          }}>
-            <StepCard
-              number="Stage 1 · Optimistic Analyst"
-              title="The strongest version of your case."
+          <div style={{ display: 'grid', gap: '20px' }}>
+            <PlainStep
+              tag="Step 1 — first read"
+              title={<>"Make this case as strong as possible."</>}
               body={
                 <>
-                  Reads your intake, your strategy, and every piece of uploaded evidence. Argues your matter back at you the way the most generous reading of the file would put it.
+                  Steelman reads your intake, your strategy, and every uploaded document. It argues your side back at you — the strongest version of your case the evidence actually supports. Not the version you wish you had. The version that's there.
                   <br /><br />
-                  This is the steelman. Sonnet — fast, cheap, generous.
+                  This is the steelman.
                 </>
               }
             />
-            <StepCard
-              number="Stage 2 · Evidence Inspector"
-              title="Three sub-agents read the file in parallel."
+            <PlainStep
+              tag="Step 2 — second read"
+              title={<>"Look for what doesn't add up."</>}
               body={
                 <>
-                  A document sub-agent extracts and indexes claims. A cross-reference sub-agent searches for inconsistencies between exhibits. A chronology sub-agent verifies timeline coherence.
-                  <br /><br />
-                  Independent passes. Their findings are merged into one set of evidence flags with severity.
+                  Three specialists read the documents independently. They don't talk to each other.
+                  <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
+                    <li style={{ marginBottom: '6px' }}>One reads each document for what it actually says — not what you claim it says</li>
+                    <li style={{ marginBottom: '6px' }}>One looks for inconsistencies between documents — dates that don't match, wording that contradicts, gaps in correspondence</li>
+                    <li>One verifies the chronology — does your timeline actually match the documents in front of you?</li>
+                  </ul>
+                  <br />
+                  If one of them sees a problem and the others don't, that itself is signal.
                 </>
               }
             />
-            <StepCard
-              number="Stage 3 · Premortem Adversary"
-              title="It's January 2027. The case has been lost. Why?"
+            <PlainStep
+              tag="Step 3 — third read"
+              title={<>"It's twelve months from now. You lost. Why?"</>}
               body={
                 <>
-                  Four parallel Opus sub-agents work back from a hypothetical loss — procedural, substantive, evidentiary, strategic. Each one is forbidden from being balanced. Each produces ranked failure scenarios with probability and impact.
-                  <br /><br />
-                  Opus, because adversarial reasoning is where model quality earns its keep.
+                  This is the unkind part. Four adversaries each look at one type of failure — separately, in parallel, forbidden from being balanced.
+                  <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Substantive:</strong> is the law actually on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Evidentiary:</strong> can you actually prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
+                    <li><strong style={{ color: '#EBEBF5' }}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
+                  </ul>
+                  <br />
+                  Each one writes its own post-mortem. They run on the most powerful reasoning model available — finding holes in arguments is exactly the kind of thing a better engine improves.
                 </>
               }
               accent="#0A84FF"
             />
-            <StepCard
-              number="Stage 4 · Synthesizer"
-              title="Compares the optimistic and the adversarial."
+            <PlainStep
+              tag="Step 4 — final read"
+              title={<>"Compare the two stories."</>}
               body={
                 <>
-                  Diffs the two takes. Where they meaningfully disagree are your blind spots.
+                  A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. Where the optimistic case and the failure modes meaningfully disagree — those are your blind spots.
                   <br /><br />
-                  Produces the final brief: verdict (steelman / strawman / borderline), summary, ranked failure scenarios by category, evidence inconsistencies, mitigations, and one brutal sentence — <em>"if we lose this, this will be why."</em>
+                  You get back: a verdict (Steelman / Borderline / Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end — <em>"if you lose this, this will be why."</em>
                 </>
               }
             />
@@ -268,8 +276,84 @@ const SplashPage = () => {
         </div>
       </section>
 
-      {/* WHY THIS EXISTS */}
+      {/* WORKED EXAMPLE */}
       <section style={section('transparent')}>
+        <div style={inner}>
+          <div style={eyebrow}>What it looks like in practice</div>
+          <h2 style={h2}>An unpaid £42K invoice. A case you think you'll win.</h2>
+
+          <div style={{ ...paragraph, maxWidth: '780px', marginTop: '24px' }}>
+            <p style={{ marginBottom: '16px' }}>
+              Imagine you've got an unpaid invoice for £42,000 from a client who's gone quiet for six months. You think you're going to win because:
+            </p>
+            <ul style={{ margin: '0 0 24px 22px', padding: 0, color: 'rgba(235, 235, 245, 0.7)' }}>
+              <li style={{ marginBottom: '6px' }}>You've got the signed Statement of Work</li>
+              <li style={{ marginBottom: '6px' }}>You delivered everything on the milestone schedule</li>
+              <li style={{ marginBottom: '6px' }}>You have the email where they signed off the final deliverable</li>
+              <li>They've ignored four chase emails</li>
+            </ul>
+            <p style={{ marginBottom: '16px' }}>
+              You upload the file to Steelman. Three minutes later, the brief comes back.
+            </p>
+          </div>
+
+          <div style={{
+            maxWidth: '780px',
+            backgroundColor: '#1A1A1C',
+            border: '1px solid rgba(235, 235, 245, 0.08)',
+            borderRadius: '12px',
+            padding: '28px 32px',
+            marginTop: '12px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+              <span style={{
+                fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
+                color: 'rgba(235, 235, 245, 0.4)', fontWeight: 600,
+              }}>Verdict</span>
+              <span style={{
+                fontSize: '12px', fontWeight: 700, padding: '4px 10px',
+                borderRadius: '6px', backgroundColor: 'rgba(255, 159, 10, 0.15)',
+                color: '#FF9F0A', letterSpacing: '0.4px', textTransform: 'uppercase',
+              }}>Borderline</span>
+            </div>
+
+            <p style={{ marginBottom: '14px', color: 'rgba(235, 235, 245, 0.75)', fontSize: '14px', lineHeight: 1.7 }}>
+              <strong style={{ color: '#EBEBF5' }}>What you got right.</strong> Your contract is solid. Your delivery evidence is contemporaneous. Their non-response would be a problem for them in court.
+            </p>
+            <p style={{ marginBottom: '6px', color: 'rgba(235, 235, 245, 0.85)', fontSize: '14px', fontWeight: 600 }}>
+              What you missed.
+            </p>
+            <ul style={{ margin: '0 0 16px 18px', padding: 0, color: 'rgba(235, 235, 245, 0.72)', fontSize: '14px', lineHeight: 1.7 }}>
+              <li style={{ marginBottom: '8px' }}>
+                <strong style={{ color: '#EBEBF5' }}>Procedural:</strong> you didn't follow the Pre-Action Protocol for Debt Claims. A £42K claim sent without a compliant letter before action sees costs reduced — possibly judgment refused on procedural grounds.
+              </li>
+              <li style={{ marginBottom: '8px' }}>
+                <strong style={{ color: '#EBEBF5' }}>Substantive:</strong> the "final sign-off" email you're relying on says <em>"thanks for sending this through"</em> — not <em>"I accept this as final delivery"</em>. A sharp defence will argue that wasn't acceptance. You need acceptance by conduct or a clearer email.
+              </li>
+              <li>
+                <strong style={{ color: '#EBEBF5' }}>Strategic:</strong> they've been quiet for six months. People who go quiet are usually broke. You haven't done a Companies House check — their accounts are overdue and they've changed director twice this year. Even if you win, will you recover?
+              </li>
+            </ul>
+
+            <div style={{
+              marginTop: '24px',
+              paddingTop: '20px',
+              borderTop: '1px solid rgba(235, 235, 245, 0.08)',
+              fontFamily: serif, fontSize: '17px', fontStyle: 'italic',
+              color: '#EBEBF5', lineHeight: 1.5,
+            }}>
+              "If you lose this, it'll be because you confused 'we've finished the work' with 'the client agreed we'd finished.'"
+            </div>
+          </div>
+
+          <p style={{ ...paragraph, maxWidth: '780px', marginTop: '28px' }}>
+            That's the read you'd get from a senior partner before you file. Steelman gives every solicitor that read in three minutes, before counsel's opinion costs £600.
+          </p>
+        </div>
+      </section>
+
+      {/* WHY THIS EXISTS */}
+      <section style={section('#131314')}>
         <div style={inner}>
           <div style={eyebrow}>Why this exists</div>
           <h2 style={h2}>Most legal AI is one LLM and a prompt. That's not enough.</h2>
@@ -279,23 +363,23 @@ const SplashPage = () => {
               Gary Klein's premortem methodology is one of the more rigorously evidenced techniques in decision science: assume the project has failed, then walk back to find every reason why. It outperforms standard risk reviews because it gives people permission to be adversarial without political cost.
             </p>
             <p style={{ marginBottom: '16px' }}>
-              We took that methodology and built it into a multi-agent pipeline tuned for litigation. Not a single model asked to "find weaknesses." A parent orchestrator coordinating four parallel Opus sub-agents — procedural, substantive, evidentiary, strategic — each pointed only at its own failure-mode category. Sub-agent specialisation produces sharper output than one giant prompt asking for everything.
-            </p>
-            <p style={{ marginBottom: '16px' }}>
-              The current generation of legal AI plugins reviews documents and runs skills. None orchestrates a multi-agent adversarial pipeline with role-specific model selection. This is domain-specific reasoning architecture, not a horizontal tool.
+              We applied that methodology to litigation. Eight specialists, each pointed at one type of failure, each forbidden from being balanced. Then a synthesis pass that compares your optimistic case to what the adversaries found. The disagreements are your blind spots.
             </p>
             <p>
-              The output is a brief that reads like the memo an experienced senior partner would scribble after one hard read of the file. Brutal. Specific. Useful before you file, not after.
+              The output reads like the memo an experienced senior partner would scribble after one hard read of the file. Brutal. Specific. Useful before you file, not after.
             </p>
           </div>
         </div>
       </section>
 
-      {/* THE ARCHITECTURE — pillars */}
-      <section style={section('#131314')}>
+      {/* THE ARCHITECTURE — pillars (for builders / technical readers) */}
+      <section style={section('transparent')}>
         <div style={inner}>
-          <div style={eyebrow}>The architecture</div>
-          <h2 style={h2}>Four design choices that make this credible.</h2>
+          <div style={eyebrow}>For the technically minded</div>
+          <h2 style={h2}>The architecture, briefly.</h2>
+          <p style={{ ...sub, marginBottom: '32px' }}>
+            If you build agent systems for a living, this is the bit you'll want to read. If you don't, skip it.
+          </p>
 
           <div style={{ display: 'grid', gap: '0px', marginTop: '40px' }}>
             <Pillar
@@ -468,6 +552,36 @@ const StepCard = ({ number, title, body, accent }) => (
     </div>
     <div style={{ fontSize: '14px', color: 'rgba(235, 235, 245, 0.72)', lineHeight: 1.65 }}>
       {body}
+    </div>
+  </div>
+);
+
+const PlainStep = ({ tag, title, body, accent }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'minmax(140px, 180px) 1fr',
+    gap: '32px',
+    padding: '32px 0',
+    borderTop: '1px solid rgba(235, 235, 245, 0.06)',
+    alignItems: 'start',
+  }}>
+    <div style={{
+      fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
+      color: accent || 'rgba(235, 235, 245, 0.4)',
+      fontWeight: 700, paddingTop: '6px',
+    }}>
+      {tag}
+    </div>
+    <div>
+      <div style={{
+        fontFamily: serif, fontSize: '22px', fontWeight: 500,
+        color: '#EBEBF5', marginBottom: '12px', letterSpacing: '-0.3px', lineHeight: 1.3,
+      }}>
+        {title}
+      </div>
+      <div style={{ fontSize: '15px', color: 'rgba(235, 235, 245, 0.72)', lineHeight: 1.7 }}>
+        {body}
+      </div>
     </div>
   </div>
 );
