@@ -1,0 +1,32 @@
+node_modules
+dist
+.vite
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.env
+.env.local
+
+# SQLite
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Backend runtime
+backend/uploads/
+backend/steelman.db
+
+# Vercel
+.vercel
+
+# IDE
+.idea/
+.vscode/
