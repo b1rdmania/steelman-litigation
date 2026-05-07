@@ -532,7 +532,7 @@ const SplashPage = () => {
                 It's open-source. <a href="https://github.com/b1rdmania/steelman-litigation" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>github.com/b1rdmania/steelman-litigation</a>
               </p>
               <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
-                Heads up: this is a working prototype running on a personal Anthropic API key. Please don't share too widely (lol). If you're at the conference and want to talk about it, find Andy.
+                Heads up: this is a working prototype running on a personal Anthropic API key. Please don't share too widely (lol). If you're at the conference and want to talk about it, find Andy on <a href="https://www.linkedin.com/in/andrew-bird-nomos/" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', fontStyle: 'normal'}}>LinkedIn</a> or <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', fontStyle: 'normal'}}>X (@b1rdmania)</a>.
               </p>
             </div>
 
