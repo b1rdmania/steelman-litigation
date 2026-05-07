@@ -107,6 +107,29 @@ const SplashPage = () => {
           z-index: 100;
         }
 
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: var(--space-md);
+        }
+
+        .nav-link {
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--text-black);
+          background: none;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          padding: 0;
+          transition: color 0.2s ease;
+        }
+
+        .nav-link:hover { color: var(--text-red); }
+
         .logo {
           font-family: var(--font-display);
           font-size: 2.5rem;
@@ -148,10 +171,33 @@ const SplashPage = () => {
           min-height: 100vh;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: var(--space-xl) var(--space-lg) var(--space-lg);
+          padding: calc(var(--space-xl) + 1rem) var(--space-lg) var(--space-lg);
           overflow: hidden;
+        }
+
+        .hero-text-block {
+          position: relative;
+          z-index: 30;
+          max-width: 720px;
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-sm);
+          margin-bottom: var(--space-md);
+        }
+
+        .hero-text-block .body-editorial {
+          font-size: 1.25rem;
+          line-height: 1.45;
+          max-width: 640px;
+          color: var(--text-black);
+        }
+
+        .hero-text-block .body-editorial strong {
+          color: var(--text-red);
+          font-weight: 700;
+          display: block;
+          font-size: 1.5rem;
+          margin-bottom: var(--space-xs);
         }
 
         .hero-lockup {
@@ -161,19 +207,20 @@ const SplashPage = () => {
           flex-direction: column;
           align-items: center;
           mix-blend-mode: multiply;
+          margin-top: auto;
         }
 
         .hero-image-container {
           position: absolute;
-          bottom: 5vh;
+          bottom: 8vh;
           left: 50%;
           transform: translateX(-50%);
           width: 60vw;
           max-width: 800px;
-          height: 60vh;
+          height: 50vh;
           z-index: 1;
-          opacity: 0.85;
-          filter: grayscale(100%) contrast(1.2);
+          opacity: 0.7;
+          filter: grayscale(100%) contrast(1.1);
           pointer-events: none;
         }
 
@@ -182,27 +229,14 @@ const SplashPage = () => {
           height: 100%;
           object-fit: cover;
           object-position: top center;
-          -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-          mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-        }
-
-        .hero-floating-left {
-          position: absolute;
-          left: var(--space-lg);
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 20;
-        }
-
-        .hero-floating-left .label-meta {
-          margin-top: var(--space-sm);
-          display: block;
+          -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
         }
 
         .hero-floating-right {
           position: absolute;
           right: var(--space-lg);
-          bottom: 25%;
+          top: calc(var(--space-xl) + 2rem);
           z-index: 20;
           text-align: right;
         }
@@ -218,6 +252,14 @@ const SplashPage = () => {
           border-bottom: 1px solid var(--border-light);
           padding-bottom: var(--space-xs);
           z-index: 20;
+        }
+
+        @media (max-width: 768px) {
+          .hero { padding: calc(var(--space-lg) + 4rem) var(--space-md) var(--space-md); }
+          .hero-text-block .body-editorial { font-size: 1.05rem; }
+          .hero-text-block .body-editorial strong { font-size: 1.25rem; }
+          .hero-floating-right { display: none; }
+          .nav-links { gap: var(--space-sm); }
         }
 
         .dossier-section {
@@ -371,29 +413,37 @@ const SplashPage = () => {
 
       <nav className="splash-nav">
         <div className="logo">p<span className="dot">.</span></div>
-        <button className="nav-cta" onClick={startCase}>Stress-Test a Case</button>
+        <div className="nav-links">
+          <button className="nav-link" onClick={() => {
+            const el = document.getElementById('how-it-works');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}>About</button>
+          <button className="nav-link" onClick={seeDemo}>See a demo</button>
+          <button className="nav-cta" onClick={startCase}>Stress-Test a Case</button>
+        </div>
       </nav>
 
       <main>
         <section className="hero">
-          <div className="hero-image-container">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Stark brutalist concrete structure" />
+          <div className="hero-text-block">
+            <span className="label-meta">PHASE 01 // PREMORTEM</span>
+            <p className="body-editorial">
+              <strong>We try to lose your case for you. So you don't.</strong>
+              Premotion writes the version where you lose, then works out why. Eight specialists. Four failure categories. One brief — the procedural, evidentiary, substantive and strategic holes opposing counsel will pull on first. Roughly three minutes.
+            </p>
           </div>
 
-          <div className="hero-floating-left">
-            <p className="body-editorial">
-              <strong>We try to lose your case for you. So you don't.</strong> Premotion writes the version where you lose, then works out why. Eight specialists. Four failure categories. One brief. Roughly three minutes.
-            </p>
-            <span className="label-meta">PHASE 01 // PREMORTEM</span>
+          <div className="hero-floating-right">
+            <div className="code-accent">// FATAL_ERROR</div>
+          </div>
+
+          <div className="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Stark brutalist concrete structure" />
           </div>
 
           <div className="hero-lockup">
             <h1 className="display-huge text-red">BREAK YOUR</h1>
             <h1 className="display-huge text-black">OWN CASE</h1>
-          </div>
-
-          <div className="hero-floating-right">
-            <div className="code-accent">// FATAL_ERROR</div>
           </div>
 
           <div className="hero-footer">
@@ -468,7 +518,7 @@ const SplashPage = () => {
         </section>
 
         {/* How it works — plain English walkthrough */}
-        <section style={{backgroundColor: '#141414', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(244, 244, 242, 0.06)'}}>
+        <section id="how-it-works" style={{backgroundColor: '#141414', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(244, 244, 242, 0.06)', scrollMarginTop: '20px'}}>
           <div style={{maxWidth: '1100px', margin: '0 auto'}}>
             <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px', fontFamily: "'JetBrains Mono', monospace"}}>How it works</div>
             <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2', marginBottom: '16px'}}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
