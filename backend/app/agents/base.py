@@ -24,7 +24,7 @@ class AgentResult:
 
 class BaseAgent:
     """Per-class model and timeout — subclasses override with one line each.
-    This is what gives Steelman its multi-model architecture without a routing layer."""
+    This is what gives Premotion its multi-model architecture without a routing layer."""
 
     agent_id: str = "base"
     sub_agent_id: str | None = None

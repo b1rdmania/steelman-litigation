@@ -1,17 +1,17 @@
-# Steelman Litigation — Implementation Plan
+# Premotion — Implementation Plan
 
-> **Steelman your case. Or find out it's a strawman.**
+> **We try to lose your case for you. So you don't.**
 >
-> Adversarial premortem for litigation. A multi-model, multi-agent pipeline that stress-tests your case before you file. Built for solicitors and in-house litigators in the UK.
+> Adversarial premortem for UK litigation. Premotion synthesises the lost version of your case, then runs multi-model analysis on why we lost. Built for solicitors and in-house litigators in the UK.
 
-Domain: TBD (steelmanlitigation.com / steelman.legal)
-Status: Pre-scaffold — building MVP
+Domain: TBD (premotion.legal / premotion.law / getpremotion.com)
+Status: V1 live as `steelman-litigation` repo / `steelman-liard.vercel.app`. Repo + URLs to be renamed post-Lisbon.
 
 ---
 
 ## 1. The product
 
-You think you've built the strongest version of your case. Steelman runs it through a structured adversarial pipeline of orchestrated sub-agents to find out if you're right — or if what you thought was a steelman is actually a strawman.
+Premotion runs your case through a structured adversarial pipeline of orchestrated sub-agents that synthesise the lost version of your case, then run multi-model analysis on the failure modes opposing counsel will pull on first.
 
 Output: a stress-test brief with ranked failure modes, evidence inconsistencies, blind spots, mitigations, and a single brutal sentence — *"If you lose this, this will be why."*
 
@@ -19,7 +19,7 @@ Not a strategy tool. A stress test on the strategy you already have.
 
 ### Why this wins
 
-- **Real agentic infrastructure** — most legal AI is single-LLM with one prompt. Steelman is an orchestrator with specialised sub-agents, each running on the model best suited to its role.
+- **Real agentic infrastructure** — most legal AI is single-LLM with one prompt. Premotion is an orchestrator with specialised sub-agents, each running on the model best suited to its role.
 - **Multi-model by design** — adversarial reasoning runs on Opus where it earns its keep; cheaper synthesis on Sonnet; local-model option for firms that can't put case data in someone else's cloud (Heppner-aware).
 - **Domain-specific premortem** — Gary Klein's methodology, applied to UK litigation. Failure-mode taxonomy specific to procedural / substantive / evidentiary / strategic categories.
 - **Composable** — slots into Bird Legal as a module if/when ready, or stands alone.
@@ -85,7 +85,7 @@ Orchestrator (Sonnet) — coordinates pipeline, manages state
 ## 3. User flow
 
 ```
-Solicitor lands on steelmanlitigation.com
+Solicitor lands on premotion.legal
   ↓
 Reads splash → clicks "Stress test a case"
   ↓
@@ -169,7 +169,7 @@ audit_log
 - Public launch
 
 ### Phase 3 — Bird Legal integration
-- Steelman as a tab inside Bird Legal's Litigation Advisor
+- Premotion as a tab inside Bird Legal's Litigation Advisor
 - Cross-product evidence sharing
 - Run stress test from a matter workspace with one click
 
@@ -195,7 +195,7 @@ audit_log
 
 ## 8. Open questions
 
-- [ ] Domain — steelmanlitigation.com / steelman.legal / steelman.law?
+- [ ] Domain — premotion.legal / premotion.law / getpremotion.com / premotion.io?
 - [ ] Verdict wording — "steelman / strawman / borderline" or softer?
 - [ ] Phase 3 integration — fold into Bird Legal, or maintain as standalone with shared agent-kit?
 - [ ] Streaming UI — server-sent events showing sub-agent progress, or just a structured loading state?
@@ -220,7 +220,7 @@ audit_log
 - Multi-model multi-agent orchestrator
 - Sub-agent specialisation + parallel execution
 - Diff view between optimistic and adversarial analyses
-- Steelman/strawman verdict synthesis
+- Steelman/strawman/borderline verdict synthesis (verdict labels, kept inside the brief output)
 - Solicitor-grade UI
 
 ---

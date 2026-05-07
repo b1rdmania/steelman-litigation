@@ -1,4 +1,4 @@
-"""SQLite database for Steelman Litigation."""
+"""SQLite database for Premotion."""
 
 import aiosqlite
 from .config import DB_PATH

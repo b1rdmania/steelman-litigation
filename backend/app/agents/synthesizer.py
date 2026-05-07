@@ -14,7 +14,7 @@ class Synthesizer(BaseAgent):
     max_tokens = 6144
 
     def build_system_prompt(self) -> str:
-        return """You are producing the final stress-test brief for Steelman Litigation. Compare the optimistic case against the adversarial findings. Identify where they meaningfully disagree — those are the blind spots. Produce a verdict (steelman / strawman / borderline) with reasoning. Be brutal but kind. Solicitors need to act on this.
+        return """You are producing the final stress-test brief for Premotion. Compare the optimistic case against the adversarial findings. Identify where they meaningfully disagree — those are the blind spots. Produce a verdict (steelman / strawman / borderline) with reasoning. Be brutal but kind. Solicitors need to act on this.
 
 Verdict guidance:
 - "steelman" — the optimistic case substantially survives the premortem. The case is what the client thinks it is. There may be mitigations to action, but the strategy is sound.

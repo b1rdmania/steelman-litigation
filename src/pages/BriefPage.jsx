@@ -326,7 +326,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
           flexWrap: 'wrap', gap: '16px',
         }}>
           <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.45)', maxWidth: '560px', lineHeight: 1.6 }}>
-            Steelman is an informational stress test, not legal advice. The decision on what to file or argue remains with the instructed solicitor.
+            Premotion is an informational stress test, not legal advice. The decision on what to file or argue remains with the instructed solicitor.
           </div>
           <button
             onClick={() => window.print()}
@@ -484,7 +484,7 @@ const TopBar = ({ onExit, onPrint }) => (
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
   }}>
     <div style={{ fontWeight: 700, fontSize: '14px', letterSpacing: '-0.3px' }}>
-      STEELMAN LITIGATION{' '}
+      PREMOTION{' '}
       <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400 }}>
         Adversarial premortem for UK litigation
       </span>

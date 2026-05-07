@@ -239,7 +239,7 @@ const TopBar = ({ onExit }) => (
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
   }}>
     <div style={{ fontWeight: 700, fontSize: '14px', letterSpacing: '-0.3px' }}>
-      STEELMAN LITIGATION{' '}
+      PREMOTION{' '}
       <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400 }}>
         Adversarial premortem for UK litigation
       </span>

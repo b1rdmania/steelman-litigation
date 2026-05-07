@@ -76,7 +76,7 @@ const Wordmark = ({ size = 15 }) => (
     fontWeight: 700, letterSpacing: '-0.3px', color: '#EBEBF5', fontSize: `${size}px`,
     display: 'inline-flex', alignItems: 'baseline', gap: '10px',
   }}>
-    STEELMAN LITIGATION
+    PREMOTION
     <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400, fontSize: `${size - 2}px`, letterSpacing: '0.2px' }}>
       Adversarial premortem for UK litigation
     </span>
@@ -139,18 +139,18 @@ const SplashPage = () => {
         <div style={inner}>
           <div style={eyebrow}>Adversarial premortem for UK litigation</div>
           <h1 style={h1}>
-            Steelman your case.<br />
-            Or find out it's a strawman.
+            We try to lose your case for you.<br />
+            So you don't.
           </h1>
           <p style={{ ...sub, marginBottom: '20px' }}>
-            Upload your case file. Eight specialists read it from different angles. First they argue your side. Then they deliberately try to break it. You get back a stress-test brief with the failure modes you haven't seen, ranked by impact. Roughly three minutes.
+            Premotion synthesises the lost version of your case, then runs multi-model analysis on why we lost. Eight specialists, four failure categories, one brief. The procedural, evidentiary, substantive and strategic holes opposing counsel will pull on first, ranked by impact. Roughly three minutes.
           </p>
           <p style={{
             fontSize: '14px', color: 'rgba(235, 235, 245, 0.55)',
             lineHeight: 1.55, maxWidth: '680px', marginBottom: '40px',
             fontStyle: 'italic',
           }}>
-            You don't know how strong your case is until someone tries to break it.
+            A red team for your case that doesn't bill by the hour and doesn't have a relationship to protect.
           </p>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
             <button
@@ -212,7 +212,7 @@ const SplashPage = () => {
           <div style={eyebrow}>How it works</div>
           <h2 style={h2}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
           <p style={{ ...sub, marginBottom: '48px' }}>
-            You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Steelman runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
+            You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Premotion runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
           </p>
 
           <div style={{ display: 'grid', gap: '20px' }}>
@@ -221,9 +221,9 @@ const SplashPage = () => {
               title={<>"Make this case as strong as possible."</>}
               body={
                 <>
-                  Steelman reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there.
+                  Premotion reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there.
                   <br /><br />
-                  This is the steelman.
+                  This is the steelman of your case.
                 </>
               }
             />
@@ -293,7 +293,7 @@ const SplashPage = () => {
               <li>They've ignored four chase emails</li>
             </ul>
             <p style={{ marginBottom: '16px' }}>
-              You upload the file to Steelman. Three minutes later, the brief comes back.
+              You upload the file to Premotion. Three minutes later, the brief comes back.
             </p>
           </div>
 
@@ -347,7 +347,7 @@ const SplashPage = () => {
           </div>
 
           <p style={{ ...paragraph, maxWidth: '780px', marginTop: '28px' }}>
-            That's the read you'd get from a senior partner before you file. Steelman gives every solicitor that read in three minutes, before counsel's opinion costs £600.
+            That's the read you'd get from a senior partner before you file. Premotion gives every solicitor that read in three minutes, before counsel's opinion costs £600.
           </p>
         </div>
       </section>
@@ -477,7 +477,7 @@ const SplashPage = () => {
             until someone has tried to break it.
           </h2>
           <p style={{ ...sub, margin: '0 auto 36px', textAlign: 'center' }}>
-            Drop your intake, your evidence and your current strategy. Two-to-three minutes later you'll have a brief — failure modes ranked, blind spots flagged, and a verdict.
+            Drop your intake, your evidence and your current strategy. Two-to-three minutes later you'll have a brief: failure modes ranked, blind spots flagged, and a verdict.
           </p>
           <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
             <button
@@ -515,7 +515,7 @@ const SplashPage = () => {
           flexWrap: 'wrap', gap: '16px',
         }}>
           <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.4)' }}>
-            STEELMAN LITIGATION · Adversarial premortem for UK litigation · Not legal advice · England &amp; Wales
+            PREMOTION · Adversarial premortem for UK litigation · Not legal advice · England &amp; Wales
           </div>
           <div style={{ display: 'flex', gap: '24px', fontSize: '12px', color: 'rgba(235, 235, 245, 0.5)' }}>
             <a href="#terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms</a>

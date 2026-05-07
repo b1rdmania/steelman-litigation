@@ -4,7 +4,7 @@ import logging
 
 from .demos import DEMOS
 
-logger = logging.getLogger("steelman.seed")
+logger = logging.getLogger("premotion.seed")
 
 
 def seed_demos() -> None:

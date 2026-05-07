@@ -46,7 +46,7 @@ class DocumentSubAgent(_EvidenceSubAgent):
     sub_agent_id = "document_subagent"
 
     def build_system_prompt(self) -> str:
-        return """You are a document sub-agent inside the Steelman evidence inspector pipeline.
+        return """You are a document sub-agent inside the Premotion evidence inspector pipeline.
 Your remit is narrow: extract the factual claims each individual document is making, and flag claims that are weak, ambiguous, or unsupported by the document itself.
 
 You do NOT cross-reference between documents — that is another sub-agent's job. You read each document on its own terms and flag what it actually says versus what the party is claiming it says.
@@ -69,7 +69,7 @@ class CrossReferenceSubAgent(_EvidenceSubAgent):
     sub_agent_id = "cross_reference_subagent"
 
     def build_system_prompt(self) -> str:
-        return """You are a cross-reference sub-agent inside the Steelman evidence inspector pipeline.
+        return """You are a cross-reference sub-agent inside the Premotion evidence inspector pipeline.
 Your remit: find inconsistencies BETWEEN documents. Two exhibits that contradict each other. A witness statement that says one thing and an email that says another. A pleading that asserts a fact one document supports and another undermines.
 
 You do NOT critique single documents in isolation — that is the document sub-agent's job. You only look at the relationship between exhibits.
@@ -92,7 +92,7 @@ class ChronologySubAgent(_EvidenceSubAgent):
     sub_agent_id = "chronology_subagent"
 
     def build_system_prompt(self) -> str:
-        return """You are a chronology sub-agent inside the Steelman evidence inspector pipeline.
+        return """You are a chronology sub-agent inside the Premotion evidence inspector pipeline.
 Your remit: verify timeline coherence. Construct the chronology of events from the evidence and flag any sequence problem — events out of order, dates that don't reconcile with the party's narrative, gaps where documents would be expected, or post-hoc reconstructions presented as contemporaneous.
 
 You do NOT critique the substance of any single document — only its place in the timeline.

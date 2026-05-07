@@ -1,4 +1,4 @@
-"""Steelman Litigation — FastAPI backend entrypoint."""
+"""Premotion — FastAPI backend entrypoint."""
 
 from contextlib import asynccontextmanager
 
@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Steelman Litigation API",
+    title="Premotion API",
     version="0.1.0",
     lifespan=lifespan,
 )
@@ -37,4 +37,4 @@ app.include_router(demo.router)
 
 @app.get("/api/health")
 async def health():
-    return {"status": "ok", "service": "steelman-litigation"}
+    return {"status": "ok", "service": "premotion"}

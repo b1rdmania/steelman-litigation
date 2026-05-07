@@ -46,7 +46,7 @@ const DemoList = () => {
             fontWeight: 500, letterSpacing: '-0.8px', color: '#EBEBF5',
             lineHeight: 1.15, marginBottom: '14px',
           }}>
-            See what a Steelman brief looks like.
+            See what a Premotion brief looks like.
           </h1>
           <div style={{
             fontSize: '15px', color: 'rgba(235, 235, 245, 0.68)',
@@ -182,7 +182,7 @@ const TopBar = ({ onExit, onStart }) => (
         fontFamily, padding: 0,
       }}
     >
-      STEELMAN LITIGATION{' '}
+      PREMOTION{' '}
       <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400 }}>
         Adversarial premortem for UK litigation
       </span>

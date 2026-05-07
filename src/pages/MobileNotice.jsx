@@ -18,7 +18,7 @@ const MobileNotice = () => {
         fontWeight: 700, letterSpacing: '-0.5px', color: '#EBEBF5', fontSize: '15px',
         marginBottom: '40px',
       }}>
-        STEELMAN LITIGATION{' '}
+        PREMOTION{' '}
         <span style={{ color: 'rgba(235, 235, 245, 0.55)', fontWeight: 400 }}>
           Adversarial premortem for UK litigation
         </span>
@@ -35,7 +35,7 @@ const MobileNotice = () => {
         letterSpacing: '-0.5px', color: '#EBEBF5', marginBottom: '20px',
         maxWidth: '420px',
       }}>
-        Steelman is built for a bigger screen.
+        Premotion is built for a bigger screen.
       </h1>
       <p style={{
         fontSize: '14px', color: 'rgba(235, 235, 245, 0.65)', lineHeight: 1.6,

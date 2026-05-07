@@ -1,10 +1,10 @@
-# Steelman Litigation
+# Premotion
 
-> **Steelman your case. Or find out it's a strawman.**
+> **We try to lose your case for you. So you don't.**
 >
-> Adversarial premortem for UK litigation. A multi-model, multi-agent pipeline that stress-tests your case before you file. For solicitors and in-house counsel.
+> Adversarial premortem for UK litigation. Premotion synthesises the lost version of your case, then runs multi-model analysis on why we lost. Eight specialists, four failure categories, one brief. For solicitors, in-house counsel, mediators and litigation funders.
 
-You think you've built the strongest version of your case. Steelman runs it through a structured adversarial pipeline of orchestrated sub-agents to find out if you're right — or if what you thought was a steelman is actually a strawman.
+You think you've built the strongest version of your case. Premotion runs it through a structured adversarial pipeline of orchestrated sub-agents to find out where it actually loses — the procedural, substantive, evidentiary and strategic failure modes opposing counsel will pull on first.
 
 Output: a stress-test brief with ranked failure modes by category, evidence inconsistencies, blind spots, mitigations, and one brutal sentence — *"if we lose this, this will be why."*
 
@@ -78,18 +78,20 @@ Backend env vars:
 | Var | Default | Purpose |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | — | required |
-| `STEELMAN_OPTIMISTIC_MODEL` | `claude-sonnet-4-20250514` | Stage 1 model |
-| `STEELMAN_EVIDENCE_MODEL` | `claude-sonnet-4-20250514` | Stage 2 sub-agents |
-| `STEELMAN_PREMORTEM_MODEL` | `claude-opus-4-20250514` | Stage 3 sub-agents (Opus) |
-| `STEELMAN_SYNTHESIS_MODEL` | `claude-sonnet-4-20250514` | Stage 4 model |
-| `STEELMAN_SONNET_TIMEOUT` | `60` | seconds |
-| `STEELMAN_OPUS_TIMEOUT` | `120` | seconds |
+| `PREMOTION_OPTIMISTIC_MODEL` | `claude-sonnet-4-20250514` | Stage 1 model |
+| `PREMOTION_EVIDENCE_MODEL` | `claude-sonnet-4-20250514` | Stage 2 sub-agents |
+| `PREMOTION_PREMORTEM_MODEL` | `claude-opus-4-20250514` | Stage 3 sub-agents (Opus) |
+| `PREMOTION_SYNTHESIS_MODEL` | `claude-sonnet-4-20250514` | Stage 4 model |
+| `PREMOTION_SONNET_TIMEOUT` | `60` | seconds |
+| `PREMOTION_OPUS_TIMEOUT` | `120` | seconds |
+
+Legacy `STEELMAN_*` env names are still honoured by the config loader so existing Render deployments don't need to be reconfigured.
 
 ## Phased delivery
 
 - **V1 — MVP (live).** Splash, intake, full pipeline, brief render, two baked demos, audit log. Solicitor / in-house / mediator / litigation funder positioning.
 - **V2 — Polish + persistence.** Magic-link auth, save/revisit cases, export brief as PDF, public launch.
-- **V3 — Bird Legal integration.** Steelman as a tab inside the Bird Legal Litigation Advisor. Cross-product evidence sharing. Run a stress-test from a matter workspace with one click.
+- **V3 — Bird Legal integration.** Premotion as a tab inside the Bird Legal Litigation Advisor. Cross-product evidence sharing. Run a stress-test from a matter workspace with one click.
 - **Future — multi-modal.** Image evidence (Claude vision). Audio (Whisper transcription). Video frame sampling. Local model deployment (Gemma 3 / Llama) for on-prem firms.
 - **Future — domain depth.** Custom failure-mode taxonomies per practice area. Cross-case learning / institutional memory layer.
 
@@ -98,15 +100,15 @@ Backend env vars:
 - Streaming UI showing sub-agent progress in real time (currently a rotating status message).
 - Per-firm fine-tuning of the synthesizer for house style.
 - Linked-citation rendering against The National Archives' Find Case Law API.
-- API for Bird Legal and other matter-management systems to invoke Steelman from a matter.
+- API for Bird Legal and other matter-management systems to invoke Premotion from a matter.
 
 ## Sister products
 
 - [Courtless](https://github.com/b1rdmania/courtless) — disputes without courts. Consumer-side mediation protocol for under-£100K disputes.
 - [Counsel](https://github.com/b1rdmania/counsel-mvp) — pre-mediation triage for solicitors.
 
-Steelman, Courtless and Counsel form a portfolio of legal AI products by [b1rdmania](https://github.com/b1rdmania), each at a different point on the matter lifecycle. Steelman sits between intake and pleading. It's the red team you don't have on retainer.
+Premotion, Courtless and Counsel form a portfolio of legal AI products by [b1rdmania](https://github.com/b1rdmania), each at a different point on the matter lifecycle. Premotion sits between intake and pleading. It's the red team you don't have on retainer.
 
 ## Not legal advice
 
-Steelman is an informational stress test. The decision on what to file or argue remains with the instructed solicitor.
+Premotion is an informational stress test. The decision on what to file or argue remains with the instructed solicitor.
