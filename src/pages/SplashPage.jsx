@@ -548,7 +548,7 @@ const SplashPage = () => {
                 The same orchestrator can cross-reference 10+ specialised agents, each on the model best suited to its role. Different model families voting on the same evidence — fewer single-vendor failure modes, harder to hallucinate past three independent passes.
               </p>
               <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555'}}>
-                See: <a href="#" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Aaron's miroshark on GitHub</a> <span style={{opacity: 0.6}}>(link TBD — Andy to fill)</span> for the cross-agent verification reference architecture.
+                See: <a href="https://github.com/aaronjmars/MiroShark" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>aaronjmars/MiroShark</a> for the cross-agent verification reference architecture.
               </p>
             </div>
           </div>
