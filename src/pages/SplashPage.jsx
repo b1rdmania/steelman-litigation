@@ -143,7 +143,7 @@ const SplashPage = () => {
             So you don't.
           </h1>
           <p style={{ ...sub, marginBottom: '20px' }}>
-            Premotion synthesises the lost version of your case, then runs multi-model analysis on why we lost. Eight specialists, four failure categories, one brief. The procedural, evidentiary, substantive and strategic holes opposing counsel will pull on first, ranked by impact. Roughly three minutes.
+            Premotion writes the version of your case where you lose. Then it works out why. Eight specialists, four failure categories, one brief — the procedural, evidentiary, substantive and strategic holes opposing counsel will pull on first, ranked by impact. Roughly three minutes.
           </p>
           <p style={{
             fontSize: '14px', color: 'rgba(235, 235, 245, 0.55)',
@@ -363,7 +363,7 @@ const SplashPage = () => {
               Gary Klein's premortem method is well evidenced in decision science. Assume the project has failed, then walk back to find every reason why. It works because it gives people permission to be adversarial without political cost.
             </p>
             <p style={{ marginBottom: '16px' }}>
-              We applied that method to litigation. Eight specialists, each pointed at one type of failure, each forbidden from being balanced. Then a synthesis pass that compares your optimistic case to what the adversaries found. The disagreements are your blind spots.
+              We applied that method to litigation. Eight specialists, each pointed at one type of failure, each forbidden from being balanced. Then a final pass that compares your optimistic case to what the adversaries found. The disagreements are your blind spots.
             </p>
             <p>
               The output reads like the memo an experienced senior partner would scribble after one hard read of the file. Brutal. Specific. Useful before you file, not after.
@@ -474,7 +474,7 @@ const SplashPage = () => {
           <div style={eyebrow}>Ready?</div>
           <h2 style={{ ...h2, marginBottom: '20px' }}>
             You don't know how strong your case is<br />
-            until someone has tried to break it.
+            until someone tries to break it.
           </h2>
           <p style={{ ...sub, margin: '0 auto 36px', textAlign: 'center' }}>
             Drop your intake, your evidence and your current strategy. Two-to-three minutes later you'll have a brief: failure modes ranked, blind spots flagged, and a verdict.
