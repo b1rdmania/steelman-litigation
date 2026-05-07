@@ -143,14 +143,14 @@ const SplashPage = () => {
             Or find out it's a strawman.
           </h1>
           <p style={{ ...sub, marginBottom: '20px' }}>
-            Upload your case file. Eight specialists read it from different angles — first arguing your side, then deliberately trying to break it. You get back a stress-test brief with the failure modes you haven't seen, ranked by impact. Roughly three minutes.
+            Upload your case file. Eight specialists read it from different angles. First they argue your side. Then they deliberately try to break it. You get back a stress-test brief with the failure modes you haven't seen, ranked by impact. Roughly three minutes.
           </p>
           <p style={{
             fontSize: '14px', color: 'rgba(235, 235, 245, 0.55)',
             lineHeight: 1.55, maxWidth: '680px', marginBottom: '40px',
             fontStyle: 'italic',
           }}>
-            Built on the principle that you don't know how strong your case is until someone has tried to break it.
+            You don't know how strong your case is until someone tries to break it.
           </p>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
             <button
@@ -190,10 +190,10 @@ const SplashPage = () => {
             gap: '16px 40px', fontSize: '12px', color: 'rgba(235, 235, 245, 0.55)',
           }}>
             {[
-              'Multi-model · Opus where it earns its keep',
-              'Sub-agent orchestration in parallel',
-              'UK case-law context built in',
-              'Real adversarial reasoning — not hedging',
+              'Eight specialists, eight separate reads',
+              'Claude Opus 4 on the adversarial pass',
+              'UK law context, English & Welsh courts',
+              'Local-model option for matters that can\'t leave the firm',
             ].map(t => (
               <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D74B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -212,7 +212,7 @@ const SplashPage = () => {
           <div style={eyebrow}>How it works</div>
           <h2 style={h2}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
           <p style={{ ...sub, marginBottom: '48px' }}>
-            You think your case is strong because you've been thinking about it for weeks. The problem is your own brain — you've optimism-biased the file. Steelman runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
+            You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Steelman runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
           </p>
 
           <div style={{ display: 'grid', gap: '20px' }}>
@@ -221,7 +221,7 @@ const SplashPage = () => {
               title={<>"Make this case as strong as possible."</>}
               body={
                 <>
-                  Steelman reads your intake, your strategy, and every uploaded document. It argues your side back at you — the strongest version of your case the evidence actually supports. Not the version you wish you had. The version that's there.
+                  Steelman reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there.
                   <br /><br />
                   This is the steelman.
                 </>
@@ -234,9 +234,9 @@ const SplashPage = () => {
                 <>
                   Three specialists read the documents independently. They don't talk to each other.
                   <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
-                    <li style={{ marginBottom: '6px' }}>One reads each document for what it actually says — not what you claim it says</li>
-                    <li style={{ marginBottom: '6px' }}>One looks for inconsistencies between documents — dates that don't match, wording that contradicts, gaps in correspondence</li>
-                    <li>One verifies the chronology — does your timeline actually match the documents in front of you?</li>
+                    <li style={{ marginBottom: '6px' }}>One reads each document for what it says, not what you claim it says</li>
+                    <li style={{ marginBottom: '6px' }}>One looks for inconsistencies between documents: dates that don't match, wording that contradicts, gaps in correspondence</li>
+                    <li>One verifies the chronology. Does your timeline match the documents in front of you?</li>
                   </ul>
                   <br />
                   If one of them sees a problem and the others don't, that itself is signal.
@@ -248,15 +248,15 @@ const SplashPage = () => {
               title={<>"It's twelve months from now. You lost. Why?"</>}
               body={
                 <>
-                  This is the unkind part. Four adversaries each look at one type of failure — separately, in parallel, forbidden from being balanced.
+                  This is the unkind part. Four adversaries each look at one type of failure. Separately, in parallel, forbidden from being balanced.
                   <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
                     <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Substantive:</strong> is the law actually on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Evidentiary:</strong> can you actually prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Substantive:</strong> is the law on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Evidentiary:</strong> can you prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
                     <li><strong style={{ color: '#EBEBF5' }}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
                   </ul>
                   <br />
-                  Each one writes its own post-mortem. They run on the most powerful reasoning model available — finding holes in arguments is exactly the kind of thing a better engine improves.
+                  Each one writes its own post-mortem. They run on Claude Opus 4. Finding holes in arguments is the kind of thing a better engine improves more than anything else does.
                 </>
               }
               accent="#0A84FF"
@@ -266,9 +266,9 @@ const SplashPage = () => {
               title={<>"Compare the two stories."</>}
               body={
                 <>
-                  A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. Where the optimistic case and the failure modes meaningfully disagree — those are your blind spots.
+                  A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. Where the optimistic case and the failure modes disagree, those are your blind spots.
                   <br /><br />
-                  You get back: a verdict (Steelman / Borderline / Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end — <em>"if you lose this, this will be why."</em>
+                  You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end. <em>"If you lose this, this will be why."</em>
                 </>
               }
             />
@@ -325,10 +325,10 @@ const SplashPage = () => {
             </p>
             <ul style={{ margin: '0 0 16px 18px', padding: 0, color: 'rgba(235, 235, 245, 0.72)', fontSize: '14px', lineHeight: 1.7 }}>
               <li style={{ marginBottom: '8px' }}>
-                <strong style={{ color: '#EBEBF5' }}>Procedural:</strong> you didn't follow the Pre-Action Protocol for Debt Claims. A £42K claim sent without a compliant letter before action sees costs reduced — possibly judgment refused on procedural grounds.
+                <strong style={{ color: '#EBEBF5' }}>Procedural:</strong> you didn't follow the Pre-Action Protocol for Debt Claims. A £42K claim sent without a compliant letter before action sees costs reduced. The court can refuse judgment on procedural grounds alone.
               </li>
               <li style={{ marginBottom: '8px' }}>
-                <strong style={{ color: '#EBEBF5' }}>Substantive:</strong> the "final sign-off" email you're relying on says <em>"thanks for sending this through"</em> — not <em>"I accept this as final delivery"</em>. A sharp defence will argue that wasn't acceptance. You need acceptance by conduct or a clearer email.
+                <strong style={{ color: '#EBEBF5' }}>Substantive:</strong> the "final sign-off" email you're relying on says <em>"thanks for sending this through"</em>. Not <em>"I accept this as final delivery"</em>. A sharp defence will argue that wasn't acceptance. You need acceptance by conduct or a clearer email.
               </li>
               <li>
                 <strong style={{ color: '#EBEBF5' }}>Strategic:</strong> they've been quiet for six months. People who go quiet are usually broke. You haven't done a Companies House check — their accounts are overdue and they've changed director twice this year. Even if you win, will you recover?
@@ -360,10 +360,10 @@ const SplashPage = () => {
 
           <div style={{ ...paragraph, maxWidth: '780px', marginTop: '24px' }}>
             <p style={{ marginBottom: '16px' }}>
-              Gary Klein's premortem methodology is one of the more rigorously evidenced techniques in decision science: assume the project has failed, then walk back to find every reason why. It outperforms standard risk reviews because it gives people permission to be adversarial without political cost.
+              Gary Klein's premortem method is well evidenced in decision science. Assume the project has failed, then walk back to find every reason why. It works because it gives people permission to be adversarial without political cost.
             </p>
             <p style={{ marginBottom: '16px' }}>
-              We applied that methodology to litigation. Eight specialists, each pointed at one type of failure, each forbidden from being balanced. Then a synthesis pass that compares your optimistic case to what the adversaries found. The disagreements are your blind spots.
+              We applied that method to litigation. Eight specialists, each pointed at one type of failure, each forbidden from being balanced. Then a synthesis pass that compares your optimistic case to what the adversaries found. The disagreements are your blind spots.
             </p>
             <p>
               The output reads like the memo an experienced senior partner would scribble after one hard read of the file. Brutal. Specific. Useful before you file, not after.
@@ -387,7 +387,7 @@ const SplashPage = () => {
               title="Multi-model by design."
               body={
                 <>
-                  Opus runs the adversarial pass — the place where reasoning quality matters most and hedging hurts most. Sonnet runs the optimistic analyst, the evidence inspector sub-agents, and the synthesizer. Each agent class declares its own model. Swapping models is one line of config, not a routing layer.
+                  Opus 4 runs the adversarial pass. Reasoning quality matters most there, and hedging hurts most. Sonnet runs the optimistic analyst, the evidence inspector sub-agents, and the synthesizer. Each agent class declares its own model. Swapping models is one line of config, not a routing layer.
                 </>
               }
             />
@@ -396,7 +396,7 @@ const SplashPage = () => {
               title="Sub-agent specialisation."
               body={
                 <>
-                  The premortem stage is four independent Opus sub-agents — procedural, substantive, evidentiary, strategic. Each one only sees its own remit. None of them are asked to be balanced. The synthesizer reconciles them at the end.
+                  The premortem stage uses four independent Opus sub-agents. One each for procedural, substantive, evidentiary, and strategic failure modes. Each one only sees its own remit. None of them is asked to be balanced. The synthesizer reconciles them at the end.
                   <br /><br />
                   A focused prompt produces a sharper failure mode than a generalist one ever will.
                 </>
@@ -407,20 +407,18 @@ const SplashPage = () => {
               title="Parallel where independent."
               body={
                 <>
-                  The three evidence sub-agents run concurrently. The four premortem sub-agents run concurrently. <code style={{ fontFamily: 'ui-monospace, monospace', fontSize: '13px', color: 'rgba(235, 235, 245, 0.85)' }}>asyncio.gather</code> is the architectural showpiece.
-                  <br /><br />
-                  Two-to-three minutes end to end on real cases, with seven LLM calls under the hood.
+                  The three evidence sub-agents run concurrently. The four premortem sub-agents run concurrently. Two-to-three minutes end to end, seven LLM calls under the hood.
                 </>
               }
             />
             <Pillar
               number="04"
-              title="Audit-logged."
+              title="Audit-logged. Local-deploy ready."
               body={
                 <>
-                  Every sub-agent call writes to an audit table — model, tokens in, tokens out, duration, status, error if any. You can answer "which sub-agent flagged this?" — important when a partner asks where a finding came from.
+                  Every sub-agent call writes to an audit table: model, tokens in, tokens out, duration, status, error if any. You can answer "which sub-agent flagged this?" when a partner asks where a finding came from.
                   <br /><br />
-                  Privilege-preserving by design: the same orchestrator can swap Sonnet for a local Gemma or Llama for matters that can't leave firm infrastructure.
+                  The same orchestrator can swap Sonnet for a local Gemma or Llama. For matters that can't leave firm infrastructure, no part of the case ever touches a third-party cloud.
                 </>
               }
             />
@@ -434,7 +432,7 @@ const SplashPage = () => {
           <div style={eyebrow}>Who it's for</div>
           <h2 style={h2}>Built for litigators who want to know before they file.</h2>
           <p style={{ ...sub, marginBottom: '40px' }}>
-            Most useful between intake and the moment you commit a strategy to paper. A red team that doesn't bill by the hour and doesn't have a relationship to protect.
+            Most useful before you commit a strategy to paper. A red team that doesn't bill by the hour and doesn't have a relationship to protect.
           </p>
 
           <div style={{
