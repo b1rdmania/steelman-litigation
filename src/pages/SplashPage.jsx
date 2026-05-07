@@ -132,15 +132,15 @@ const SplashPage = () => {
 
         .logo {
           font-family: var(--font-display);
-          font-size: 2.5rem;
+          font-size: 1.5rem;
           line-height: 1;
-          text-transform: lowercase;
-          letter-spacing: -0.05em;
+          text-transform: uppercase;
+          letter-spacing: 0;
+          font-weight: 700;
         }
 
         .logo .dot {
           color: var(--text-red);
-          font-size: 1.5rem;
         }
 
         .nav-cta {
@@ -412,7 +412,7 @@ const SplashPage = () => {
       `}</style>
 
       <nav className="splash-nav">
-        <div className="logo">p<span className="dot">.</span></div>
+        <div className="logo">PREMOTION<span className="dot">.</span></div>
         <div className="nav-links">
           <button className="nav-link" onClick={() => {
             const el = document.getElementById('about');
@@ -449,71 +449,6 @@ const SplashPage = () => {
           <div className="hero-footer">
             <span className="label-meta" style={{color: 'var(--text-muted)'}}>PREMOTION LABS • LONDON, UK</span>
             <span className="label-meta" style={{color: 'var(--text-muted)'}}>ADVERSARIAL LITIGATION INTELLIGENCE</span>
-          </div>
-        </section>
-
-        <section className="dossier-section">
-          <div className="dossier-header">
-            <h2 className="dossier-title">Vulnerability Report</h2>
-            <span className="label-meta" style={{color: '#888'}}>SYSTEM: MULTI-MODEL AGENT [V.2.4]</span>
-          </div>
-
-          <div className="dossier-grid">
-            <div className="document-list">
-              <div className="data-label" style={{marginBottom: 'var(--space-sm)'}}>Analyzed Corpus</div>
-              <div className="doc-item active">
-                <span>Draft_Particulars_of_Claim_v3.docx</span>
-                <span className="doc-meta">24KB</span>
-              </div>
-              <div className="doc-item">
-                <span>Witness_Statement_Smith_Final.pdf</span>
-                <span className="doc-meta">1.2MB</span>
-              </div>
-              <div className="doc-item">
-                <span>Expert_Report_Quantum_Draft.pdf</span>
-                <span className="doc-meta">4.5MB</span>
-              </div>
-              <div className="doc-item">
-                <span>Defendant_PreAction_Response.pdf</span>
-                <span className="doc-meta">890KB</span>
-              </div>
-            </div>
-
-            <div className="analysis-panel">
-              <div className="finding-card">
-                <div className="finding-header">
-                  <span className="label-meta" style={{color: '#888'}}>REF: PARA 14(C) • BREACH OF DUTY</span>
-                  <span className="badge-critical">CRITICAL RISK • 92% PROBABILITY</span>
-                </div>
-                <div className="finding-content">
-                  <div className="data-group">
-                    <span className="data-label">Claim Assertion</span>
-                    <span className="data-value strike">"The Defendant failed to implement adequate safety protocols prior to the incident on October 12th."</span>
-                  </div>
-                  <div className="data-group">
-                    <span className="data-label">Adversarial Counter-Argument (Simulated)</span>
-                    <span className="data-value highlight">The Defendant will cite Exhibit D (Maintenance Log) showing a comprehensive protocol update on October 10th. Your witness statement (Smith, Para 8) contradicts your own timeline regarding when protocols were visible.</span>
-                  </div>
-                  <div className="data-group" style={{gridColumn: '1 / -1', marginTop: 'var(--space-sm)'}}>
-                    <span className="data-label">Recommended Action</span>
-                    <span className="data-value" style={{fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#ccc'}}>&gt; REVISE TIMELINE IN PARTICULARS OR SEEK CLARIFICATION FROM WITNESS SMITH BEFORE FILING. DO NOT RELY ON DATES IN PARA 14(C).</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="finding-card" style={{borderColor: '#222', opacity: 0.8}}>
-                <div className="finding-header" style={{borderBottomColor: '#333'}}>
-                  <span className="label-meta" style={{color: '#666'}}>REF: CAUSATION • ECONOMIC LOSS</span>
-                  <span className="badge-critical" style={{background: '#e6a835', color: 'black'}}>MODERATE RISK • 64% PROBABILITY</span>
-                </div>
-                <div className="finding-content">
-                  <div className="data-group">
-                    <span className="data-label">Vulnerability</span>
-                    <span className="data-value" style={{color: '#aaa'}}>Expert report relies on linear market projections. Precedent (Smith v Jones 2022) suggests courts require multi-variate modeling for this sector. Anticipate strike-out application on quantum.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 

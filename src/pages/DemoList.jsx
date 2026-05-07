@@ -59,15 +59,16 @@ const DemoList = () => {
 
         .logo {
           font-family: var(--font-display);
-          font-size: 2rem;
+          font-size: 1.5rem;
           line-height: 1;
-          text-transform: lowercase;
-          letter-spacing: -0.05em;
+          text-transform: uppercase;
+          letter-spacing: 0;
           text-decoration: none;
           color: var(--text-black);
           background: none;
           border: none;
           cursor: pointer;
+          font-weight: 700;
         }
 
         .logo .dot { color: var(--text-red); }
@@ -267,7 +268,7 @@ const DemoList = () => {
 
       <div className="portfolio-shell">
         <nav className="portfolio-nav">
-          <button className="logo" onClick={() => navigate('/')}>p<span className="dot">.</span></button>
+          <button className="logo" onClick={() => navigate('/')}>PREMOTION<span className="dot">.</span></button>
           <div className="nav-links">
             <button className="nav-link active" onClick={() => navigate('/demo')}>Portfolio</button>
             <button className="nav-link" onClick={() => navigate('/')}>Intelligence</button>

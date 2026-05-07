@@ -105,14 +105,14 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
 
         .logo {
           font-family: var(--font-display);
-          font-size: 2.5rem;
-          text-transform: lowercase;
-          letter-spacing: -0.05em;
+          font-size: 1.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0;
           color: #FFF;
           background: none;
           border: none;
           cursor: pointer;
-          font-family: var(--font-display);
+          font-weight: 700;
         }
 
         .logo .dot { color: var(--text-red); }
@@ -303,7 +303,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
         {shell}
         <div className="brief-shell">
           <nav className="brief-nav">
-            <button className="logo" onClick={() => navigate('/')}>p<span className="dot">.</span></button>
+            <button className="logo" onClick={() => navigate('/')}>PREMOTION<span className="dot">.</span></button>
           </nav>
           <div style={{padding: 'var(--space-xl) var(--space-lg)', textAlign: 'center', color: '#888', fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem'}}>
             LOADING BRIEF...
@@ -319,7 +319,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
         {shell}
         <div className="brief-shell">
           <nav className="brief-nav">
-            <button className="logo" onClick={() => navigate('/')}>p<span className="dot">.</span></button>
+            <button className="logo" onClick={() => navigate('/')}>PREMOTION<span className="dot">.</span></button>
           </nav>
           <div style={{padding: 'var(--space-xl) var(--space-lg)', textAlign: 'center', color: '#E63935', fontFamily: "'JetBrains Mono', monospace', fontSize: '0.85rem'"}}>
             COULDN'T LOAD THIS BRIEF — {error || 'not found'}.
@@ -339,7 +339,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
         {shell}
         <div className="brief-shell">
           <nav className="brief-nav">
-            <button className="logo" onClick={() => navigate('/')}>p<span className="dot">.</span></button>
+            <button className="logo" onClick={() => navigate('/')}>PREMOTION<span className="dot">.</span></button>
           </nav>
           <div style={{padding: 'var(--space-xl) var(--space-lg)', textAlign: 'center'}}>
             <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: '#888', marginBottom: '10px'}}>STILL RUNNING...</div>
@@ -377,7 +377,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
       {shell}
       <div className="brief-shell">
         <nav className="brief-nav">
-          <div className="logo">p<span className="dot">.</span></div>
+          <div className="logo">PREMOTION<span className="dot">.</span></div>
           <button className="back-link" onClick={() => navigate('/')}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M19 12H5M12 19l-7-7 7-7" />

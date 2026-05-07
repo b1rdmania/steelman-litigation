@@ -144,17 +144,17 @@ const IntakeFlow = () => {
 
         .logo {
           font-family: var(--font-display);
-          font-size: 2rem;
+          font-size: 1.5rem;
           line-height: 1;
-          text-transform: lowercase;
-          letter-spacing: -0.05em;
+          text-transform: uppercase;
+          letter-spacing: 0;
           background: none;
           border: none;
           color: var(--text-white);
           cursor: pointer;
           font-weight: 700;
         }
-        .logo .dot { color: var(--text-red); font-size: 1.5rem; }
+        .logo .dot { color: var(--text-red); }
 
         .intake-meta {
           font-family: var(--font-mono);
@@ -413,7 +413,7 @@ const IntakeFlow = () => {
 
       <div className="intake-shell">
         <nav className="intake-nav">
-          <button className="logo" onClick={() => navigate('/')}>p<span className="dot">.</span></button>
+          <button className="logo" onClick={() => navigate('/')}>PREMOTION<span className="dot">.</span></button>
           <div className="intake-meta">
             <span className="pulse-dot"></span>
             {submitting ? 'Pipeline running' : 'Stress-test a case'}
