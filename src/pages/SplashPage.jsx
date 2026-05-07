@@ -4,88 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const fontFamily = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 const serif = 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
 
-const bodyStyle = {
-  backgroundColor: '#111111',
-  color: '#F4F4F2',
-  fontFamily,
-  fontSize: '15px',
-  lineHeight: 1.6,
-  width: '100vw',
-  minHeight: '100vh',
-  overflowX: 'hidden',
-  WebkitFontSmoothing: 'antialiased',
-};
-
-const topBar = {
-  position: 'sticky', top: 0, zIndex: 20,
-  backgroundColor: 'rgba(17, 17, 17, 0.85)',
-  backdropFilter: 'blur(12px)',
-  borderBottom: '1px solid rgba(244, 244, 242, 0.06)',
-  padding: 'clamp(14px, 2vw, 18px) clamp(20px, 4vw, 40px)',
-  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-};
-
-const section = (bg = 'transparent', pad = 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)') => ({
-  padding: pad,
-  backgroundColor: bg,
-  borderBottom: '1px solid rgba(244, 244, 242, 0.06)',
-});
-
-const inner = { maxWidth: '1100px', margin: '0 auto' };
-
-const eyebrow = {
-  fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px',
-  color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px',
-  fontFamily: "'JetBrains Mono', monospace",
-};
-
-const h1 = {
-  fontFamily: "'Oswald', sans-serif",
-  fontSize: 'clamp(36px, 6vw, 64px)',
-  fontWeight: 500,
-  lineHeight: 1.1,
-  letterSpacing: '1px',
-  textTransform: 'uppercase',
-  color: '#F4F4F2',
-  marginBottom: '24px',
-};
-
-const h2 = {
-  fontFamily: "'Oswald', sans-serif",
-  fontSize: 'clamp(26px, 4vw, 40px)',
-  fontWeight: 500,
-  lineHeight: 1.2,
-  letterSpacing: '1px',
-  textTransform: 'uppercase',
-  color: '#F4F4F2',
-  marginBottom: '16px',
-};
-
-const sub = {
-  fontSize: 'clamp(15px, 1.4vw, 17px)',
-  color: 'rgba(244, 244, 242, 0.7)',
-  lineHeight: 1.6,
-  maxWidth: '720px',
-};
-
-const paragraph = {
-  fontSize: '15px',
-  color: 'rgba(244, 244, 242, 0.68)',
-  lineHeight: 1.75,
-};
-
-const Wordmark = ({ size = 15 }) => (
-  <div style={{
-    fontWeight: 700, letterSpacing: '-0.3px', color: '#F4F4F2', fontSize: `${size}px`,
-    display: 'inline-flex', alignItems: 'baseline', gap: '10px',
-  }}>
-    PREMOTION
-    <span style={{ color: 'rgba(244, 244, 242, 0.5)', fontWeight: 400, fontSize: `${size - 2}px`, letterSpacing: '0.2px' }}>
-      Adversarial premortem for UK litigation
-    </span>
-  </div>
-);
-
 const SplashPage = () => {
   const navigate = useNavigate();
   const [ctaHover, setCtaHover] = useState(false);
@@ -95,545 +13,546 @@ const SplashPage = () => {
   const startCase = () => navigate('/start');
   const seeDemo = () => navigate('/demo');
 
-  const primaryCtaStyle = (hovered) => ({
-    display: 'inline-flex', alignItems: 'center', gap: '10px',
-    backgroundColor: hovered ? '#cc2e2a' : '#E63935',
-    color: 'white',
-    border: 'none',
-    padding: '14px 28px',
-    borderRadius: '2px',
-    fontSize: '14px', fontWeight: 600,
-    cursor: 'pointer',
-    fontFamily,
-    transition: 'all 0.15s ease',
-    transform: hovered ? 'translateY(-1px)' : 'translateY(0)',
-    boxShadow: hovered ? '0 8px 24px rgba(230, 57, 53, 0.3)' : '0 2px 8px rgba(230, 57, 53, 0.15)',
-  });
-
-  const ghostCtaStyle = (hovered) => ({
-    display: 'inline-flex', alignItems: 'center', gap: '8px',
-    backgroundColor: hovered ? 'rgba(244, 244, 242, 0.08)' : 'transparent',
-    color: '#F4F4F2',
-    border: '1px solid rgba(244, 244, 242, 0.15)',
-    padding: '9px 18px',
-    borderRadius: '2px',
-    fontSize: '12px', fontWeight: 500,
-    cursor: 'pointer', fontFamily,
-    transition: 'all 0.15s ease',
-  });
-
   return (
-    <div style={bodyStyle}>
-      {/* Top bar */}
-      <div style={topBar}>
-        <Wordmark />
-        <button
-          onClick={startCase}
-          onMouseEnter={() => setTopCtaHover(true)}
-          onMouseLeave={() => setTopCtaHover(false)}
-          style={ghostCtaStyle(topCtaHover)}
-        >
-          Stress-test a case →
-        </button>
-      </div>
+    <div>
+      <style>{`
+        :root {
+          --bg-color: #F4F4F2;
+          --text-black: #111111;
+          --text-red: #E63935;
+          --text-muted: #777777;
+          --border-light: #DCDCDC;
+          --border-dark: #111111;
 
-      {/* HERO */}
-      <section style={section('transparent', 'clamp(64px, 10vh, 120px) clamp(20px, 4vw, 40px)')}>
-        <div style={inner}>
-          <div style={eyebrow}>Adversarial premortem for UK litigation</div>
-          <h1 style={h1}>
-            We try to lose your case for you.<br />
-            So you don't.
-          </h1>
-          <p style={{ ...sub, marginBottom: '20px' }}>
-            Premotion writes the version of your case where you lose. Then it works out why. Eight specialists, four failure categories, one brief — the procedural, evidentiary, substantive and strategic holes opposing counsel will pull on first, ranked by impact. Roughly three minutes.
-          </p>
-          <p style={{
-            fontSize: '14px', color: 'rgba(244, 244, 242, 0.55)',
-            lineHeight: 1.55, maxWidth: '680px', marginBottom: '40px',
-            fontStyle: 'italic',
-          }}>
-            A red team for your case that doesn't bill by the hour and doesn't have a relationship to protect.
-          </p>
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <button
-              onClick={startCase}
-              onMouseEnter={() => setCtaHover(true)}
-              onMouseLeave={() => setCtaHover(false)}
-              style={primaryCtaStyle(ctaHover)}
-            >
-              Stress-test a case
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
-            <button
-              onClick={seeDemo}
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '6px',
-                background: 'none', border: 'none', color: 'rgba(244, 244, 242, 0.85)',
-                padding: '10px 8px', fontSize: '13px', fontWeight: 500,
-                cursor: 'pointer', fontFamily, textDecoration: 'underline',
-                textDecorationColor: 'rgba(244, 244, 242, 0.25)', textUnderlineOffset: '4px',
-              }}
-            >
-              See a demo brief →
-            </button>
-            <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.4)', marginLeft: '8px' }}>
-              About 2–3 minutes per case · Not legal advice · England &amp; Wales
-            </div>
+          --font-display: 'Oswald', sans-serif;
+          --font-body: 'Inter', sans-serif;
+          --font-mono: 'JetBrains Mono', monospace;
+
+          --space-xs: 0.5rem;
+          --space-sm: 1rem;
+          --space-md: 2rem;
+          --space-lg: 4rem;
+          --space-xl: 8rem;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+          background-color: var(--bg-color);
+          color: var(--text-black);
+          font-family: var(--font-body);
+          line-height: 1.5;
+          overflow-x: hidden;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+        }
+
+        .display-huge {
+          font-family: var(--font-display);
+          font-size: clamp(6rem, 15vw, 18rem);
+          line-height: 0.85;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
+          margin: 0;
+          white-space: nowrap;
+        }
+
+        .text-red { color: var(--text-red); }
+        .text-black { color: var(--text-black); }
+
+        .body-editorial {
+          font-size: 1.125rem;
+          line-height: 1.4;
+          max-width: 280px;
+          letter-spacing: -0.01em;
+        }
+
+        .body-editorial strong {
+          color: var(--text-red);
+          font-weight: 700;
+        }
+
+        .label-meta {
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--text-black);
+        }
+
+        .code-accent {
+          font-family: var(--font-display);
+          font-size: clamp(2rem, 4vw, 4rem);
+          color: var(--text-red);
+          letter-spacing: -0.01em;
+          line-height: 1;
+        }
+
+        .splash-nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: var(--space-md) var(--space-lg);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 100;
+        }
+
+        .logo {
+          font-family: var(--font-display);
+          font-size: 2.5rem;
+          line-height: 1;
+          text-transform: lowercase;
+          letter-spacing: -0.05em;
+        }
+
+        .logo .dot {
+          color: var(--text-red);
+          font-size: 1.5rem;
+        }
+
+        .nav-cta {
+          font-size: 0.875rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          text-decoration: none;
+          color: var(--text-black);
+          border-bottom: 2px solid var(--text-black);
+          padding-bottom: 2px;
+          transition: all 0.2s ease;
+          background: none;
+          border-left: none;
+          border-top: none;
+          border-right: none;
+          cursor: pointer;
+          font-family: var(--font-body);
+        }
+
+        .nav-cta:hover {
+          color: var(--text-red);
+          border-color: var(--text-red);
+        }
+
+        .hero {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: var(--space-xl) var(--space-lg) var(--space-lg);
+          overflow: hidden;
+        }
+
+        .hero-lockup {
+          position: relative;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          mix-blend-mode: multiply;
+        }
+
+        .hero-image-container {
+          position: absolute;
+          bottom: 5vh;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60vw;
+          max-width: 800px;
+          height: 60vh;
+          z-index: 1;
+          opacity: 0.85;
+          filter: grayscale(100%) contrast(1.2);
+          pointer-events: none;
+        }
+
+        .hero-image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        .hero-floating-left {
+          position: absolute;
+          left: var(--space-lg);
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 20;
+        }
+
+        .hero-floating-left .label-meta {
+          margin-top: var(--space-sm);
+          display: block;
+        }
+
+        .hero-floating-right {
+          position: absolute;
+          right: var(--space-lg);
+          bottom: 25%;
+          z-index: 20;
+          text-align: right;
+        }
+
+        .hero-footer {
+          position: absolute;
+          bottom: var(--space-md);
+          left: var(--space-lg);
+          right: var(--space-lg);
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          border-bottom: 1px solid var(--border-light);
+          padding-bottom: var(--space-xs);
+          z-index: 20;
+        }
+
+        .dossier-section {
+          background-color: var(--text-black);
+          color: var(--bg-color);
+          padding: var(--space-xl) var(--space-lg);
+          position: relative;
+        }
+
+        .dossier-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          border-bottom: 1px solid #333;
+          padding-bottom: var(--space-md);
+          margin-bottom: var(--space-lg);
+        }
+
+        .dossier-title {
+          font-family: var(--font-display);
+          font-size: 3rem;
+          line-height: 1;
+          text-transform: uppercase;
+          color: var(--bg-color);
+        }
+
+        .dossier-grid {
+          display: grid;
+          grid-template-columns: 300px 1fr;
+          gap: var(--space-lg);
+        }
+
+        .document-list {
+          border-right: 1px solid #333;
+          padding-right: var(--space-lg);
+        }
+
+        .doc-item {
+          padding: var(--space-sm) 0;
+          border-bottom: 1px solid #333;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+          transition: color 0.2s;
+        }
+
+        .doc-item:hover { color: var(--text-red); }
+        .doc-item.active { color: var(--text-red); font-weight: 600; }
+
+        .doc-meta {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          color: #888;
+        }
+
+        .analysis-panel {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-md);
+        }
+
+        .finding-card {
+          border: 1px solid #333;
+          background: #151515;
+          padding: var(--space-md);
+        }
+
+        .finding-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: var(--space-md);
+          padding-bottom: var(--space-xs);
+          border-bottom: 1px dashed #444;
+        }
+
+        .badge-critical {
+          background-color: var(--text-red);
+          color: white;
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          font-weight: 700;
+          padding: 2px 8px;
+          text-transform: uppercase;
+        }
+
+        .finding-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-md);
+        }
+
+        .data-group {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .data-label {
+          font-family: var(--font-mono);
+          font-size: 0.65rem;
+          color: #888;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .data-value {
+          font-size: 0.95rem;
+          line-height: 1.4;
+        }
+
+        .data-value.strike {
+          text-decoration: line-through;
+          color: #666;
+        }
+
+        .data-value.highlight {
+          color: var(--text-red);
+        }
+
+        @media (max-width: 1024px) {
+          .hero-floating-left, .hero-floating-right {
+            position: relative;
+            top: auto; right: auto; left: auto; bottom: auto;
+            transform: none;
+            margin-top: var(--space-md);
+            text-align: center;
+          }
+          .body-editorial {
+            max-width: 100%;
+          }
+          .hero-image-container {
+            width: 90vw;
+            height: 50vh;
+          }
+          .dossier-grid {
+            grid-template-columns: 1fr;
+          }
+          .document-list {
+            border-right: none;
+            border-bottom: 1px solid #333;
+            padding-right: 0;
+            padding-bottom: var(--space-lg);
+          }
+          .finding-content {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      <nav className="splash-nav">
+        <div className="logo">p<span className="dot">.</span></div>
+        <button className="nav-cta" onClick={startCase}>Stress-Test a Case</button>
+      </nav>
+
+      <main>
+        <section className="hero">
+          <div className="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="Stark brutalist concrete structure" />
           </div>
-        </div>
 
-        {/* Trust strip */}
-        <div style={{ ...inner, marginTop: '72px', borderTop: '1px solid rgba(244, 244, 242, 0.06)', paddingTop: '28px' }}>
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '16px 40px', fontSize: '12px', color: 'rgba(244, 244, 242, 0.55)',
-          }}>
-            {[
-              'Eight specialists, eight separate reads',
-              'Claude Opus 4 on the adversarial pass',
-              'UK law context, English & Welsh courts',
-              'Local-model option for matters that can\'t leave the firm',
-            ].map(t => (
-              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FF41" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                {t}
+          <div className="hero-floating-left">
+            <p className="body-editorial">
+              Your litigation strategy appears airtight in the drafting room. <strong>It won't survive opposing counsel.</strong> Premotion deploys multi-model adversarial AI to expose structural vulnerabilities before you file.
+            </p>
+            <span className="label-meta">PHASE 01 // PREMORTEM</span>
+          </div>
+
+          <div className="hero-lockup">
+            <h1 className="display-huge text-red">BREAK YOUR</h1>
+            <h1 className="display-huge text-black">OWN CASE</h1>
+          </div>
+
+          <div className="hero-floating-right">
+            <div className="code-accent">// FATAL_ERROR</div>
+          </div>
+
+          <div className="hero-footer">
+            <span className="label-meta" style={{color: 'var(--text-muted)'}}>PREMOTION LABS • LONDON, UK</span>
+            <span className="label-meta" style={{color: 'var(--text-muted)'}}>ADVERSARIAL LITIGATION INTELLIGENCE</span>
+          </div>
+        </section>
+
+        <section className="dossier-section">
+          <div className="dossier-header">
+            <h2 className="dossier-title">Vulnerability Report</h2>
+            <span className="label-meta" style={{color: '#888'}}>SYSTEM: MULTI-MODEL AGENT [V.2.4]</span>
+          </div>
+
+          <div className="dossier-grid">
+            <div className="document-list">
+              <div className="data-label" style={{marginBottom: 'var(--space-sm)'}}>Analyzed Corpus</div>
+              <div className="doc-item active">
+                <span>Draft_Particulars_of_Claim_v3.docx</span>
+                <span className="doc-meta">24KB</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS — plain English walkthrough */}
-      <section style={section('#141414')}>
-        <div style={inner}>
-          <div style={eyebrow}>How it works</div>
-          <h2 style={h2}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
-          <p style={{ ...sub, marginBottom: '48px' }}>
-            You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Premotion runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
-          </p>
-
-          <div style={{ display: 'grid', gap: '20px' }}>
-            <PlainStep
-              tag="Step 1 — first read"
-              title={<>"Make this case as strong as possible."</>}
-              body={
-                <>
-                  Premotion reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there.
-                  <br /><br />
-                  This is the steelman of your case.
-                </>
-              }
-            />
-            <PlainStep
-              tag="Step 2 — second read"
-              title={<>"Look for what doesn't add up."</>}
-              body={
-                <>
-                  Three specialists read the documents independently. They don't talk to each other.
-                  <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
-                    <li style={{ marginBottom: '6px' }}>One reads each document for what it says, not what you claim it says</li>
-                    <li style={{ marginBottom: '6px' }}>One looks for inconsistencies between documents: dates that don't match, wording that contradicts, gaps in correspondence</li>
-                    <li>One verifies the chronology. Does your timeline match the documents in front of you?</li>
-                  </ul>
-                  <br />
-                  If one of them sees a problem and the others don't, that itself is signal.
-                </>
-              }
-            />
-            <PlainStep
-              tag="Step 3 — third read"
-              title={<>"It's twelve months from now. You lost. Why?"</>}
-              body={
-                <>
-                  This is the unkind part. Four adversaries each look at one type of failure. Separately, in parallel, forbidden from being balanced.
-                  <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#F4F4F2' }}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#F4F4F2' }}>Substantive:</strong> is the law on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#F4F4F2' }}>Evidentiary:</strong> can you prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
-                    <li><strong style={{ color: '#F4F4F2' }}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
-                  </ul>
-                  <br />
-                  Each one writes its own post-mortem. They run on Claude Opus 4. Finding holes in arguments is the kind of thing a better engine improves more than anything else does.
-                </>
-              }
-              accent="#E63935"
-            />
-            <PlainStep
-              tag="Step 4 — final read"
-              title={<>"Compare the two stories."</>}
-              body={
-                <>
-                  A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. Where the optimistic case and the failure modes disagree, those are your blind spots.
-                  <br /><br />
-                  You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end. <em>"If you lose this, this will be why."</em>
-                </>
-              }
-            />
-
-          </div>
-        </div>
-      </section>
-
-      {/* WORKED EXAMPLE */}
-      <section style={section('transparent')}>
-        <div style={inner}>
-          <div style={eyebrow}>What it looks like in practice</div>
-          <h2 style={h2}>An unpaid £42K invoice. A case you think you'll win.</h2>
-
-          <div style={{ ...paragraph, maxWidth: '780px', marginTop: '24px' }}>
-            <p style={{ marginBottom: '16px' }}>
-              Imagine you've got an unpaid invoice for £42,000 from a client who's gone quiet for six months. You think you're going to win because:
-            </p>
-            <ul style={{ margin: '0 0 24px 22px', padding: 0, color: 'rgba(244, 244, 242, 0.7)' }}>
-              <li style={{ marginBottom: '6px' }}>You've got the signed Statement of Work</li>
-              <li style={{ marginBottom: '6px' }}>You delivered everything on the milestone schedule</li>
-              <li style={{ marginBottom: '6px' }}>You have the email where they signed off the final deliverable</li>
-              <li>They've ignored four chase emails</li>
-            </ul>
-            <p style={{ marginBottom: '16px' }}>
-              You upload the file to Premotion. Three minutes later, the brief comes back.
-            </p>
-          </div>
-
-          <div style={{
-            maxWidth: '780px',
-            backgroundColor: '#1A1A1A',
-            border: '1px solid rgba(244, 244, 242, 0.08)',
-            borderRadius: '12px',
-            padding: '28px 32px',
-            marginTop: '12px',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-              <span style={{
-                fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
-                color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600,
-                fontFamily: "'JetBrains Mono', monospace",
-              }}>Verdict</span>
-              <span style={{
-                fontSize: '12px', fontWeight: 700, padding: '4px 10px',
-                borderRadius: '6px', backgroundColor: 'rgba(255, 159, 10, 0.15)',
-                color: '#FF9F0A', letterSpacing: '0.4px', textTransform: 'uppercase',
-              }}>Borderline</span>
+              <div className="doc-item">
+                <span>Witness_Statement_Smith_Final.pdf</span>
+                <span className="doc-meta">1.2MB</span>
+              </div>
+              <div className="doc-item">
+                <span>Expert_Report_Quantum_Draft.pdf</span>
+                <span className="doc-meta">4.5MB</span>
+              </div>
+              <div className="doc-item">
+                <span>Defendant_PreAction_Response.pdf</span>
+                <span className="doc-meta">890KB</span>
+              </div>
             </div>
 
-            <p style={{ marginBottom: '14px', color: 'rgba(244, 244, 242, 0.75)', fontSize: '14px', lineHeight: 1.7 }}>
-              <strong style={{ color: '#F4F4F2' }}>What you got right.</strong> Your contract is solid. Your delivery evidence is contemporaneous. Their non-response would be a problem for them in court.
-            </p>
-            <p style={{ marginBottom: '6px', color: 'rgba(244, 244, 242, 0.85)', fontSize: '14px', fontWeight: 600 }}>
-              What you missed.
-            </p>
-            <ul style={{ margin: '0 0 16px 18px', padding: 0, color: 'rgba(244, 244, 242, 0.72)', fontSize: '14px', lineHeight: 1.7 }}>
-              <li style={{ marginBottom: '8px' }}>
-                <strong style={{ color: '#F4F4F2' }}>Procedural:</strong> you didn't follow the Pre-Action Protocol for Debt Claims. A £42K claim sent without a compliant letter before action sees costs reduced. The court can refuse judgment on procedural grounds alone.
-              </li>
-              <li style={{ marginBottom: '8px' }}>
-                <strong style={{ color: '#F4F4F2' }}>Substantive:</strong> the "final sign-off" email you're relying on says <em>"thanks for sending this through"</em>. Not <em>"I accept this as final delivery"</em>. A sharp defence will argue that wasn't acceptance. You need acceptance by conduct or a clearer email.
-              </li>
-              <li>
-                <strong style={{ color: '#F4F4F2' }}>Strategic:</strong> they've been quiet for six months. People who go quiet are usually broke. You haven't done a Companies House check — their accounts are overdue and they've changed director twice this year. Even if you win, will you recover?
-              </li>
-            </ul>
+            <div className="analysis-panel">
+              <div className="finding-card">
+                <div className="finding-header">
+                  <span className="label-meta" style={{color: '#888'}}>REF: PARA 14(C) • BREACH OF DUTY</span>
+                  <span className="badge-critical">CRITICAL RISK • 92% PROBABILITY</span>
+                </div>
+                <div className="finding-content">
+                  <div className="data-group">
+                    <span className="data-label">Claim Assertion</span>
+                    <span className="data-value strike">"The Defendant failed to implement adequate safety protocols prior to the incident on October 12th."</span>
+                  </div>
+                  <div className="data-group">
+                    <span className="data-label">Adversarial Counter-Argument (Simulated)</span>
+                    <span className="data-value highlight">The Defendant will cite Exhibit D (Maintenance Log) showing a comprehensive protocol update on October 10th. Your witness statement (Smith, Para 8) contradicts your own timeline regarding when protocols were visible.</span>
+                  </div>
+                  <div className="data-group" style={{gridColumn: '1 / -1', marginTop: 'var(--space-sm)'}}>
+                    <span className="data-label">Recommended Action</span>
+                    <span className="data-value" style={{fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#ccc'}}>&gt; REVISE TIMELINE IN PARTICULARS OR SEEK CLARIFICATION FROM WITNESS SMITH BEFORE FILING. DO NOT RELY ON DATES IN PARA 14(C).</span>
+                  </div>
+                </div>
+              </div>
 
-            <div style={{
-              marginTop: '24px',
-              paddingTop: '20px',
-              borderTop: '1px solid rgba(244, 244, 242, 0.08)',
-              fontFamily: serif, fontSize: '17px', fontStyle: 'italic',
-              color: '#F4F4F2', lineHeight: 1.5,
-            }}>
-              "If you lose this, it'll be because you confused 'we've finished the work' with 'the client agreed we'd finished.'"
+              <div className="finding-card" style={{borderColor: '#222', opacity: 0.8}}>
+                <div className="finding-header" style={{borderBottomColor: '#333'}}>
+                  <span className="label-meta" style={{color: '#666'}}>REF: CAUSATION • ECONOMIC LOSS</span>
+                  <span className="badge-critical" style={{background: '#e6a835', color: 'black'}}>MODERATE RISK • 64% PROBABILITY</span>
+                </div>
+                <div className="finding-content">
+                  <div className="data-group">
+                    <span className="data-label">Vulnerability</span>
+                    <span className="data-value" style={{color: '#aaa'}}>Expert report relies on linear market projections. Precedent (Smith v Jones 2022) suggests courts require multi-variate modeling for this sector. Anticipate strike-out application on quantum.</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <p style={{ ...paragraph, maxWidth: '780px', marginTop: '28px' }}>
-            That's the read you'd get from a senior partner before you file. Premotion gives every solicitor that read in three minutes, before counsel's opinion costs £600.
-          </p>
-        </div>
-      </section>
-
-      {/* WHY THIS EXISTS */}
-      <section style={section('#141414')}>
-        <div style={inner}>
-          <div style={eyebrow}>Why this exists</div>
-          <h2 style={h2}>Most legal AI is one LLM and a prompt. That's not enough.</h2>
-
-          <div style={{ ...paragraph, maxWidth: '780px', marginTop: '24px' }}>
-            <p style={{ marginBottom: '16px' }}>
-              Gary Klein's premortem method is well evidenced in decision science. Assume the project has failed, then walk back to find every reason why. It works because it gives people permission to be adversarial without political cost.
+        {/* How it works — plain English walkthrough */}
+        <section style={{backgroundColor: '#141414', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(244, 244, 242, 0.06)'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto'}}>
+            <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px', fontFamily: "'JetBrains Mono', monospace"}}>How it works</div>
+            <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2', marginBottom: '16px'}}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
+            <p style={{fontSize: 'clamp(15px, 1.4vw, 17px)', color: 'rgba(244, 244, 242, 0.7)', lineHeight: 1.6, maxWidth: '720px', marginBottom: '48px'}}>
+              You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Premotion runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
             </p>
-            <p style={{ marginBottom: '16px' }}>
-              We applied that method to litigation. Eight specialists, each pointed at one type of failure, each forbidden from being balanced. Then a final pass that compares your optimistic case to what the adversaries found. The disagreements are your blind spots.
-            </p>
-            <p>
-              The output reads like the memo an experienced senior partner would scribble after one hard read of the file. Brutal. Specific. Useful before you file, not after.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* THE ARCHITECTURE — pillars (for builders / technical readers) */}
-      <section style={section('transparent')}>
-        <div style={inner}>
-          <div style={eyebrow}>For the technically minded</div>
-          <h2 style={h2}>The architecture, briefly.</h2>
-          <p style={{ ...sub, marginBottom: '32px' }}>
-            If you build agent systems for a living, this is the bit you'll want to read. If you don't, skip it.
-          </p>
-
-          <div style={{ display: 'grid', gap: '0px', marginTop: '40px' }}>
-            <Pillar
-              number="01"
-              title="Multi-model by design."
-              body={
-                <>
-                  Opus 4 runs the adversarial pass. Reasoning quality matters most there, and hedging hurts most. Sonnet runs the optimistic analyst, the evidence inspector sub-agents, and the synthesizer. Each agent class declares its own model. Swapping models is one line of config, not a routing layer.
-                </>
-              }
-            />
-            <Pillar
-              number="02"
-              title="Sub-agent specialisation."
-              body={
-                <>
-                  The premortem stage uses four independent Opus sub-agents. One each for procedural, substantive, evidentiary, and strategic failure modes. Each one only sees its own remit. None of them is asked to be balanced. The synthesizer reconciles them at the end.
-                  <br /><br />
-                  A focused prompt produces a sharper failure mode than a generalist one ever will.
-                </>
-              }
-            />
-            <Pillar
-              number="03"
-              title="Parallel where independent."
-              body={
-                <>
-                  The three evidence sub-agents run concurrently. The four premortem sub-agents run concurrently. Two-to-three minutes end to end, seven LLM calls under the hood.
-                </>
-              }
-            />
-            <Pillar
-              number="04"
-              title="Audit-logged. Local-deploy ready."
-              body={
-                <>
-                  Every sub-agent call writes to an audit table: model, tokens in, tokens out, duration, status, error if any. You can answer "which sub-agent flagged this?" when a partner asks where a finding came from.
-                  <br /><br />
-                  The same orchestrator can swap Sonnet for a local Gemma or Llama. For matters that can't leave firm infrastructure, no part of the case ever touches a third-party cloud.
-                </>
-              }
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* USE CASES */}
-      <section style={section('transparent')}>
-        <div style={inner}>
-          <div style={eyebrow}>Who it's for</div>
-          <h2 style={h2}>Built for litigators who want to know before they file.</h2>
-          <p style={{ ...sub, marginBottom: '40px' }}>
-            Most useful before you commit a strategy to paper. A red team that doesn't bill by the hour and doesn't have a relationship to protect.
-          </p>
-
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '12px',
-          }}>
-            {[
-              { name: 'Solicitors', blurb: 'Boutique and mid-size UK firms running active litigation. Stress-test before serving.' },
-              { name: 'In-house counsel', blurb: 'Weighing whether to escalate, settle, or push back. A read on whether the case actually holds.' },
-              { name: 'Mediators', blurb: 'A third-voice red team on the positions both sides are bringing into the room.' },
-              { name: 'Litigation funders', blurb: 'Pre-investment evaluation. Where would this case go wrong if it went wrong.' },
-            ].map(u => (
-              <UseCaseCard key={u.name} name={u.name} blurb={u.blurb} />
-            ))}
-          </div>
-
-          <div style={{
-            marginTop: '40px', padding: '20px 24px',
-            backgroundColor: 'rgba(230, 57, 53, 0.04)',
-            border: '1px solid rgba(230, 57, 53, 0.15)',
-            borderRadius: '10px',
-          }}>
-            <div style={{
-              fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px',
-              color: '#E63935', fontWeight: 600, marginBottom: '10px',
-              fontFamily: "'JetBrains Mono', monospace",
-            }}>
-              Not designed for
-            </div>
-            <div style={{ fontSize: '14px', color: 'rgba(244, 244, 242, 0.75)', lineHeight: 1.7 }}>
-              Consumer disputes (try <a href="https://courtless.app" style={{ color: '#E63935', textDecoration: 'none' }}>Courtless</a>) · Transactional / non-contentious work · Family law · Criminal defence.
+            <div style={{display: 'grid', gap: '20px'}}>
+              <PlainStep tag="Step 1 — first read" title={'"Make this case as strong as possible."'} body="Premotion reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there. This is the steelman of your case." />
+              <PlainStep tag="Step 2 — second read" title={'"Look for what doesn\'t add up."'} body="Three specialists read the documents independently. They don't talk to each other. One reads each document for what it says; one looks for inconsistencies between documents; one verifies the chronology." />
+              <PlainStep tag="Step 3 — third read" title={'"It\'s twelve months from now. You lost. Why?"'} body="Four adversaries each look at one type of failure: Procedural, Substantive, Evidentiary, and Strategic. Each one writes its own post-mortem. They run on Claude Opus 4." accent="#E63935" />
+              <PlainStep tag="Step 4 — final read" title={'"Compare the two stories."'} body='A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios, evidence inconsistencies, mitigations, and one sentence at the end. "If you lose this, this will be why."' />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FINAL CTA */}
-      <section style={{ ...section('#141414', 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px) clamp(80px, 12vw, 140px)') }}>
-        <div style={{ ...inner, textAlign: 'center' }}>
-          <div style={eyebrow}>Ready?</div>
-          <h2 style={{ ...h2, marginBottom: '20px' }}>
-            You don't know how strong your case is<br />
-            until someone tries to break it.
-          </h2>
-          <p style={{ ...sub, margin: '0 auto 36px', textAlign: 'center' }}>
-            Drop your intake, your evidence and your current strategy. Two-to-three minutes later you'll have a brief: failure modes ranked, blind spots flagged, and a verdict.
-          </p>
-          <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
-            <button
-              onClick={startCase}
-              onMouseEnter={() => setFinalCtaHover(true)}
-              onMouseLeave={() => setFinalCtaHover(false)}
-              style={primaryCtaStyle(finalCtaHover)}
-            >
-              Stress-test a case
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
-            <button
-              onClick={seeDemo}
-              style={{
-                background: 'none', border: 'none', color: 'rgba(244, 244, 242, 0.7)',
-                fontSize: '13px', fontWeight: 500, cursor: 'pointer', fontFamily,
-                textDecoration: 'underline', textDecorationColor: 'rgba(244, 244, 242, 0.25)',
-                textUnderlineOffset: '4px',
-              }}
-            >
-              See a demo brief →
-            </button>
+        {/* Final CTA */}
+        <section style={{backgroundColor: '#141414', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px) clamp(80px, 12vw, 140px)', borderBottom: '1px solid rgba(244, 244, 242, 0.06)'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', textAlign: 'center'}}>
+            <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px', fontFamily: "'JetBrains Mono', monospace"}}>Ready?</div>
+            <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2', marginBottom: '20px'}}>
+              You don't know how strong your case is<br />until someone tries to break it.
+            </h2>
+            <p style={{fontSize: 'clamp(15px, 1.4vw, 17px)', color: 'rgba(244, 244, 242, 0.7)', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 36px', textAlign: 'center'}}>
+              Drop your intake, your evidence and your current strategy. Two-to-three minutes later you'll have a brief: failure modes ranked, blind spots flagged, and a verdict.
+            </p>
+            <div style={{display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '14px'}}>
+              <button
+                onClick={startCase}
+                onMouseEnter={() => setFinalCtaHover(true)}
+                onMouseLeave={() => setFinalCtaHover(false)}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '10px',
+                  backgroundColor: finalCtaHover ? '#cc2e2a' : '#E63935',
+                  color: 'white', border: 'none', padding: '14px 28px',
+                  fontSize: '14px', fontWeight: 600, cursor: 'pointer', fontFamily,
+                  transition: 'all 0.15s ease',
+                  transform: finalCtaHover ? 'translateY(-1px)' : 'translateY(0)',
+                }}
+              >
+                Stress-test a case →
+              </button>
+              <button
+                onClick={seeDemo}
+                style={{background: 'none', border: 'none', color: 'rgba(244, 244, 242, 0.7)', fontSize: '13px', fontWeight: 500, cursor: 'pointer', fontFamily, textDecoration: 'underline', textDecorationColor: 'rgba(244, 244, 242, 0.25)', textUnderlineOffset: '4px'}}
+              >
+                See a demo brief →
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FOOTER */}
-      <footer style={{ padding: '28px clamp(20px, 4vw, 40px)', borderTop: '1px solid rgba(244, 244, 242, 0.06)' }}>
-        <div style={{
-          ...inner,
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          flexWrap: 'wrap', gap: '16px',
-        }}>
-          <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.4)', fontFamily: "'JetBrains Mono', monospace" }}>
-            PREMOTION · Adversarial premortem for UK litigation · Not legal advice · England &amp; Wales
+        {/* Footer */}
+        <footer style={{padding: '28px clamp(20px, 4vw, 40px)', borderTop: '1px solid rgba(244, 244, 242, 0.06)', backgroundColor: '#111111'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px'}}>
+            <div style={{fontSize: '12px', color: 'rgba(244, 244, 242, 0.4)', fontFamily: "'JetBrains Mono', monospace"}}>
+              PREMOTION · Adversarial premortem for UK litigation · Not legal advice · England &amp; Wales
+            </div>
+            <div style={{display: 'flex', gap: '24px', fontSize: '12px', color: 'rgba(244, 244, 242, 0.5)'}}>
+              <a href="#terms" style={{color: 'inherit', textDecoration: 'none'}}>Terms</a>
+              <a href="#privacy" style={{color: 'inherit', textDecoration: 'none'}}>Privacy</a>
+              <a href="#about" style={{color: 'inherit', textDecoration: 'none'}}>About</a>
+            </div>
           </div>
-          <div style={{ display: 'flex', gap: '24px', fontSize: '12px', color: 'rgba(244, 244, 242, 0.5)' }}>
-            <a href="#terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms</a>
-            <a href="#privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy</a>
-            <a href="#about" style={{ color: 'inherit', textDecoration: 'none' }}>About</a>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </main>
     </div>
   );
 };
 
-const StepCard = ({ number, title, body, accent }) => (
-  <div style={{
-    backgroundColor: '#1A1A1A',
-    border: `1px solid ${accent ? `${accent}40` : 'rgba(244, 244, 242, 0.06)'}`,
-    borderRadius: '12px',
-    padding: '28px 24px',
-  }}>
-    <div style={{
-      fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
-      color: accent || 'rgba(244, 244, 242, 0.4)',
-      fontWeight: 700, marginBottom: '14px',
-      fontFamily: "'JetBrains Mono', monospace",
-    }}>
-      {number}
-    </div>
-    <div style={{
-      fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500,
-      color: '#F4F4F2', marginBottom: '14px', letterSpacing: '1px', lineHeight: 1.25,
-      textTransform: 'uppercase',
-    }}>
-      {title}
-    </div>
-    <div style={{ fontSize: '14px', color: 'rgba(244, 244, 242, 0.72)', lineHeight: 1.65 }}>
-      {body}
-    </div>
-  </div>
-);
-
 const PlainStep = ({ tag, title, body, accent }) => (
   <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'minmax(140px, 180px) 1fr',
-    gap: '32px',
-    padding: '32px 0',
-    borderTop: '1px solid rgba(244, 244, 242, 0.06)',
-    alignItems: 'start',
+    display: 'grid', gridTemplateColumns: 'minmax(140px, 180px) 1fr', gap: '32px',
+    padding: '32px 0', borderTop: '1px solid rgba(244, 244, 242, 0.06)', alignItems: 'start',
   }}>
-    <div style={{
-      fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
-      color: accent || 'rgba(244, 244, 242, 0.4)',
-      fontWeight: 700, paddingTop: '6px',
-      fontFamily: "'JetBrains Mono', monospace",
-    }}>
+    <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px', color: accent || 'rgba(244, 244, 242, 0.4)', fontWeight: 700, paddingTop: '6px', fontFamily: "'JetBrains Mono', monospace"}}>
       {tag}
     </div>
     <div>
-      <div style={{
-        fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500,
-        color: '#F4F4F2', marginBottom: '12px', letterSpacing: '1px', lineHeight: 1.3,
-        textTransform: 'uppercase',
-      }}>
+      <div style={{fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500, color: '#F4F4F2', marginBottom: '12px', letterSpacing: '1px', lineHeight: 1.3, textTransform: 'uppercase'}}>
         {title}
       </div>
-      <div style={{ fontSize: '15px', color: 'rgba(244, 244, 242, 0.72)', lineHeight: 1.7 }}>
+      <div style={{fontSize: '15px', color: 'rgba(244, 244, 242, 0.72)', lineHeight: 1.7}}>
         {body}
       </div>
-    </div>
-  </div>
-);
-
-const Pillar = ({ number, title, body }) => (
-  <div style={{
-    display: 'grid', gridTemplateColumns: '80px 1fr',
-    gap: '24px',
-    padding: '28px 0',
-    borderTop: '1px solid rgba(244, 244, 242, 0.06)',
-  }}>
-    <div style={{
-      fontFamily: "'JetBrains Mono', monospace", fontSize: '28px', fontWeight: 400,
-      color: 'rgba(244, 244, 242, 0.3)', letterSpacing: '-0.3px',
-    }}>
-      {number}
-    </div>
-    <div>
-      <div style={{
-        fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500, color: '#F4F4F2',
-        marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase',
-      }}>
-        {title}
-      </div>
-      <div style={{ ...paragraph, maxWidth: '720px' }}>{body}</div>
-    </div>
-  </div>
-);
-
-const UseCaseCard = ({ name, blurb }) => (
-  <div style={{
-    backgroundColor: '#1A1A1A',
-    border: '1px solid rgba(244, 244, 242, 0.06)',
-    borderRadius: '10px',
-    padding: '20px 22px',
-  }}>
-    <div style={{
-      fontSize: '14px', fontWeight: 600, color: '#F4F4F2',
-      marginBottom: '8px', letterSpacing: '-0.1px',
-    }}>
-      {name}
-    </div>
-    <div style={{ fontSize: '13px', color: 'rgba(244, 244, 242, 0.6)', lineHeight: 1.55 }}>
-      {blurb}
     </div>
   </div>
 );
