@@ -382,7 +382,7 @@ const SplashPage = () => {
 
           <div className="hero-floating-left">
             <p className="body-editorial">
-              Your litigation strategy appears airtight in the drafting room. <strong>It won't survive opposing counsel.</strong> Premotion deploys multi-model adversarial AI to expose structural vulnerabilities before you file.
+              <strong>We try to lose your case for you. So you don't.</strong> Premotion writes the version where you lose, then works out why. Eight specialists. Four failure categories. One brief. Roughly three minutes.
             </p>
             <span className="label-meta">PHASE 01 // PREMORTEM</span>
           </div>
@@ -476,10 +476,105 @@ const SplashPage = () => {
               You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Premotion runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
             </p>
             <div style={{display: 'grid', gap: '20px'}}>
-              <PlainStep tag="Step 1 — first read" title={'"Make this case as strong as possible."'} body="Premotion reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there. This is the steelman of your case." />
-              <PlainStep tag="Step 2 — second read" title={'"Look for what doesn\'t add up."'} body="Three specialists read the documents independently. They don't talk to each other. One reads each document for what it says; one looks for inconsistencies between documents; one verifies the chronology." />
-              <PlainStep tag="Step 3 — third read" title={'"It\'s twelve months from now. You lost. Why?"'} body="Four adversaries each look at one type of failure: Procedural, Substantive, Evidentiary, and Strategic. Each one writes its own post-mortem. They run on Claude Opus 4." accent="#E63935" />
-              <PlainStep tag="Step 4 — final read" title={'"Compare the two stories."'} body='A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios, evidence inconsistencies, mitigations, and one sentence at the end. "If you lose this, this will be why."' />
+              <PlainStep
+                tag="Step 1 — first read"
+                title={'"Make this case as strong as possible."'}
+                body={
+                  <>
+                    Premotion reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there.
+                    <br /><br />
+                    This is the steelman of your case.
+                  </>
+                }
+              />
+              <PlainStep
+                tag="Step 2 — second read"
+                title={'"Look for what doesn\'t add up."'}
+                body={
+                  <>
+                    Three specialists read the documents independently. They don't talk to each other.
+                    <ul style={{margin: '14px 0 0 18px', padding: 0}}>
+                      <li style={{marginBottom: '6px'}}>One reads each document for what it says, not what you claim it says</li>
+                      <li style={{marginBottom: '6px'}}>One looks for inconsistencies between documents: dates that don't match, wording that contradicts, gaps in correspondence</li>
+                      <li>One verifies the chronology. Does your timeline match the documents in front of you?</li>
+                    </ul>
+                    <br />
+                    If one of them sees a problem and the others don't, that itself is signal.
+                  </>
+                }
+              />
+              <PlainStep
+                tag="Step 3 — third read"
+                title={'"It\'s twelve months from now. You lost. Why?"'}
+                accent="#E63935"
+                body={
+                  <>
+                    This is the unkind part. Four adversaries each look at one type of failure. Separately, in parallel, forbidden from being balanced.
+                    <ul style={{margin: '14px 0 0 18px', padding: 0}}>
+                      <li style={{marginBottom: '6px'}}><strong style={{color: '#F4F4F2'}}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
+                      <li style={{marginBottom: '6px'}}><strong style={{color: '#F4F4F2'}}>Substantive:</strong> is the law on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
+                      <li style={{marginBottom: '6px'}}><strong style={{color: '#F4F4F2'}}>Evidentiary:</strong> can you prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
+                      <li><strong style={{color: '#F4F4F2'}}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
+                    </ul>
+                    <br />
+                    Each one writes its own post-mortem. They run on Claude Opus 4. Finding holes in arguments is the kind of thing a better engine improves more than anything else does.
+                  </>
+                }
+              />
+              <PlainStep
+                tag="Step 4 — final read"
+                title={'"Compare the two stories."'}
+                body={
+                  <>
+                    A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. Where the optimistic case and the failure modes disagree, those are your blind spots.
+                    <br /><br />
+                    You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end. <em>"If you lose this, this will be why."</em>
+                  </>
+                }
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Who it's for — use cases + not designed for */}
+        <section style={{backgroundColor: '#0F0F10', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(244, 244, 242, 0.06)'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto'}}>
+            <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px', fontFamily: "'JetBrains Mono', monospace"}}>Who it's for</div>
+            <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2', marginBottom: '16px'}}>
+              Built for litigators who want to know before they file.
+            </h2>
+            <p style={{fontSize: 'clamp(15px, 1.4vw, 17px)', color: 'rgba(244, 244, 242, 0.7)', lineHeight: 1.6, maxWidth: '720px', marginBottom: '40px'}}>
+              Most useful before you commit a strategy to paper. A red team that doesn't bill by the hour and doesn't have a relationship to protect.
+            </p>
+
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px'}}>
+              {[
+                { name: 'Solicitors', blurb: 'Boutique and mid-size UK firms running active litigation. Stress-test before serving.' },
+                { name: 'In-house counsel', blurb: 'Weighing whether to escalate, settle, or push back. A read on whether the case actually holds.' },
+                { name: 'Mediators', blurb: 'A third-voice red team on the positions both sides are bringing into the room.' },
+                { name: 'Litigation funders', blurb: 'Pre-investment evaluation. Where would this case go wrong if it went wrong.' },
+              ].map(u => (
+                <div key={u.name} style={{
+                  backgroundColor: '#1A1A1C', border: '1px solid rgba(244, 244, 242, 0.06)',
+                  padding: '20px 22px',
+                }}>
+                  <div style={{fontFamily: "'Oswald', sans-serif", fontSize: '18px', fontWeight: 500, color: '#F4F4F2', marginBottom: '8px', letterSpacing: '0.5px', textTransform: 'uppercase'}}>{u.name}</div>
+                  <div style={{fontSize: '13px', color: 'rgba(244, 244, 242, 0.65)', lineHeight: 1.6}}>{u.blurb}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              marginTop: '40px', padding: '20px 24px',
+              backgroundColor: 'rgba(230, 57, 53, 0.06)',
+              border: '1px solid rgba(230, 57, 53, 0.2)',
+            }}>
+              <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#E63935', fontWeight: 700, marginBottom: '10px', fontFamily: "'JetBrains Mono', monospace"}}>
+                Not designed for
+              </div>
+              <div style={{fontSize: '14px', color: 'rgba(244, 244, 242, 0.75)', lineHeight: 1.7}}>
+                Consumer disputes (try <a href="https://courtless.xyz" style={{color: '#E63935', textDecoration: 'none'}}>Courtless</a>) · Transactional / non-contentious work · Family law · Criminal defence.
+              </div>
             </div>
           </div>
         </section>
