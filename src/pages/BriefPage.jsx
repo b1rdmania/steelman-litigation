@@ -3,12 +3,12 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { getDemoBrief } from '../data/demoBriefs.js';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
-const fontFamily = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+const fontFamily = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 const serif = 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
 
 const shellStyle = {
-  backgroundColor: '#0F0F10',
-  color: '#EBEBF5',
+  backgroundColor: '#111111',
+  color: '#F4F4F2',
   fontFamily,
   WebkitFontSmoothing: 'antialiased',
   minHeight: '100vh',
@@ -22,8 +22,8 @@ const containerStyle = {
 };
 
 const panelStyle = {
-  backgroundColor: '#1A1A1C',
-  border: '1px solid rgba(235, 235, 245, 0.06)',
+  backgroundColor: '#1A1A1A',
+  border: '1px solid rgba(244, 244, 242, 0.06)',
   borderRadius: '14px',
   padding: '28px 30px',
   marginBottom: '20px',
@@ -31,17 +31,18 @@ const panelStyle = {
 
 const sectionEyebrow = {
   fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px',
-  color: 'rgba(235, 235, 245, 0.4)', fontWeight: 600, marginBottom: '12px',
+  color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '12px',
+  fontFamily: "'JetBrains Mono', monospace",
 };
 
 const sectionTitle = {
-  fontFamily: serif, fontSize: '24px', fontWeight: 500,
-  letterSpacing: '-0.4px', color: '#EBEBF5', marginBottom: '18px',
+  fontFamily: "'Oswald', sans-serif", fontSize: '24px', fontWeight: 500,
+  letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2', marginBottom: '18px',
   lineHeight: 1.25,
 };
 
 const paragraph = {
-  fontSize: '15px', color: 'rgba(235, 235, 245, 0.78)',
+  fontSize: '15px', color: 'rgba(244, 244, 242, 0.78)',
   lineHeight: 1.75, marginBottom: '14px',
 };
 
@@ -56,8 +57,8 @@ const formatDate = (iso) => {
 };
 
 const VERDICT_STYLES = {
-  steelman: { label: 'Steelman', bg: 'rgba(50, 215, 75, 0.12)', border: 'rgba(50, 215, 75, 0.5)', color: '#32D74B' },
-  strawman: { label: 'Strawman', bg: 'rgba(255, 69, 58, 0.12)', border: 'rgba(255, 69, 58, 0.5)', color: '#FF6B5C' },
+  steelman: { label: 'Steelman', bg: 'rgba(0, 255, 65, 0.12)', border: 'rgba(0, 255, 65, 0.5)', color: '#00FF41' },
+  strawman: { label: 'Strawman', bg: 'rgba(230, 57, 53, 0.12)', border: 'rgba(230, 57, 53, 0.5)', color: '#E63935' },
   borderline: { label: 'Borderline', bg: 'rgba(255, 159, 10, 0.12)', border: 'rgba(255, 159, 10, 0.5)', color: '#FFB340' },
 };
 
@@ -69,16 +70,16 @@ const CATEGORY_LABEL = {
 };
 
 const CATEGORY_ACCENT = {
-  procedural: '#0A84FF',
+  procedural: '#E63935',
   substantive: '#BF5AF2',
   evidentiary: '#FF9F0A',
-  strategic: '#32D74B',
+  strategic: '#00FF41',
 };
 
 const SEVERITY_COLOR = {
-  high: '#FF6B5C',
+  high: '#E63935',
   medium: '#FFB340',
-  low: 'rgba(235, 235, 245, 0.55)',
+  low: 'rgba(244, 244, 242, 0.55)',
 };
 
 const BriefPage = ({ isDemo: isDemoProp = false }) => {
@@ -131,7 +132,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
       <div style={shellStyle}>
         <TopBar onExit={() => navigate('/')} />
         <div style={containerStyle}>
-          <div style={{ textAlign: 'center', padding: '80px 0', color: 'rgba(235, 235, 245, 0.6)' }}>
+          <div style={{ textAlign: 'center', padding: '80px 0', color: 'rgba(244, 244, 242, 0.6)' }}>
             Loading the brief…
           </div>
         </div>
@@ -144,7 +145,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
       <div style={shellStyle}>
         <TopBar onExit={() => navigate('/')} />
         <div style={containerStyle}>
-          <div style={{ textAlign: 'center', padding: '80px 0', color: '#FF6B5C' }}>
+          <div style={{ textAlign: 'center', padding: '80px 0', color: '#E63935' }}>
             Couldn't load this brief — {error || 'not found'}.
           </div>
         </div>
@@ -165,7 +166,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
             <div style={{ fontFamily: serif, fontSize: '24px', marginBottom: '10px' }}>
               Still running…
             </div>
-            <div style={{ color: 'rgba(235, 235, 245, 0.6)', fontSize: '14px' }}>
+            <div style={{ color: 'rgba(244, 244, 242, 0.6)', fontSize: '14px' }}>
               Status: {status}. Refresh in a moment.
             </div>
           </div>
@@ -197,13 +198,14 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
         <div style={{ marginBottom: '28px' }}>
           <div style={{
             fontSize: '11px', letterSpacing: '1.8px', textTransform: 'uppercase',
-            fontWeight: 700, color: '#0A84FF', marginBottom: '14px',
+            fontWeight: 700, color: '#E63935', marginBottom: '14px',
+            fontFamily: "'JetBrains Mono', monospace",
           }}>
             {isDemo ? 'Example stress-test brief' : 'Stress-test brief'}
           </div>
           <h1 style={{
-            fontFamily: serif, fontSize: 'clamp(28px, 4vw, 40px)',
-            fontWeight: 500, letterSpacing: '-0.8px', color: '#EBEBF5',
+            fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(28px, 4vw, 40px)',
+            fontWeight: 500, letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2',
             lineHeight: 1.15, marginBottom: '14px',
           }}>
             {title}
@@ -217,15 +219,16 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
               color: verdictStyle.color,
               fontSize: '13px', fontWeight: 700, letterSpacing: '0.4px',
               textTransform: 'uppercase',
+              fontFamily: "'JetBrains Mono', monospace",
             }}>
               Verdict · {verdictStyle.label}
             </div>
-            <div style={{ fontSize: '13px', color: 'rgba(235, 235, 245, 0.5)' }}>
+            <div style={{ fontSize: '13px', color: 'rgba(244, 244, 242, 0.5)', fontFamily: "'JetBrains Mono', monospace" }}>
               {data.jurisdiction || 'England & Wales'} · Generated {formatDate(data.generated_at || data.updated_at)}
             </div>
           </div>
           {brief.verdict_reasoning && (
-            <div style={{ marginTop: '14px', fontSize: '15px', color: 'rgba(235, 235, 245, 0.78)', lineHeight: 1.6, maxWidth: '720px' }}>
+            <div style={{ marginTop: '14px', fontSize: '15px', color: 'rgba(244, 244, 242, 0.78)', lineHeight: 1.6, maxWidth: '720px' }}>
               {brief.verdict_reasoning}
             </div>
           )}
@@ -246,7 +249,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
                 <CategoryGroup
                   key={cat}
                   title={CATEGORY_LABEL[cat] || cat}
-                  accent={CATEGORY_ACCENT[cat] || '#0A84FF'}
+                  accent={CATEGORY_ACCENT[cat] || '#E63935'}
                   scenarios={scenariosByCategory[cat]}
                 />
               ))}
@@ -261,17 +264,17 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
               {brief.evidence_inconsistencies.map((it, i) => (
                 <div key={i} style={{
                   padding: '14px 16px',
-                  backgroundColor: '#141416',
-                  border: '1px solid rgba(235, 235, 245, 0.05)',
+                  backgroundColor: '#141414',
+                  border: '1px solid rgba(244, 244, 242, 0.05)',
                   borderRadius: '10px',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', marginBottom: '6px' }}>
-                    <div style={{ fontSize: '14px', color: '#EBEBF5', fontWeight: 600, lineHeight: 1.4 }}>
+                    <div style={{ fontSize: '14px', color: '#F4F4F2', fontWeight: 600, lineHeight: 1.4 }}>
                       {it.claim}
                     </div>
                     <SeverityPill level={it.severity} />
                   </div>
-                  <div style={{ fontSize: '13px', color: 'rgba(235, 235, 245, 0.68)', lineHeight: 1.6 }}>
+                  <div style={{ fontSize: '13px', color: 'rgba(244, 244, 242, 0.68)', lineHeight: 1.6 }}>
                     {it.issue}
                   </div>
                 </div>
@@ -287,7 +290,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
               {brief.blind_spots.map((bs, i) => (
                 <li key={i} style={{
                   paddingLeft: '20px', position: 'relative',
-                  fontSize: '15px', color: 'rgba(235, 235, 245, 0.78)', lineHeight: 1.65,
+                  fontSize: '15px', color: 'rgba(244, 244, 242, 0.78)', lineHeight: 1.65,
                 }}>
                   <span style={{
                     position: 'absolute', left: '0', top: '8px',
@@ -305,14 +308,14 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
         {brief.if_we_lose_this_will_be_why && (
           <div style={{
             ...panelStyle,
-            backgroundColor: 'rgba(10, 132, 255, 0.06)',
-            borderColor: 'rgba(10, 132, 255, 0.25)',
+            backgroundColor: 'rgba(230, 57, 53, 0.06)',
+            borderColor: 'rgba(230, 57, 53, 0.2)',
           }}>
-            <div style={{ ...sectionEyebrow, color: '#0A84FF' }}>If we lose this, this will be why</div>
+            <div style={{ ...sectionEyebrow, color: '#E63935' }}>If we lose this, this will be why</div>
             <div style={{
               fontFamily: serif, fontSize: 'clamp(20px, 2.4vw, 26px)', fontWeight: 500,
               fontStyle: 'italic',
-              letterSpacing: '-0.3px', color: '#EBEBF5', lineHeight: 1.4,
+              letterSpacing: '-0.3px', color: '#F4F4F2', lineHeight: 1.4,
             }}>
               "{brief.if_we_lose_this_will_be_why}"
             </div>
@@ -321,11 +324,11 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
 
         <div style={{
           marginTop: '40px', padding: '20px 0',
-          borderTop: '1px solid rgba(235, 235, 245, 0.06)',
+          borderTop: '1px solid rgba(244, 244, 242, 0.06)',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexWrap: 'wrap', gap: '16px',
         }}>
-          <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.45)', maxWidth: '560px', lineHeight: 1.6 }}>
+          <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.45)', maxWidth: '560px', lineHeight: 1.6 }}>
             Premotion is an informational stress test, not legal advice. The decision on what to file or argue remains with the instructed solicitor.
           </div>
           <button
@@ -333,9 +336,9 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
             style={{
               padding: '10px 18px',
               backgroundColor: 'transparent',
-              border: '1px solid rgba(235, 235, 245, 0.15)',
-              color: '#EBEBF5',
-              borderRadius: '8px', fontSize: '13px', fontWeight: 500,
+              border: '1px solid rgba(244, 244, 242, 0.15)',
+              color: '#F4F4F2',
+              borderRadius: '2px', fontSize: '13px', fontWeight: 500,
               cursor: 'pointer', fontFamily,
             }}
           >
@@ -358,14 +361,14 @@ const DemoBanner = ({ onStart }) => (
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     gap: '20px', flexWrap: 'wrap',
   }}>
-    <div style={{ fontSize: '13px', color: '#EBEBF5', lineHeight: 1.55, maxWidth: '600px' }}>
+    <div style={{ fontSize: '13px', color: '#F4F4F2', lineHeight: 1.55, maxWidth: '600px' }}>
       <strong style={{ color: '#FFB340' }}>This is an example brief.</strong> Real cases use your own evidence and your own current strategy.
     </div>
     <button
       onClick={onStart}
       style={{
-        padding: '9px 16px', borderRadius: '6px',
-        backgroundColor: '#0A84FF', color: 'white', border: 'none',
+        padding: '9px 16px', borderRadius: '2px',
+        backgroundColor: '#E63935', color: 'white', border: 'none',
         fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily,
         whiteSpace: 'nowrap',
       }}
@@ -416,8 +419,8 @@ const CategoryGroup = ({ title, accent, scenarios }) => (
       {scenarios.map((s, i) => (
         <div key={i} style={{
           padding: '16px 18px',
-          backgroundColor: '#141416',
-          border: '1px solid rgba(235, 235, 245, 0.05)',
+          backgroundColor: '#141414',
+          border: '1px solid rgba(244, 244, 242, 0.05)',
           borderRadius: '10px',
           paddingLeft: '22px', position: 'relative',
         }}>
@@ -425,7 +428,7 @@ const CategoryGroup = ({ title, accent, scenarios }) => (
             position: 'absolute', left: '8px', top: '18px', bottom: '18px',
             width: '3px', backgroundColor: accent, borderRadius: '2px',
           }} />
-          <div style={{ fontSize: '14px', color: '#EBEBF5', fontWeight: 600, lineHeight: 1.45, marginBottom: '8px' }}>
+          <div style={{ fontSize: '14px', color: '#F4F4F2', fontWeight: 600, lineHeight: 1.45, marginBottom: '8px' }}>
             {s.scenario}
           </div>
           <div style={{ display: 'flex', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
@@ -433,8 +436,8 @@ const CategoryGroup = ({ title, accent, scenarios }) => (
             {s.impact && <Pill label="Impact" value={s.impact} />}
           </div>
           {s.mitigation && (
-            <div style={{ fontSize: '13px', color: 'rgba(235, 235, 245, 0.7)', lineHeight: 1.6 }}>
-              <strong style={{ color: 'rgba(235, 235, 245, 0.9)', fontWeight: 600 }}>Mitigation: </strong>
+            <div style={{ fontSize: '13px', color: 'rgba(244, 244, 242, 0.7)', lineHeight: 1.6 }}>
+              <strong style={{ color: 'rgba(244, 244, 242, 0.9)', fontWeight: 600 }}>Mitigation: </strong>
               {s.mitigation}
             </div>
           )}
@@ -448,12 +451,13 @@ const Pill = ({ label, value }) => (
   <span style={{
     display: 'inline-flex', alignItems: 'center', gap: '5px',
     padding: '3px 8px', borderRadius: '999px',
-    backgroundColor: 'rgba(235, 235, 245, 0.05)',
-    border: '1px solid rgba(235, 235, 245, 0.08)',
-    fontSize: '11px', color: 'rgba(235, 235, 245, 0.7)',
+    backgroundColor: 'rgba(244, 244, 242, 0.05)',
+    border: '1px solid rgba(244, 244, 242, 0.08)',
+    fontSize: '11px', color: 'rgba(244, 244, 242, 0.7)',
     textTransform: 'uppercase', letterSpacing: '0.6px', fontWeight: 600,
+    fontFamily: "'JetBrains Mono', monospace",
   }}>
-    {label}: <span style={{ color: '#EBEBF5', fontWeight: 700 }}>{value}</span>
+    {label}: <span style={{ color: '#F4F4F2', fontWeight: 700 }}>{value}</span>
   </span>
 );
 
@@ -463,8 +467,9 @@ const SeverityPill = ({ level }) => {
   return (
     <span style={{
       display: 'inline-flex', padding: '3px 10px', borderRadius: '999px',
-      backgroundColor: 'rgba(235, 235, 245, 0.04)',
+      backgroundColor: 'rgba(244, 244, 242, 0.04)',
       border: `1px solid ${color}55`,
+      fontFamily: "'JetBrains Mono', monospace",
       color, fontSize: '11px', fontWeight: 700,
       textTransform: 'uppercase', letterSpacing: '0.6px',
       whiteSpace: 'nowrap',
@@ -477,15 +482,15 @@ const SeverityPill = ({ level }) => {
 const TopBar = ({ onExit, onPrint }) => (
   <div style={{
     position: 'sticky', top: 0, zIndex: 20,
-    backgroundColor: 'rgba(15, 15, 16, 0.9)',
+    backgroundColor: 'rgba(17, 17, 17, 0.9)',
     backdropFilter: 'blur(12px)',
-    borderBottom: '1px solid rgba(235, 235, 245, 0.06)',
+    borderBottom: '1px solid rgba(244, 244, 242, 0.06)',
     padding: '14px 28px',
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
   }}>
     <div style={{ fontWeight: 700, fontSize: '14px', letterSpacing: '-0.3px' }}>
       PREMOTION{' '}
-      <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400 }}>
+      <span style={{ color: 'rgba(244, 244, 242, 0.5)', fontWeight: 400 }}>
         Adversarial premortem for UK litigation
       </span>
     </div>
@@ -494,9 +499,9 @@ const TopBar = ({ onExit, onPrint }) => (
         <button
           onClick={onPrint}
           style={{
-            fontSize: '12px', color: 'rgba(235, 235, 245, 0.75)',
-            background: 'none', border: '1px solid rgba(235, 235, 245, 0.15)',
-            padding: '6px 14px', borderRadius: '6px', cursor: 'pointer', fontFamily,
+            fontSize: '12px', color: 'rgba(244, 244, 242, 0.75)',
+            background: 'none', border: '1px solid rgba(244, 244, 242, 0.15)',
+            padding: '6px 14px', borderRadius: '2px', cursor: 'pointer', fontFamily,
           }}
         >
           Save as PDF
@@ -505,7 +510,7 @@ const TopBar = ({ onExit, onPrint }) => (
       <button
         onClick={onExit}
         style={{
-          fontSize: '12px', color: 'rgba(235, 235, 245, 0.55)',
+          fontSize: '12px', color: 'rgba(244, 244, 242, 0.55)',
           background: 'none', border: 'none', cursor: 'pointer', fontFamily,
         }}
       >

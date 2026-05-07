@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const fontFamily = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+const fontFamily = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 const serif = 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
 
 const bodyStyle = {
-  backgroundColor: '#0F0F10',
-  color: '#EBEBF5',
+  backgroundColor: '#111111',
+  color: '#F4F4F2',
   fontFamily,
   fontSize: '15px',
   lineHeight: 1.6,
@@ -18,9 +18,9 @@ const bodyStyle = {
 
 const topBar = {
   position: 'sticky', top: 0, zIndex: 20,
-  backgroundColor: 'rgba(15, 15, 16, 0.85)',
+  backgroundColor: 'rgba(17, 17, 17, 0.85)',
   backdropFilter: 'blur(12px)',
-  borderBottom: '1px solid rgba(235, 235, 245, 0.06)',
+  borderBottom: '1px solid rgba(244, 244, 242, 0.06)',
   padding: 'clamp(14px, 2vw, 18px) clamp(20px, 4vw, 40px)',
   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
 };
@@ -28,56 +28,59 @@ const topBar = {
 const section = (bg = 'transparent', pad = 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)') => ({
   padding: pad,
   backgroundColor: bg,
-  borderBottom: '1px solid rgba(235, 235, 245, 0.06)',
+  borderBottom: '1px solid rgba(244, 244, 242, 0.06)',
 });
 
 const inner = { maxWidth: '1100px', margin: '0 auto' };
 
 const eyebrow = {
   fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px',
-  color: 'rgba(235, 235, 245, 0.4)', fontWeight: 600, marginBottom: '16px',
+  color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px',
+  fontFamily: "'JetBrains Mono', monospace",
 };
 
 const h1 = {
-  fontFamily: serif,
+  fontFamily: "'Oswald', sans-serif",
   fontSize: 'clamp(36px, 6vw, 64px)',
   fontWeight: 500,
   lineHeight: 1.1,
-  letterSpacing: '-1.2px',
-  color: '#EBEBF5',
+  letterSpacing: '1px',
+  textTransform: 'uppercase',
+  color: '#F4F4F2',
   marginBottom: '24px',
 };
 
 const h2 = {
-  fontFamily: serif,
+  fontFamily: "'Oswald', sans-serif",
   fontSize: 'clamp(26px, 4vw, 40px)',
   fontWeight: 500,
   lineHeight: 1.2,
-  letterSpacing: '-0.8px',
-  color: '#EBEBF5',
+  letterSpacing: '1px',
+  textTransform: 'uppercase',
+  color: '#F4F4F2',
   marginBottom: '16px',
 };
 
 const sub = {
   fontSize: 'clamp(15px, 1.4vw, 17px)',
-  color: 'rgba(235, 235, 245, 0.7)',
+  color: 'rgba(244, 244, 242, 0.7)',
   lineHeight: 1.6,
   maxWidth: '720px',
 };
 
 const paragraph = {
   fontSize: '15px',
-  color: 'rgba(235, 235, 245, 0.68)',
+  color: 'rgba(244, 244, 242, 0.68)',
   lineHeight: 1.75,
 };
 
 const Wordmark = ({ size = 15 }) => (
   <div style={{
-    fontWeight: 700, letterSpacing: '-0.3px', color: '#EBEBF5', fontSize: `${size}px`,
+    fontWeight: 700, letterSpacing: '-0.3px', color: '#F4F4F2', fontSize: `${size}px`,
     display: 'inline-flex', alignItems: 'baseline', gap: '10px',
   }}>
     PREMOTION
-    <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400, fontSize: `${size - 2}px`, letterSpacing: '0.2px' }}>
+    <span style={{ color: 'rgba(244, 244, 242, 0.5)', fontWeight: 400, fontSize: `${size - 2}px`, letterSpacing: '0.2px' }}>
       Adversarial premortem for UK litigation
     </span>
   </div>
@@ -94,26 +97,26 @@ const SplashPage = () => {
 
   const primaryCtaStyle = (hovered) => ({
     display: 'inline-flex', alignItems: 'center', gap: '10px',
-    backgroundColor: hovered ? '#0077e6' : '#0A84FF',
+    backgroundColor: hovered ? '#cc2e2a' : '#E63935',
     color: 'white',
     border: 'none',
     padding: '14px 28px',
-    borderRadius: '8px',
+    borderRadius: '2px',
     fontSize: '14px', fontWeight: 600,
     cursor: 'pointer',
     fontFamily,
     transition: 'all 0.15s ease',
     transform: hovered ? 'translateY(-1px)' : 'translateY(0)',
-    boxShadow: hovered ? '0 8px 24px rgba(10, 132, 255, 0.3)' : '0 2px 8px rgba(10, 132, 255, 0.15)',
+    boxShadow: hovered ? '0 8px 24px rgba(230, 57, 53, 0.3)' : '0 2px 8px rgba(230, 57, 53, 0.15)',
   });
 
   const ghostCtaStyle = (hovered) => ({
     display: 'inline-flex', alignItems: 'center', gap: '8px',
-    backgroundColor: hovered ? 'rgba(235, 235, 245, 0.08)' : 'transparent',
-    color: '#EBEBF5',
-    border: '1px solid rgba(235, 235, 245, 0.15)',
+    backgroundColor: hovered ? 'rgba(244, 244, 242, 0.08)' : 'transparent',
+    color: '#F4F4F2',
+    border: '1px solid rgba(244, 244, 242, 0.15)',
     padding: '9px 18px',
-    borderRadius: '6px',
+    borderRadius: '2px',
     fontSize: '12px', fontWeight: 500,
     cursor: 'pointer', fontFamily,
     transition: 'all 0.15s ease',
@@ -146,7 +149,7 @@ const SplashPage = () => {
             Premotion writes the version of your case where you lose. Then it works out why. Eight specialists, four failure categories, one brief — the procedural, evidentiary, substantive and strategic holes opposing counsel will pull on first, ranked by impact. Roughly three minutes.
           </p>
           <p style={{
-            fontSize: '14px', color: 'rgba(235, 235, 245, 0.55)',
+            fontSize: '14px', color: 'rgba(244, 244, 242, 0.55)',
             lineHeight: 1.55, maxWidth: '680px', marginBottom: '40px',
             fontStyle: 'italic',
           }}>
@@ -169,25 +172,25 @@ const SplashPage = () => {
               onClick={seeDemo}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '6px',
-                background: 'none', border: 'none', color: 'rgba(235, 235, 245, 0.85)',
+                background: 'none', border: 'none', color: 'rgba(244, 244, 242, 0.85)',
                 padding: '10px 8px', fontSize: '13px', fontWeight: 500,
                 cursor: 'pointer', fontFamily, textDecoration: 'underline',
-                textDecorationColor: 'rgba(235, 235, 245, 0.25)', textUnderlineOffset: '4px',
+                textDecorationColor: 'rgba(244, 244, 242, 0.25)', textUnderlineOffset: '4px',
               }}
             >
               See a demo brief →
             </button>
-            <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.4)', marginLeft: '8px' }}>
+            <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.4)', marginLeft: '8px' }}>
               About 2–3 minutes per case · Not legal advice · England &amp; Wales
             </div>
           </div>
         </div>
 
         {/* Trust strip */}
-        <div style={{ ...inner, marginTop: '72px', borderTop: '1px solid rgba(235, 235, 245, 0.06)', paddingTop: '28px' }}>
+        <div style={{ ...inner, marginTop: '72px', borderTop: '1px solid rgba(244, 244, 242, 0.06)', paddingTop: '28px' }}>
           <div style={{
             display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '16px 40px', fontSize: '12px', color: 'rgba(235, 235, 245, 0.55)',
+            gap: '16px 40px', fontSize: '12px', color: 'rgba(244, 244, 242, 0.55)',
           }}>
             {[
               'Eight specialists, eight separate reads',
@@ -196,7 +199,7 @@ const SplashPage = () => {
               'Local-model option for matters that can\'t leave the firm',
             ].map(t => (
               <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#32D74B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FF41" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 {t}
@@ -207,7 +210,7 @@ const SplashPage = () => {
       </section>
 
       {/* HOW IT WORKS — plain English walkthrough */}
-      <section style={section('#131314')}>
+      <section style={section('#141414')}>
         <div style={inner}>
           <div style={eyebrow}>How it works</div>
           <h2 style={h2}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
@@ -250,16 +253,16 @@ const SplashPage = () => {
                 <>
                   This is the unkind part. Four adversaries each look at one type of failure. Separately, in parallel, forbidden from being balanced.
                   <ul style={{ margin: '14px 0 0 18px', padding: 0 }}>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Substantive:</strong> is the law on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
-                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#EBEBF5' }}>Evidentiary:</strong> can you prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
-                    <li><strong style={{ color: '#EBEBF5' }}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#F4F4F2' }}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#F4F4F2' }}>Substantive:</strong> is the law on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
+                    <li style={{ marginBottom: '6px' }}><strong style={{ color: '#F4F4F2' }}>Evidentiary:</strong> can you prove what you're claiming? Is the evidence admissible, contemporaneous, credible?</li>
+                    <li><strong style={{ color: '#F4F4F2' }}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
                   </ul>
                   <br />
                   Each one writes its own post-mortem. They run on Claude Opus 4. Finding holes in arguments is the kind of thing a better engine improves more than anything else does.
                 </>
               }
-              accent="#0A84FF"
+              accent="#E63935"
             />
             <PlainStep
               tag="Step 4 — final read"
@@ -272,6 +275,7 @@ const SplashPage = () => {
                 </>
               }
             />
+
           </div>
         </div>
       </section>
@@ -286,7 +290,7 @@ const SplashPage = () => {
             <p style={{ marginBottom: '16px' }}>
               Imagine you've got an unpaid invoice for £42,000 from a client who's gone quiet for six months. You think you're going to win because:
             </p>
-            <ul style={{ margin: '0 0 24px 22px', padding: 0, color: 'rgba(235, 235, 245, 0.7)' }}>
+            <ul style={{ margin: '0 0 24px 22px', padding: 0, color: 'rgba(244, 244, 242, 0.7)' }}>
               <li style={{ marginBottom: '6px' }}>You've got the signed Statement of Work</li>
               <li style={{ marginBottom: '6px' }}>You delivered everything on the milestone schedule</li>
               <li style={{ marginBottom: '6px' }}>You have the email where they signed off the final deliverable</li>
@@ -299,8 +303,8 @@ const SplashPage = () => {
 
           <div style={{
             maxWidth: '780px',
-            backgroundColor: '#1A1A1C',
-            border: '1px solid rgba(235, 235, 245, 0.08)',
+            backgroundColor: '#1A1A1A',
+            border: '1px solid rgba(244, 244, 242, 0.08)',
             borderRadius: '12px',
             padding: '28px 32px',
             marginTop: '12px',
@@ -308,7 +312,8 @@ const SplashPage = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
               <span style={{
                 fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
-                color: 'rgba(235, 235, 245, 0.4)', fontWeight: 600,
+                color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600,
+                fontFamily: "'JetBrains Mono', monospace",
               }}>Verdict</span>
               <span style={{
                 fontSize: '12px', fontWeight: 700, padding: '4px 10px',
@@ -317,30 +322,30 @@ const SplashPage = () => {
               }}>Borderline</span>
             </div>
 
-            <p style={{ marginBottom: '14px', color: 'rgba(235, 235, 245, 0.75)', fontSize: '14px', lineHeight: 1.7 }}>
-              <strong style={{ color: '#EBEBF5' }}>What you got right.</strong> Your contract is solid. Your delivery evidence is contemporaneous. Their non-response would be a problem for them in court.
+            <p style={{ marginBottom: '14px', color: 'rgba(244, 244, 242, 0.75)', fontSize: '14px', lineHeight: 1.7 }}>
+              <strong style={{ color: '#F4F4F2' }}>What you got right.</strong> Your contract is solid. Your delivery evidence is contemporaneous. Their non-response would be a problem for them in court.
             </p>
-            <p style={{ marginBottom: '6px', color: 'rgba(235, 235, 245, 0.85)', fontSize: '14px', fontWeight: 600 }}>
+            <p style={{ marginBottom: '6px', color: 'rgba(244, 244, 242, 0.85)', fontSize: '14px', fontWeight: 600 }}>
               What you missed.
             </p>
-            <ul style={{ margin: '0 0 16px 18px', padding: 0, color: 'rgba(235, 235, 245, 0.72)', fontSize: '14px', lineHeight: 1.7 }}>
+            <ul style={{ margin: '0 0 16px 18px', padding: 0, color: 'rgba(244, 244, 242, 0.72)', fontSize: '14px', lineHeight: 1.7 }}>
               <li style={{ marginBottom: '8px' }}>
-                <strong style={{ color: '#EBEBF5' }}>Procedural:</strong> you didn't follow the Pre-Action Protocol for Debt Claims. A £42K claim sent without a compliant letter before action sees costs reduced. The court can refuse judgment on procedural grounds alone.
+                <strong style={{ color: '#F4F4F2' }}>Procedural:</strong> you didn't follow the Pre-Action Protocol for Debt Claims. A £42K claim sent without a compliant letter before action sees costs reduced. The court can refuse judgment on procedural grounds alone.
               </li>
               <li style={{ marginBottom: '8px' }}>
-                <strong style={{ color: '#EBEBF5' }}>Substantive:</strong> the "final sign-off" email you're relying on says <em>"thanks for sending this through"</em>. Not <em>"I accept this as final delivery"</em>. A sharp defence will argue that wasn't acceptance. You need acceptance by conduct or a clearer email.
+                <strong style={{ color: '#F4F4F2' }}>Substantive:</strong> the "final sign-off" email you're relying on says <em>"thanks for sending this through"</em>. Not <em>"I accept this as final delivery"</em>. A sharp defence will argue that wasn't acceptance. You need acceptance by conduct or a clearer email.
               </li>
               <li>
-                <strong style={{ color: '#EBEBF5' }}>Strategic:</strong> they've been quiet for six months. People who go quiet are usually broke. You haven't done a Companies House check — their accounts are overdue and they've changed director twice this year. Even if you win, will you recover?
+                <strong style={{ color: '#F4F4F2' }}>Strategic:</strong> they've been quiet for six months. People who go quiet are usually broke. You haven't done a Companies House check — their accounts are overdue and they've changed director twice this year. Even if you win, will you recover?
               </li>
             </ul>
 
             <div style={{
               marginTop: '24px',
               paddingTop: '20px',
-              borderTop: '1px solid rgba(235, 235, 245, 0.08)',
+              borderTop: '1px solid rgba(244, 244, 242, 0.08)',
               fontFamily: serif, fontSize: '17px', fontStyle: 'italic',
-              color: '#EBEBF5', lineHeight: 1.5,
+              color: '#F4F4F2', lineHeight: 1.5,
             }}>
               "If you lose this, it'll be because you confused 'we've finished the work' with 'the client agreed we'd finished.'"
             </div>
@@ -353,7 +358,7 @@ const SplashPage = () => {
       </section>
 
       {/* WHY THIS EXISTS */}
-      <section style={section('#131314')}>
+      <section style={section('#141414')}>
         <div style={inner}>
           <div style={eyebrow}>Why this exists</div>
           <h2 style={h2}>Most legal AI is one LLM and a prompt. That's not enough.</h2>
@@ -451,25 +456,26 @@ const SplashPage = () => {
 
           <div style={{
             marginTop: '40px', padding: '20px 24px',
-            backgroundColor: 'rgba(255, 69, 58, 0.04)',
-            border: '1px solid rgba(255, 69, 58, 0.15)',
+            backgroundColor: 'rgba(230, 57, 53, 0.04)',
+            border: '1px solid rgba(230, 57, 53, 0.15)',
             borderRadius: '10px',
           }}>
             <div style={{
               fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px',
-              color: '#FF6B5C', fontWeight: 600, marginBottom: '10px',
+              color: '#E63935', fontWeight: 600, marginBottom: '10px',
+              fontFamily: "'JetBrains Mono', monospace",
             }}>
               Not designed for
             </div>
-            <div style={{ fontSize: '14px', color: 'rgba(235, 235, 245, 0.75)', lineHeight: 1.7 }}>
-              Consumer disputes (try <a href="https://courtless.app" style={{ color: '#0A84FF', textDecoration: 'none' }}>Courtless</a>) · Transactional / non-contentious work · Family law · Criminal defence.
+            <div style={{ fontSize: '14px', color: 'rgba(244, 244, 242, 0.75)', lineHeight: 1.7 }}>
+              Consumer disputes (try <a href="https://courtless.app" style={{ color: '#E63935', textDecoration: 'none' }}>Courtless</a>) · Transactional / non-contentious work · Family law · Criminal defence.
             </div>
           </div>
         </div>
       </section>
 
       {/* FINAL CTA */}
-      <section style={{ ...section('#131314', 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px) clamp(80px, 12vw, 140px)') }}>
+      <section style={{ ...section('#141414', 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px) clamp(80px, 12vw, 140px)') }}>
         <div style={{ ...inner, textAlign: 'center' }}>
           <div style={eyebrow}>Ready?</div>
           <h2 style={{ ...h2, marginBottom: '20px' }}>
@@ -495,9 +501,9 @@ const SplashPage = () => {
             <button
               onClick={seeDemo}
               style={{
-                background: 'none', border: 'none', color: 'rgba(235, 235, 245, 0.7)',
+                background: 'none', border: 'none', color: 'rgba(244, 244, 242, 0.7)',
                 fontSize: '13px', fontWeight: 500, cursor: 'pointer', fontFamily,
-                textDecoration: 'underline', textDecorationColor: 'rgba(235, 235, 245, 0.25)',
+                textDecoration: 'underline', textDecorationColor: 'rgba(244, 244, 242, 0.25)',
                 textUnderlineOffset: '4px',
               }}
             >
@@ -508,16 +514,16 @@ const SplashPage = () => {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ padding: '28px clamp(20px, 4vw, 40px)', borderTop: '1px solid rgba(235, 235, 245, 0.06)' }}>
+      <footer style={{ padding: '28px clamp(20px, 4vw, 40px)', borderTop: '1px solid rgba(244, 244, 242, 0.06)' }}>
         <div style={{
           ...inner,
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexWrap: 'wrap', gap: '16px',
         }}>
-          <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.4)' }}>
+          <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.4)', fontFamily: "'JetBrains Mono', monospace" }}>
             PREMOTION · Adversarial premortem for UK litigation · Not legal advice · England &amp; Wales
           </div>
-          <div style={{ display: 'flex', gap: '24px', fontSize: '12px', color: 'rgba(235, 235, 245, 0.5)' }}>
+          <div style={{ display: 'flex', gap: '24px', fontSize: '12px', color: 'rgba(244, 244, 242, 0.5)' }}>
             <a href="#terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms</a>
             <a href="#privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy</a>
             <a href="#about" style={{ color: 'inherit', textDecoration: 'none' }}>About</a>
@@ -530,25 +536,27 @@ const SplashPage = () => {
 
 const StepCard = ({ number, title, body, accent }) => (
   <div style={{
-    backgroundColor: '#1A1A1C',
-    border: `1px solid ${accent ? `${accent}40` : 'rgba(235, 235, 245, 0.06)'}`,
+    backgroundColor: '#1A1A1A',
+    border: `1px solid ${accent ? `${accent}40` : 'rgba(244, 244, 242, 0.06)'}`,
     borderRadius: '12px',
     padding: '28px 24px',
   }}>
     <div style={{
       fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
-      color: accent || 'rgba(235, 235, 245, 0.4)',
+      color: accent || 'rgba(244, 244, 242, 0.4)',
       fontWeight: 700, marginBottom: '14px',
+      fontFamily: "'JetBrains Mono', monospace",
     }}>
       {number}
     </div>
     <div style={{
-      fontFamily: serif, fontSize: '22px', fontWeight: 500,
-      color: '#EBEBF5', marginBottom: '14px', letterSpacing: '-0.3px', lineHeight: 1.25,
+      fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500,
+      color: '#F4F4F2', marginBottom: '14px', letterSpacing: '1px', lineHeight: 1.25,
+      textTransform: 'uppercase',
     }}>
       {title}
     </div>
-    <div style={{ fontSize: '14px', color: 'rgba(235, 235, 245, 0.72)', lineHeight: 1.65 }}>
+    <div style={{ fontSize: '14px', color: 'rgba(244, 244, 242, 0.72)', lineHeight: 1.65 }}>
       {body}
     </div>
   </div>
@@ -560,24 +568,26 @@ const PlainStep = ({ tag, title, body, accent }) => (
     gridTemplateColumns: 'minmax(140px, 180px) 1fr',
     gap: '32px',
     padding: '32px 0',
-    borderTop: '1px solid rgba(235, 235, 245, 0.06)',
+    borderTop: '1px solid rgba(244, 244, 242, 0.06)',
     alignItems: 'start',
   }}>
     <div style={{
       fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.4px',
-      color: accent || 'rgba(235, 235, 245, 0.4)',
+      color: accent || 'rgba(244, 244, 242, 0.4)',
       fontWeight: 700, paddingTop: '6px',
+      fontFamily: "'JetBrains Mono', monospace",
     }}>
       {tag}
     </div>
     <div>
       <div style={{
-        fontFamily: serif, fontSize: '22px', fontWeight: 500,
-        color: '#EBEBF5', marginBottom: '12px', letterSpacing: '-0.3px', lineHeight: 1.3,
+        fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500,
+        color: '#F4F4F2', marginBottom: '12px', letterSpacing: '1px', lineHeight: 1.3,
+        textTransform: 'uppercase',
       }}>
         {title}
       </div>
-      <div style={{ fontSize: '15px', color: 'rgba(235, 235, 245, 0.72)', lineHeight: 1.7 }}>
+      <div style={{ fontSize: '15px', color: 'rgba(244, 244, 242, 0.72)', lineHeight: 1.7 }}>
         {body}
       </div>
     </div>
@@ -589,18 +599,18 @@ const Pillar = ({ number, title, body }) => (
     display: 'grid', gridTemplateColumns: '80px 1fr',
     gap: '24px',
     padding: '28px 0',
-    borderTop: '1px solid rgba(235, 235, 245, 0.06)',
+    borderTop: '1px solid rgba(244, 244, 242, 0.06)',
   }}>
     <div style={{
-      fontFamily: serif, fontSize: '28px', fontWeight: 400,
-      color: 'rgba(235, 235, 245, 0.3)', letterSpacing: '-0.3px',
+      fontFamily: "'JetBrains Mono', monospace", fontSize: '28px', fontWeight: 400,
+      color: 'rgba(244, 244, 242, 0.3)', letterSpacing: '-0.3px',
     }}>
       {number}
     </div>
     <div>
       <div style={{
-        fontFamily: serif, fontSize: '22px', fontWeight: 500, color: '#EBEBF5',
-        marginBottom: '12px', letterSpacing: '-0.3px',
+        fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500, color: '#F4F4F2',
+        marginBottom: '12px', letterSpacing: '1px', textTransform: 'uppercase',
       }}>
         {title}
       </div>
@@ -611,18 +621,18 @@ const Pillar = ({ number, title, body }) => (
 
 const UseCaseCard = ({ name, blurb }) => (
   <div style={{
-    backgroundColor: '#1A1A1C',
-    border: '1px solid rgba(235, 235, 245, 0.06)',
+    backgroundColor: '#1A1A1A',
+    border: '1px solid rgba(244, 244, 242, 0.06)',
     borderRadius: '10px',
     padding: '20px 22px',
   }}>
     <div style={{
-      fontSize: '14px', fontWeight: 600, color: '#EBEBF5',
+      fontSize: '14px', fontWeight: 600, color: '#F4F4F2',
       marginBottom: '8px', letterSpacing: '-0.1px',
     }}>
       {name}
     </div>
-    <div style={{ fontSize: '13px', color: 'rgba(235, 235, 245, 0.6)', lineHeight: 1.55 }}>
+    <div style={{ fontSize: '13px', color: 'rgba(244, 244, 242, 0.6)', lineHeight: 1.55 }}>
       {blurb}
     </div>
   </div>

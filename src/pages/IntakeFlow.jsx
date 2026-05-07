@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
-const fontFamily = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+const fontFamily = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 const serif = 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
 
 const ACCEPTED_EXTENSIONS = ['.pdf', '.docx', '.doc', '.txt'];
@@ -164,8 +164,8 @@ const IntakeFlow = () => {
 
 // ---------- styles ----------
 const shellStyle = {
-  backgroundColor: '#0F0F10',
-  color: '#EBEBF5',
+  backgroundColor: '#111111',
+  color: '#F4F4F2',
   fontFamily,
   WebkitFontSmoothing: 'antialiased',
   minHeight: '100vh',
@@ -179,29 +179,30 @@ const containerStyle = {
 const errorBoxStyle = {
   marginTop: '24px',
   padding: '14px 18px',
-  backgroundColor: 'rgba(255, 69, 58, 0.06)',
-  border: '1px solid rgba(255, 69, 58, 0.25)',
-  color: '#FF6B5C',
-  borderRadius: '8px',
+  backgroundColor: 'rgba(230, 57, 53, 0.06)',
+  border: '1px solid rgba(230, 57, 53, 0.25)',
+  color: '#E63935',
+  borderRadius: '2px',
   fontSize: '13px',
   lineHeight: 1.5,
 };
 const labelStyle = {
   display: 'block',
   fontSize: '12px',
-  color: 'rgba(235, 235, 245, 0.55)',
+  color: 'rgba(244, 244, 242, 0.55)',
   fontWeight: 500,
   textTransform: 'uppercase',
   letterSpacing: '1px',
   marginBottom: '8px',
+  fontFamily: "'JetBrains Mono', monospace",
 };
 const inputStyle = {
   width: '100%',
   padding: '12px 14px',
-  backgroundColor: '#1A1A1C',
-  color: '#EBEBF5',
-  border: '1px solid #38383A',
-  borderRadius: '8px',
+  backgroundColor: '#1A1A1A',
+  color: '#F4F4F2',
+  border: '1px solid #2A2A2A',
+  borderRadius: '2px',
   fontSize: '15px',
   fontFamily,
   lineHeight: 1.5,
@@ -213,17 +214,18 @@ const textareaStyle = {
   lineHeight: 1.6,
 };
 const questionTitle = {
-  fontFamily: serif,
+  fontFamily: "'Oswald', sans-serif",
   fontSize: 'clamp(24px, 3.2vw, 32px)',
   fontWeight: 500,
-  letterSpacing: '-0.5px',
-  color: '#EBEBF5',
+  letterSpacing: '1px',
+  textTransform: 'uppercase',
+  color: '#F4F4F2',
   lineHeight: 1.2,
   marginBottom: '12px',
 };
 const questionHelper = {
   fontSize: '14px',
-  color: 'rgba(235, 235, 245, 0.6)',
+  color: 'rgba(244, 244, 242, 0.6)',
   lineHeight: 1.6,
   marginBottom: '28px',
 };
@@ -232,22 +234,22 @@ const questionHelper = {
 const TopBar = ({ onExit }) => (
   <div style={{
     position: 'sticky', top: 0, zIndex: 20,
-    backgroundColor: 'rgba(15, 15, 16, 0.9)',
+    backgroundColor: 'rgba(17, 17, 17, 0.9)',
     backdropFilter: 'blur(12px)',
-    borderBottom: '1px solid rgba(235, 235, 245, 0.06)',
+    borderBottom: '1px solid rgba(244, 244, 242, 0.06)',
     padding: '14px 28px',
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
   }}>
     <div style={{ fontWeight: 700, fontSize: '14px', letterSpacing: '-0.3px' }}>
       PREMOTION{' '}
-      <span style={{ color: 'rgba(235, 235, 245, 0.5)', fontWeight: 400 }}>
+      <span style={{ color: 'rgba(244, 244, 242, 0.5)', fontWeight: 400 }}>
         Adversarial premortem for UK litigation
       </span>
     </div>
     <button
       onClick={onExit}
       style={{
-        fontSize: '12px', color: 'rgba(235, 235, 245, 0.55)',
+        fontSize: '12px', color: 'rgba(244, 244, 242, 0.55)',
         background: 'none', border: 'none', cursor: 'pointer', fontFamily,
       }}
     >
@@ -263,17 +265,18 @@ const ProgressHeader = ({ step, total }) => {
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         fontSize: '11px', letterSpacing: '1.5px', textTransform: 'uppercase',
-        color: 'rgba(235, 235, 245, 0.5)', fontWeight: 600, marginBottom: '10px',
+        color: 'rgba(244, 244, 242, 0.5)', fontWeight: 600, marginBottom: '10px',
+        fontFamily: "'JetBrains Mono', monospace",
       }}>
         <span>Step {step} of {total}</span>
         <span>Case intake</span>
       </div>
       <div style={{
-        height: '3px', backgroundColor: 'rgba(235, 235, 245, 0.08)', borderRadius: '2px',
+        height: '3px', backgroundColor: 'rgba(244, 244, 242, 0.08)', borderRadius: '2px',
         overflow: 'hidden',
       }}>
         <div style={{
-          width: `${pct}%`, height: '100%', backgroundColor: '#0A84FF',
+          width: `${pct}%`, height: '100%', backgroundColor: '#E63935',
           transition: 'width 0.3s ease',
         }} />
       </div>
@@ -289,10 +292,10 @@ const NavButtons = ({ step, total, canProceed, onBack, onNext, onSubmit }) => {
         onClick={onBack}
         disabled={step === 1}
         style={{
-          padding: '10px 18px', borderRadius: '8px',
+          padding: '10px 18px', borderRadius: '2px',
           backgroundColor: 'transparent',
-          border: '1px solid rgba(235, 235, 245, 0.12)',
-          color: step === 1 ? 'rgba(235, 235, 245, 0.25)' : 'rgba(235, 235, 245, 0.75)',
+          border: '1px solid rgba(244, 244, 242, 0.12)',
+          color: step === 1 ? 'rgba(244, 244, 242, 0.25)' : 'rgba(244, 244, 242, 0.75)',
           fontSize: '13px', fontWeight: 500, fontFamily,
           cursor: step === 1 ? 'default' : 'pointer',
         }}
@@ -304,8 +307,8 @@ const NavButtons = ({ step, total, canProceed, onBack, onNext, onSubmit }) => {
           onClick={onSubmit}
           disabled={!canProceed}
           style={{
-            padding: '12px 24px', borderRadius: '8px',
-            backgroundColor: canProceed ? '#0A84FF' : 'rgba(10, 132, 255, 0.3)',
+            padding: '12px 24px', borderRadius: '2px',
+            backgroundColor: canProceed ? '#E63935' : 'rgba(230, 57, 53, 0.3)',
             color: 'white', border: 'none',
             fontSize: '14px', fontWeight: 600, fontFamily,
             cursor: canProceed ? 'pointer' : 'not-allowed',
@@ -318,8 +321,8 @@ const NavButtons = ({ step, total, canProceed, onBack, onNext, onSubmit }) => {
           onClick={onNext}
           disabled={!canProceed}
           style={{
-            padding: '12px 24px', borderRadius: '8px',
-            backgroundColor: canProceed ? '#0A84FF' : 'rgba(10, 132, 255, 0.3)',
+            padding: '12px 24px', borderRadius: '2px',
+            backgroundColor: canProceed ? '#E63935' : 'rgba(230, 57, 53, 0.3)',
             color: 'white', border: 'none',
             fontSize: '14px', fontWeight: 600, fontFamily,
             cursor: canProceed ? 'pointer' : 'not-allowed',
@@ -400,7 +403,7 @@ const StepPosition = ({ form, update }) => (
       placeholder="On 14 March 2024, our client entered a £12M facility with… The covenant alleged to have been waived was…"
       style={{ ...textareaStyle, minHeight: '240px' }}
     />
-    <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.45)', marginTop: '8px', textAlign: 'right' }}>
+    <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.45)', marginTop: '8px', textAlign: 'right' }}>
       {form.party_position.trim().length} characters {form.party_position.trim().length < 80 && `· ${80 - form.party_position.trim().length} more to unlock`}
     </div>
   </div>
@@ -418,7 +421,7 @@ const StepStrategy = ({ form, update }) => (
       placeholder="We intend to plead breach of contract on the basis that the RM email of 17 May constituted a binding waiver. We'll rely on Yam Seng…"
       style={{ ...textareaStyle, minHeight: '240px' }}
     />
-    <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.45)', marginTop: '8px', textAlign: 'right' }}>
+    <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.45)', marginTop: '8px', textAlign: 'right' }}>
       {form.current_strategy.trim().length} characters {form.current_strategy.trim().length < 80 && `· ${80 - form.current_strategy.trim().length} more to unlock`}
     </div>
   </div>
@@ -467,19 +470,19 @@ const StepEvidence = ({ evidence, setEvidence }) => {
         }}
         onClick={() => inputRef.current && inputRef.current.click()}
         style={{
-          border: `1.5px dashed ${dragOver ? '#0A84FF' : '#38383A'}`,
+          border: `1.5px dashed ${dragOver ? '#E63935' : '#2A2A2A'}`,
           borderRadius: '10px',
           padding: '44px 24px',
           textAlign: 'center',
-          backgroundColor: dragOver ? 'rgba(10, 132, 255, 0.05)' : '#141416',
+          backgroundColor: dragOver ? 'rgba(230, 57, 53, 0.05)' : '#141414',
           cursor: 'pointer',
           transition: 'all 0.15s ease',
         }}
       >
-        <div style={{ fontSize: '15px', color: '#EBEBF5', fontWeight: 500, marginBottom: '8px' }}>
+        <div style={{ fontSize: '15px', color: '#F4F4F2', fontWeight: 500, marginBottom: '8px' }}>
           Drop files here, or click to choose
         </div>
-        <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.5)' }}>
+        <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.5)' }}>
           PDF · DOCX · TXT · max 10 MB each · max {MAX_FILES} files
         </div>
         <input
@@ -498,8 +501,8 @@ const StepEvidence = ({ evidence, setEvidence }) => {
             <div
               key={ev.id}
               style={{
-                padding: '14px 16px', backgroundColor: '#1A1A1C',
-                border: '1px solid rgba(235, 235, 245, 0.06)',
+                padding: '14px 16px', backgroundColor: '#1A1A1A',
+                border: '1px solid rgba(244, 244, 242, 0.06)',
                 borderRadius: '10px',
                 display: 'grid', gridTemplateColumns: '1fr 180px auto',
                 gap: '12px', alignItems: 'center',
@@ -508,7 +511,7 @@ const StepEvidence = ({ evidence, setEvidence }) => {
               <div>
                 <div style={{ fontSize: '13px', fontWeight: 500, marginBottom: '8px', wordBreak: 'break-word' }}>
                   {ev.file.name}
-                  <span style={{ color: 'rgba(235, 235, 245, 0.4)', fontWeight: 400, marginLeft: '8px', fontSize: '11px' }}>
+                  <span style={{ color: 'rgba(244, 244, 242, 0.4)', fontWeight: 400, marginLeft: '8px', fontSize: '11px' }}>
                     {(ev.file.size / 1024).toFixed(0)} KB
                   </span>
                 </div>
@@ -519,7 +522,7 @@ const StepEvidence = ({ evidence, setEvidence }) => {
                   placeholder="Label (optional) — e.g. 'RM email of 17 May'"
                   style={{
                     ...inputStyle, padding: '8px 10px', fontSize: '12px',
-                    backgroundColor: '#141416',
+                    backgroundColor: '#141414',
                   }}
                 />
               </div>
@@ -528,7 +531,7 @@ const StepEvidence = ({ evidence, setEvidence }) => {
                 onChange={(e) => updateAt(ev.id, { upload_type: e.target.value })}
                 style={{
                   ...inputStyle, padding: '8px 10px', fontSize: '12px',
-                  backgroundColor: '#141416',
+                  backgroundColor: '#141414',
                 }}
               >
                 {EVIDENCE_TYPES.map(t => (
@@ -538,9 +541,9 @@ const StepEvidence = ({ evidence, setEvidence }) => {
               <button
                 onClick={() => removeAt(ev.id)}
                 style={{
-                  fontSize: '12px', color: 'rgba(255, 107, 92, 0.9)',
-                  background: 'none', border: '1px solid rgba(255, 107, 92, 0.3)',
-                  padding: '6px 10px', borderRadius: '6px', cursor: 'pointer', fontFamily,
+                  fontSize: '12px', color: 'rgba(230, 57, 53, 0.9)',
+                  background: 'none', border: '1px solid rgba(230, 57, 53, 0.3)',
+                  padding: '6px 10px', borderRadius: '2px', cursor: 'pointer', fontFamily,
                 }}
               >
                 Remove
@@ -550,7 +553,7 @@ const StepEvidence = ({ evidence, setEvidence }) => {
         </div>
       )}
 
-      <div style={{ marginTop: '20px', fontSize: '12px', color: 'rgba(235, 235, 245, 0.5)' }}>
+      <div style={{ marginTop: '20px', fontSize: '12px', color: 'rgba(244, 244, 242, 0.5)' }}>
         Evidence is optional but it makes the stress test substantially sharper. Without it the premortem reasons abstractly.
       </div>
     </div>
@@ -565,8 +568,8 @@ const StepConsent = ({ form, update, evidence }) => (
     </p>
 
     <div style={{
-      backgroundColor: '#1A1A1C',
-      border: '1px solid rgba(235, 235, 245, 0.06)',
+      backgroundColor: '#1A1A1A',
+      border: '1px solid rgba(244, 244, 242, 0.06)',
       borderRadius: '12px',
       padding: '24px',
       marginBottom: '24px',
@@ -596,16 +599,16 @@ const StepConsent = ({ form, update, evidence }) => (
 
     <label style={{
       display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer',
-      padding: '16px 18px', backgroundColor: '#141416',
-      border: '1px solid rgba(235, 235, 245, 0.08)', borderRadius: '10px',
+      padding: '16px 18px', backgroundColor: '#141414',
+      border: '1px solid rgba(244, 244, 242, 0.08)', borderRadius: '10px',
     }}>
       <input
         type="checkbox"
         checked={form.consent}
         onChange={(e) => update({ consent: e.target.checked })}
-        style={{ marginTop: '3px', accentColor: '#0A84FF', width: '16px', height: '16px' }}
+        style={{ marginTop: '3px', accentColor: '#E63935', width: '16px', height: '16px' }}
       />
-      <span style={{ fontSize: '13px', color: 'rgba(235, 235, 245, 0.75)', lineHeight: 1.6 }}>
+      <span style={{ fontSize: '13px', color: 'rgba(244, 244, 242, 0.75)', lineHeight: 1.6 }}>
         I understand this is an informational stress test, not legal advice. I remain responsible for any decisions about this matter.
       </span>
     </label>
@@ -616,46 +619,47 @@ const SummaryRow = ({ label, value, last }) => (
   <div style={{
     display: 'grid', gridTemplateColumns: '160px 1fr',
     padding: '10px 0',
-    borderBottom: last ? 'none' : '1px solid rgba(235, 235, 245, 0.05)',
+    borderBottom: last ? 'none' : '1px solid rgba(244, 244, 242, 0.05)',
     fontSize: '13px',
     gap: '12px',
   }}>
     <div style={{
-      color: 'rgba(235, 235, 245, 0.5)',
+      color: 'rgba(244, 244, 242, 0.5)',
       textTransform: 'uppercase', letterSpacing: '0.8px',
       fontSize: '11px', fontWeight: 600, paddingTop: '2px',
+      fontFamily: "'JetBrains Mono', monospace",
     }}>
       {label}
     </div>
-    <div style={{ color: '#EBEBF5', wordBreak: 'break-word' }}>{value}</div>
+    <div style={{ color: '#F4F4F2', wordBreak: 'break-word' }}>{value}</div>
   </div>
 );
 
 const LoadingCard = ({ title, body, sub }) => (
   <div style={{
     padding: '64px 32px', textAlign: 'center',
-    backgroundColor: '#1A1A1C',
-    border: '1px solid rgba(235, 235, 245, 0.06)',
+    backgroundColor: '#1A1A1A',
+    border: '1px solid rgba(244, 244, 242, 0.06)',
     borderRadius: '14px', marginTop: '20px',
   }}>
     <div style={{
       width: '32px', height: '32px', margin: '0 auto 24px',
-      border: '2px solid rgba(235, 235, 245, 0.1)',
-      borderTopColor: '#0A84FF',
+      border: '2px solid rgba(244, 244, 242, 0.1)',
+      borderTopColor: '#E63935',
       borderRadius: '50%',
       animation: 'spin 1s linear infinite',
     }} />
     <div style={{
-      fontFamily: serif, fontSize: '22px', fontWeight: 500,
-      color: '#EBEBF5', marginBottom: '14px', letterSpacing: '-0.3px',
+      fontFamily: "'Oswald', sans-serif", fontSize: '22px', fontWeight: 500,
+      color: '#F4F4F2', marginBottom: '14px', letterSpacing: '1px', textTransform: 'uppercase',
     }}>
       {title}
     </div>
-    <div style={{ fontSize: '14px', color: 'rgba(235, 235, 245, 0.78)', lineHeight: 1.6, maxWidth: '460px', margin: '0 auto' }}>
+    <div style={{ fontSize: '14px', color: 'rgba(244, 244, 242, 0.78)', lineHeight: 1.6, maxWidth: '460px', margin: '0 auto' }}>
       {body}
     </div>
     {sub && (
-      <div style={{ fontSize: '12px', color: 'rgba(235, 235, 245, 0.4)', marginTop: '16px' }}>
+      <div style={{ fontSize: '12px', color: 'rgba(244, 244, 242, 0.4)', marginTop: '16px' }}>
         {sub}
       </div>
     )}
