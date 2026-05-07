@@ -490,6 +490,33 @@ const SplashPage = () => {
               </p>
             </div>
           </div>
+
+          {/* What's next — interrogation loop */}
+          <div style={{maxWidth: '1100px', margin: 'clamp(48px, 7vw, 80px) auto 0', paddingTop: 'clamp(40px, 5vw, 56px)', borderTop: '1px solid rgba(17, 17, 17, 0.1)'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 'clamp(24px, 4vw, 48px)', alignItems: 'start'}}>
+              <div>
+                <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>What's next</div>
+                <h3 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#111111', marginBottom: '16px'}}>
+                  The brief is round one. Round two is the cross.
+                </h3>
+                <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
+                  A brief tells you where you'd lose. It doesn't tell you whether you can hold up under questioning on it. The next build is a turn-by-turn interrogation: the adversary picks a failure scenario, presses, you draft a rebuttal, it pivots to the next pressure point. Repeat until the weak points are either answered or confirmed.
+                </p>
+                <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
+                  The mock above shows the layout: adversary script on the left, your rebuttal in the middle, open weak points on the right.
+                </p>
+                <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
+                  Caveat: the 42% case-strength meter in the mock is going. A single number is fake precision for litigation — what matters is which weak points are still unaddressed, not a dashboard score.
+                </p>
+              </div>
+              <div>
+                <a href="/preview-interrogation.png" target="_blank" rel="noreferrer" style={{display: 'block', border: '1px solid rgba(17, 17, 17, 0.15)', boxShadow: '0 10px 30px rgba(0,0,0,0.06)'}}>
+                  <img src="/preview-interrogation.png" alt="Interrogation workspace mock: adversarial AI script, rebuttal editor, attack vectors panel" style={{display: 'block', width: '100%', height: 'auto'}} />
+                </a>
+                <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginTop: '12px'}}>Mock // not yet built</div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* How it works — plain English walkthrough */}
