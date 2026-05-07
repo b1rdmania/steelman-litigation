@@ -415,7 +415,7 @@ const SplashPage = () => {
         <div className="logo">p<span className="dot">.</span></div>
         <div className="nav-links">
           <button className="nav-link" onClick={() => {
-            const el = document.getElementById('how-it-works');
+            const el = document.getElementById('about');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}>About</button>
           <button className="nav-link" onClick={seeDemo}>See a demo</button>
@@ -513,6 +513,43 @@ const SplashPage = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About — built at Interstella, personal API caveat */}
+        <section id="about" style={{backgroundColor: '#F4F4F2', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(17, 17, 17, 0.08)', scrollMarginTop: '20px'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 'clamp(24px, 4vw, 64px)'}}>
+            <div>
+              <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>About this demo</div>
+              <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#111111', marginBottom: '20px'}}>
+                Built in two days at Interstella.
+              </h2>
+              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
+                Premotion was built at the Interstella Conference, Lisbon, 6–7 May 2026. Fully working end-to-end: real Claude pipeline, real adversarial reasoning, real briefs back in roughly three minutes.
+              </p>
+              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
+                It's open-source. <a href="https://github.com/b1rdmania/steelman-litigation" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>github.com/b1rdmania/steelman-litigation</a>
+              </p>
+              <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
+                Heads up: this is a working prototype running on a personal Anthropic API key. Please don't share too widely (lol). If you're at the conference and want to talk about it, find Andy.
+              </p>
+            </div>
+
+            <div style={{borderLeft: '1px solid rgba(17, 17, 17, 0.1)', paddingLeft: 'clamp(24px, 4vw, 48px)'}}>
+              <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>Multi-model architecture</div>
+              <h3 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(20px, 2.6vw, 26px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '-0.01em', textTransform: 'uppercase', color: '#111111', marginBottom: '16px'}}>
+                Today: Claude. Tomorrow: any agent, any model.
+              </h3>
+              <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
+                The MVP runs Sonnet for the optimistic and synthesis passes, Opus for the four adversarial sub-agents. Per-class model attributes mean swapping any agent to a different model — Gemini, Llama, a self-hosted local — is a one-line change.
+              </p>
+              <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
+                The same orchestrator can cross-reference 10+ specialised agents, each on the model best suited to its role. Different model families voting on the same evidence — fewer single-vendor failure modes, harder to hallucinate past three independent passes.
+              </p>
+              <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555'}}>
+                See: <a href="#" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>Aaron's miroshark on GitHub</a> <span style={{opacity: 0.6}}>(link TBD — Andy to fill)</span> for the cross-agent verification reference architecture.
+              </p>
             </div>
           </div>
         </section>
