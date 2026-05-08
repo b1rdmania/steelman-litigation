@@ -539,7 +539,7 @@ const IntakeFlow = () => {
               <label className="field-label">Your case</label>
               <textarea
                 className="textarea"
-                placeholder="What happened, who's involved, what you plan to argue or file. Paste your position, your strategy, the dispute — whatever you've got. The agents will work out the rest."
+                placeholder="What happened, who's involved, what you plan to argue. Your position, your strategy, the dispute — whatever you've got."
                 value={form.case_text}
                 onChange={(e) => update({ case_text: e.target.value })}
               />
@@ -588,7 +588,7 @@ const IntakeFlow = () => {
             <h2 className="submitting-title">Stress-testing your case.</h2>
             <div className="submitting-stage">{STAGE_MESSAGES[stageIdx]}</div>
             <p className="submitting-help">
-              Eight specialists are reading your file and working backwards from a hypothetical loss. The brief lands in roughly 2-3 minutes. Don't close this tab.
+              Eight specialists are reading your file and working back from a hypothetical loss. Expect the brief in 2-3 minutes. Don't close this tab.
             </p>
           </main>
         )}

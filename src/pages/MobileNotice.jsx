@@ -396,17 +396,17 @@ const MobileNotice = () => {
               <div className="engine-card">
                 <span className="engine-id">ENG // 01</span>
                 <h3 className="engine-name">Precedent Mapper</h3>
-                <p className="engine-desc">Ingests proposed pleadings and automatically cross-references against EWCA and UKSC jurisprudence to identify deviations or vulnerabilities in legal arguments.</p>
+                <p className="engine-desc">Takes proposed pleadings and checks them against EWCA and UKSC case law for vulnerabilities.</p>
               </div>
               <div className="engine-card">
                 <span className="engine-id">ENG // 02</span>
                 <h3 className="engine-name">Evidentiary Stress</h3>
-                <p className="engine-desc">Maps the chain of evidence against required statutory burdens of proof, highlighting gaps, hearsay risks, and disclosure deficiencies.</p>
+                <p className="engine-desc">Checks the evidence chain against statutory burdens of proof. Flags gaps, hearsay risks, and disclosure problems.</p>
               </div>
               <div className="engine-card">
                 <span className="engine-id">ENG // 03</span>
                 <h3 className="engine-name">Adversarial Sim</h3>
-                <p className="engine-desc">Generates the highest-probability counter-claims and defense strategies based on historic behavior of specified opposing firms and standing judges.</p>
+                <p className="engine-desc">Identifies the most likely counter-claims and defence strategies based on opposing firm behaviour and judicial record.</p>
               </div>
             </div>
 

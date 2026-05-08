@@ -490,7 +490,7 @@ const SplashPage = () => {
                 Built in two days at Interstella.
               </h2>
               <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
-                Premotion was built at the Interstella Conference, Lisbon, 6–7 May 2026. Fully working end-to-end: real Claude pipeline, real adversarial reasoning, real briefs back in roughly three minutes.
+                Premotion was built at the Interstella Conference, Lisbon, 6–7 May 2026. End-to-end: real Claude pipeline, real adversarial reasoning, real briefs back in three minutes.
               </p>
               <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
                 It's open-source. <a href="https://github.com/b1rdmania/premotion" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>github.com/b1rdmania/premotion</a>
@@ -509,10 +509,10 @@ const SplashPage = () => {
                 Today: Claude. Tomorrow: any agent, any model.
               </h3>
               <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
-                The MVP runs Sonnet for the optimistic and synthesis passes, Opus for the four adversarial sub-agents. Per-class model attributes mean swapping any agent to a different model — Gemini, Llama, a self-hosted local — is a one-line change.
+                The MVP runs Sonnet for the optimistic and synthesis passes, Opus for the four adversarial sub-agents. Each agent declares its own model — swapping any of them to Gemini, Llama, or a self-hosted local is one line.
               </p>
               <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
-                The same orchestrator can cross-reference 10+ specialised agents, each on the model best suited to its role. Different model families voting on the same evidence — fewer single-vendor failure modes, harder to hallucinate past three independent passes.
+                The same orchestrator runs 10+ specialised agents, each on the model best suited to its role. Different model families voting on the same evidence. Three independent passes before anything is treated as a finding.
               </p>
               <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555'}}>
                 See: <a href="https://github.com/aaronjmars/MiroShark" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>aaronjmars/MiroShark</a> for the cross-agent verification reference architecture.
@@ -529,7 +529,7 @@ const SplashPage = () => {
                   The brief is round one. Round two is the cross.
                 </h3>
                 <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
-                  A brief tells you where you'd lose. It doesn't tell you whether you can hold up under questioning on it. The next build is a turn-by-turn interrogation: the adversary picks a failure scenario, presses, you draft a rebuttal, it pivots to the next pressure point. Repeat until the weak points are either answered or confirmed.
+                  A brief tells you where you'd lose. It doesn't tell you whether you can defend those points under pressure. The next build is a turn-by-turn cross: the adversary picks a failure scenario, presses, you draft a rebuttal, it pivots. Repeat until the weak points are answered or confirmed.
                 </p>
                 <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
                   The mock above shows the layout: adversary script on the left, your rebuttal in the middle, open weak points on the right.
@@ -554,7 +554,7 @@ const SplashPage = () => {
             <div style={{fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: 'rgba(244, 244, 242, 0.4)', fontWeight: 600, marginBottom: '16px', fontFamily: "'JetBrains Mono', monospace"}}>How it works</div>
             <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', textTransform: 'uppercase', color: '#F4F4F2', marginBottom: '16px'}}>What a senior partner with four hours would do.<br />In about three minutes.</h2>
             <p style={{fontSize: 'clamp(15px, 1.4vw, 17px)', color: 'rgba(244, 244, 242, 0.7)', lineHeight: 1.6, maxWidth: '720px', marginBottom: '48px'}}>
-              You think your case is strong because you've been thinking about it for weeks. That's the problem. You've optimism-biased the file. Premotion runs the adversarial review you'd run if you had a senior partner sitting opposite, in a quiet room, deliberately trying to find what you've missed.
+              You think your case is strong because you've been working it for weeks. That's the problem. Familiarity hides the gaps. Premotion runs the adversarial review a senior partner would run in a quiet room trying to break it.
             </p>
             <div style={{display: 'grid', gap: '20px'}}>
               <PlainStep
@@ -590,7 +590,7 @@ const SplashPage = () => {
                 accent="#E63935"
                 body={
                   <>
-                    This is the unkind part. Four adversaries each look at one type of failure. Separately, in parallel, forbidden from being balanced.
+                    This is the unkind part. Four adversaries, each assigned one type of failure, forbidden from being balanced.
                     <ul style={{margin: '14px 0 0 18px', padding: 0}}>
                       <li style={{marginBottom: '6px'}}><strong style={{color: '#F4F4F2'}}>Procedural:</strong> did you mess up filing, deadlines, jurisdiction, service?</li>
                       <li style={{marginBottom: '6px'}}><strong style={{color: '#F4F4F2'}}>Substantive:</strong> is the law on your side, or have you misread the statute, missed a recent decision, picked the wrong cause of action?</li>
@@ -598,7 +598,7 @@ const SplashPage = () => {
                       <li><strong style={{color: '#F4F4F2'}}>Strategic:</strong> is your timing helping you? Your posture? Should you have made a Part 36 offer last month? Are you escalating when you should be settling?</li>
                     </ul>
                     <br />
-                    Each one writes its own post-mortem. They run on Claude Opus 4. Finding holes in arguments is the kind of thing a better engine improves more than anything else does.
+                    Each writes its own post-mortem. They run on Claude Opus 4. Adversarial reasoning is where the better model earns its cost.
                   </>
                 }
               />
@@ -607,7 +607,7 @@ const SplashPage = () => {
                 title={'"Compare the two stories."'}
                 body={
                   <>
-                    A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. Where the optimistic case and the failure modes disagree, those are your blind spots.
+                    A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. The gaps between the two are your blind spots.
                     <br /><br />
                     You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end. <em>"If you lose this, this will be why."</em>
                   </>
@@ -633,7 +633,7 @@ const SplashPage = () => {
                 { name: 'Solicitors', blurb: 'Boutique and mid-size UK firms running active litigation. Stress-test before serving.' },
                 { name: 'In-house counsel', blurb: 'Weighing whether to escalate, settle, or push back. A read on whether the case actually holds.' },
                 { name: 'Mediators', blurb: 'A third-voice red team on the positions both sides are bringing into the room.' },
-                { name: 'Litigation funders', blurb: 'Pre-investment evaluation. Where would this case go wrong if it went wrong.' },
+                { name: 'Litigation funders', blurb: 'Pre-investment evaluation. Where does this case break?' },
               ].map(u => (
                 <div key={u.name} style={{
                   backgroundColor: '#1A1A1C', border: '1px solid rgba(244, 244, 242, 0.06)',
@@ -668,7 +668,7 @@ const SplashPage = () => {
               You don't know how strong your case is<br />until someone tries to break it.
             </h2>
             <p style={{fontSize: 'clamp(15px, 1.4vw, 17px)', color: 'rgba(244, 244, 242, 0.7)', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 36px', textAlign: 'center'}}>
-              Drop your intake, your evidence and your current strategy. Two-to-three minutes later you'll have a brief: failure modes ranked, blind spots flagged, and a verdict.
+              Drop your case summary, your evidence and your strategy. Two to three minutes later you have a brief: failure modes ranked, blind spots flagged, verdict delivered.
             </p>
             <div style={{display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '14px'}}>
               <button
