@@ -4,9 +4,20 @@
 >
 > Adversarial premortem for UK litigation. Premotion synthesises the lost version of your case, then runs multi-model analysis on why we lost. Eight specialists, four failure categories, one brief. For solicitors, in-house counsel, mediators and litigation funders.
 
+**[Live demo →](https://steelman-liard.vercel.app)**
+
 You think you've built the strongest version of your case. Premotion runs it through a structured adversarial pipeline of orchestrated sub-agents to find out where it actually loses — the procedural, substantive, evidentiary and strategic failure modes opposing counsel will pull on first.
 
 Output: a stress-test brief with ranked failure modes by category, evidence inconsistencies, blind spots, mitigations, and one brutal sentence — *"if we lose this, this will be why."*
+
+## Who it's for
+
+- Solicitors at boutique and mid-size UK firms running active litigation
+- In-house counsel weighing whether to escalate
+- Mediators wanting a third-voice red team on positions
+- Litigation funders evaluating cases pre-investment
+
+Not designed for consumer disputes, family law, or criminal defence.
 
 ## Architecture
 
@@ -109,6 +120,13 @@ Legacy `STEELMAN_*` env names are still honoured by the config loader so existin
 
 Premotion, Courtless and Counsel form a portfolio of legal AI products by [b1rdmania](https://github.com/b1rdmania), each at a different point on the matter lifecycle. Premotion sits between intake and pleading. It's the red team you don't have on retainer.
 
-## Not legal advice
+## What it doesn't do
 
-Premotion is an informational stress test. The decision on what to file or argue remains with the instructed solicitor.
+- Does not give legal advice. The decision on what to file or argue remains with the instructed solicitor.
+- Does not search case law or cite authority — it stress-tests your strategy, not the law.
+- Does not handle criminal defence, family law, or consumer disputes.
+- Does not persist cases between sessions in V1 (auth and save/revisit in V2).
+
+## License
+
+MIT
