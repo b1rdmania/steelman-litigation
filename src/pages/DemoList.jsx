@@ -291,7 +291,7 @@ const DemoList = () => {
             min-height: 240px;
             padding: var(--space-md);
           }
-          .case-name { font-size: 1.75rem; word-break: normal; }
+          .case-name { font-size: 1.5rem; word-break: normal; overflow-wrap: anywhere; line-height: 1.05; }
           .risk-value { font-size: 2.5rem; }
           .footer-minimal {
             flex-direction: column;

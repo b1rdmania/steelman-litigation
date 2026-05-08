@@ -266,7 +266,7 @@ const SplashPage = () => {
           .nav-links { gap: var(--space-sm); flex-wrap: wrap; justify-content: flex-end; }
           .nav-link { font-size: 0.7rem; }
           .nav-cta { font-size: 0.75rem; }
-          .display-huge { font-size: clamp(3rem, 14vw, 5rem); white-space: normal; }
+          .display-huge { font-size: clamp(2.5rem, 12vw, 4.5rem); white-space: normal; line-height: 0.95; }
           .hero-image-container {
             width: 100vw;
             height: 32vh;
@@ -286,7 +286,7 @@ const SplashPage = () => {
           .code-accent { font-size: clamp(1.5rem, 6vw, 2.5rem); }
         }
         @media (max-width: 480px) {
-          .display-huge { font-size: clamp(2.25rem, 12vw, 3.5rem); }
+          .display-huge { font-size: clamp(2rem, 11vw, 3rem); }
           .nav-links { gap: 10px; }
           .logo { font-size: 1.25rem; }
         }
