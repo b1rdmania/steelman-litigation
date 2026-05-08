@@ -18,7 +18,6 @@ const STAGE_MESSAGES = [
 const initialForm = {
   title: '',
   case_text: '',
-  email: '',
   consent: false,
 };
 
@@ -69,7 +68,6 @@ const IntakeFlow = () => {
 
   const canSubmit =
     form.consent &&
-    form.email.trim().includes('@') &&
     (form.case_text.trim().length >= 50 || evidence.length > 0) &&
     form.title.trim().length > 1;
 
@@ -87,7 +85,7 @@ const IntakeFlow = () => {
       const text = form.case_text.trim() || `(See uploaded files: ${evidence.map(f => f.name).join(', ')})`;
       body.append('party_position', text);
       body.append('current_strategy', text);
-      body.append('email', form.email.trim());
+      body.append('email', '');
       evidence.forEach((file) => {
         body.append('files', file);
         body.append('file_types', 'document');
@@ -543,20 +541,6 @@ const IntakeFlow = () => {
                 value={form.case_text}
                 onChange={(e) => update({ case_text: e.target.value })}
               />
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Email</label>
-              <input
-                className="input"
-                type="email"
-                placeholder="you@firm.co.uk"
-                value={form.email}
-                onChange={(e) => update({ email: e.target.value })}
-              />
-              <div className="field-hint">
-                We don't store this beyond delivering the brief. No mailing list.
-              </div>
             </div>
 
             <label className="consent">

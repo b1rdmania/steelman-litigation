@@ -481,73 +481,6 @@ const SplashPage = () => {
           </div>
         </section>
 
-        {/* About — built at Interstella, personal API caveat */}
-        <section id="about" style={{backgroundColor: '#F4F4F2', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(17, 17, 17, 0.08)', scrollMarginTop: '20px'}}>
-          <div style={{maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 'clamp(24px, 4vw, 64px)'}}>
-            <div>
-              <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>About this demo</div>
-              <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#111111', marginBottom: '20px'}}>
-                Built in two days at Interstella.
-              </h2>
-              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
-                Premotion was built at the Interstella Conference, Lisbon, 6–7 May 2026. End-to-end: real Claude pipeline, real adversarial reasoning, real briefs back in three minutes.
-              </p>
-              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
-                It's open-source. <a href="https://github.com/b1rdmania/premotion" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>github.com/b1rdmania/premotion</a>
-              </p>
-              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
-                Home: <a href="https://premotion.io" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>premotion.io</a>
-              </p>
-              <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
-                Heads up: this is a working prototype running on a personal Anthropic API key. Please don't share too widely (lol). If you're at the conference and want to talk about it, find Andy on <a href="https://www.linkedin.com/in/andrew-bird-nomos/" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', fontStyle: 'normal'}}>LinkedIn</a> or <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', fontStyle: 'normal'}}>X (@b1rdmania)</a>.
-              </p>
-            </div>
-
-            <div style={{borderLeft: '1px solid rgba(17, 17, 17, 0.1)', paddingLeft: 'clamp(24px, 4vw, 48px)'}}>
-              <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>Multi-model architecture</div>
-              <h3 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(20px, 2.6vw, 26px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '-0.01em', textTransform: 'uppercase', color: '#111111', marginBottom: '16px'}}>
-                Today: Claude. Tomorrow: any agent, any model.
-              </h3>
-              <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
-                The MVP runs Sonnet for the optimistic and synthesis passes, Opus for the four adversarial sub-agents. Each agent declares its own model — swapping any of them to Gemini, Llama, or a self-hosted local is one line.
-              </p>
-              <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
-                Different model families voting on the same evidence. Three independent passes before anything is treated as a finding.
-              </p>
-              <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555'}}>
-                See: <a href="https://github.com/aaronjmars/MiroShark" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>aaronjmars/MiroShark</a> for the cross-agent verification reference architecture.
-              </p>
-            </div>
-          </div>
-
-          {/* What's next — interrogation loop */}
-          <div style={{maxWidth: '1100px', margin: 'clamp(48px, 7vw, 80px) auto 0', paddingTop: 'clamp(40px, 5vw, 56px)', borderTop: '1px solid rgba(17, 17, 17, 0.1)'}}>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 'clamp(24px, 4vw, 48px)', alignItems: 'start'}}>
-              <div>
-                <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>What's next</div>
-                <h3 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#111111', marginBottom: '16px'}}>
-                  The brief is round one. Round two is the cross.
-                </h3>
-                <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
-                  A brief tells you where you'd lose. It doesn't tell you whether you can defend those points under pressure. The next build is a turn-by-turn cross: the adversary picks a failure scenario, presses, you draft a rebuttal, it pivots. Repeat until the weak points are answered or confirmed.
-                </p>
-                <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
-                  The mock above shows the layout: adversary script on the left, your rebuttal in the middle, open weak points on the right.
-                </p>
-                <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
-                  Caveat: the 42% case-strength meter in the mock is going. A single number is fake precision for litigation — what matters is which weak points are still unaddressed, not a dashboard score.
-                </p>
-              </div>
-              <div>
-                <a href="/preview-interrogation.png" target="_blank" rel="noreferrer" style={{display: 'block', border: '1px solid rgba(17, 17, 17, 0.15)', boxShadow: '0 10px 30px rgba(0,0,0,0.06)'}}>
-                  <img src="/preview-interrogation.png" alt="Interrogation workspace mock: adversarial AI script, rebuttal editor, attack vectors panel" style={{display: 'block', width: '100%', height: 'auto'}} />
-                </a>
-                <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginTop: '12px'}}>Mock // not yet built</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* How it works — plain English walkthrough */}
         <section id="how-it-works" style={{backgroundColor: '#141414', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(244, 244, 242, 0.06)', scrollMarginTop: '20px'}}>
           <div style={{maxWidth: '1100px', margin: '0 auto'}}>
@@ -670,6 +603,73 @@ const SplashPage = () => {
               >
                 See a demo brief →
               </button>
+            </div>
+          </div>
+        </section>
+
+        {/* About — built at Interstella, personal API caveat */}
+        <section id="about" style={{backgroundColor: '#F4F4F2', padding: 'clamp(64px, 9vw, 100px) clamp(20px, 4vw, 40px)', borderBottom: '1px solid rgba(17, 17, 17, 0.08)', scrollMarginTop: '20px'}}>
+          <div style={{maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 'clamp(24px, 4vw, 64px)'}}>
+            <div>
+              <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>About this demo</div>
+              <h2 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#111111', marginBottom: '20px'}}>
+                Built in two days at Interstella.
+              </h2>
+              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
+                Premotion was built at the Interstella Conference, Lisbon, 6–7 May 2026. End-to-end: real Claude pipeline, real adversarial reasoning, real briefs back in three minutes.
+              </p>
+              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
+                It's open-source. <a href="https://github.com/b1rdmania/premotion" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>github.com/b1rdmania/premotion</a>
+              </p>
+              <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '14px'}}>
+                Home: <a href="https://premotion.io" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>premotion.io</a>
+              </p>
+              <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
+                Heads up: this is a working prototype running on a personal Anthropic API key. Please don't share too widely (lol). If you're at the conference and want to talk about it, find Andy on <a href="https://www.linkedin.com/in/andrew-bird-nomos/" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', fontStyle: 'normal'}}>LinkedIn</a> or <a href="https://x.com/b1rdmania" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', fontStyle: 'normal'}}>X (@b1rdmania)</a>.
+              </p>
+            </div>
+
+            <div style={{borderLeft: '1px solid rgba(17, 17, 17, 0.1)', paddingLeft: 'clamp(24px, 4vw, 48px)'}}>
+              <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>Multi-model architecture</div>
+              <h3 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(20px, 2.6vw, 26px)', fontWeight: 500, lineHeight: 1.2, letterSpacing: '-0.01em', textTransform: 'uppercase', color: '#111111', marginBottom: '16px'}}>
+                Today: Claude. Tomorrow: any agent, any model.
+              </h3>
+              <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
+                The MVP runs Sonnet for the optimistic and synthesis passes, Opus for the four adversarial sub-agents. Each agent declares its own model — swapping any of them to Gemini, Llama, or a self-hosted local is one line.
+              </p>
+              <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
+                Different model families voting on the same evidence. Three independent passes before anything is treated as a finding.
+              </p>
+              <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555'}}>
+                See: <a href="https://github.com/aaronjmars/MiroShark" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>aaronjmars/MiroShark</a> for the cross-agent verification reference architecture.
+              </p>
+            </div>
+          </div>
+
+          {/* What's next — interrogation loop */}
+          <div style={{maxWidth: '1100px', margin: 'clamp(48px, 7vw, 80px) auto 0', paddingTop: 'clamp(40px, 5vw, 56px)', borderTop: '1px solid rgba(17, 17, 17, 0.1)'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 'clamp(24px, 4vw, 48px)', alignItems: 'start'}}>
+              <div>
+                <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginBottom: '16px'}}>What's next</div>
+                <h3 style={{fontFamily: "'Oswald', sans-serif", fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.02em', textTransform: 'uppercase', color: '#111111', marginBottom: '16px'}}>
+                  The brief is round one. Round two is the cross.
+                </h3>
+                <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
+                  A brief tells you where you'd lose. It doesn't tell you whether you can defend those points under pressure. The next build is a turn-by-turn cross: the adversary picks a failure scenario, presses, you draft a rebuttal, it pivots. Repeat until the weak points are answered or confirmed.
+                </p>
+                <p style={{fontSize: '15px', lineHeight: 1.7, color: '#222', marginBottom: '12px'}}>
+                  The mock above shows the layout: adversary script on the left, your rebuttal in the middle, open weak points on the right.
+                </p>
+                <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555', fontStyle: 'italic', borderLeft: '2px solid #E63935', paddingLeft: '14px', marginTop: '20px'}}>
+                  Caveat: the 42% case-strength meter in the mock is going. A single number is fake precision for litigation — what matters is which weak points are still unaddressed, not a dashboard score.
+                </p>
+              </div>
+              <div>
+                <a href="/preview-interrogation.png" target="_blank" rel="noreferrer" style={{display: 'block', border: '1px solid rgba(17, 17, 17, 0.15)', boxShadow: '0 10px 30px rgba(0,0,0,0.06)'}}>
+                  <img src="/preview-interrogation.png" alt="Interrogation workspace mock: adversarial AI script, rebuttal editor, attack vectors panel" style={{display: 'block', width: '100%', height: 'auto'}} />
+                </a>
+                <div style={{fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.8px', color: '#777', fontWeight: 600, marginTop: '12px'}}>Mock // not yet built</div>
+              </div>
             </div>
           </div>
         </section>
