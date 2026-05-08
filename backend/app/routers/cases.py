@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, File, Form, HTTPException, UploadFile
 
 from ..agents.optimistic import OptimisticAnalyst
 from ..agents.evidence_inspector import EvidenceInspector
@@ -17,6 +17,15 @@ from ..services.parser import extract_text
 
 
 router = APIRouter()
+
+ALLOWED_EXTENSIONS = {".pdf", ".docx", ".txt"}
+ALLOWED_MIME = {
+    "application/pdf",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "text/plain",
+}
+MAX_FILE_SIZE = 10 * 1024 * 1024   # 10 MB
+MAX_FILES = 15
 
 
 def _now() -> str:
@@ -69,8 +78,84 @@ async def _store_analysis(
         await db.close()
 
 
+async def _run_pipeline(case_id: str, base_input: dict) -> None:
+    """Run all four pipeline stages as a background task."""
+    try:
+        # Stage 1 — Optimistic Analyst
+        await _set_status(case_id, "analysing_optimistic")
+        optimistic_agent = OptimisticAnalyst()
+        optimistic_result = await optimistic_agent.execute(base_input, case_id)
+        await _store_analysis(case_id, "optimistic", "optimistic_analyst", None,
+                              optimistic_agent.model, optimistic_result.data)
+
+        # Stage 2 — Evidence Inspector (3 sub-agents in parallel)
+        await _set_status(case_id, "analysing_evidence")
+        inspector = EvidenceInspector()
+        evidence_findings = await inspector.run(base_input, case_id)
+        await _store_analysis(case_id, "evidence", "evidence_inspector", None,
+                              "multi-subagent", evidence_findings)
+
+        # Stage 3 — Premortem Adversary (4 Opus sub-agents in parallel)
+        await _set_status(case_id, "analysing_premortem")
+        premortem_input = {
+            **base_input,
+            "optimistic_case": optimistic_result.data,
+            "evidence_flags": evidence_findings.get("evidence_flags", []),
+        }
+        adversary = PremortemAdversary()
+        premortem_findings = await adversary.run(premortem_input, case_id)
+        await _store_analysis(case_id, "premortem", "premortem_adversary", None,
+                              "multi-subagent-opus", premortem_findings)
+
+        # Stage 4 — Synthesizer
+        await _set_status(case_id, "synthesising")
+        synth_input = {
+            **base_input,
+            "optimistic_case": optimistic_result.data,
+            "evidence_findings": evidence_findings,
+            "premortem_findings": premortem_findings,
+        }
+        synthesizer = Synthesizer()
+        brief_result = await synthesizer.execute(synth_input, case_id)
+        await _store_analysis(case_id, "synthesis", "synthesizer", None,
+                              synthesizer.model, brief_result.data)
+
+        # Store brief + mark ready
+        brief_id = str(uuid.uuid4())
+        partial = evidence_findings.get("partial_analysis") or premortem_findings.get("partial_analysis")
+        db = await get_db()
+        try:
+            await db.execute(
+                """INSERT INTO briefs (id, case_id, content_json, verdict, generated_at)
+                   VALUES (?, ?, ?, ?, ?)""",
+                (brief_id, case_id, json.dumps(brief_result.data),
+                 brief_result.data.get("verdict"), _now()),
+            )
+            await db.execute(
+                "UPDATE cases SET status = ?, partial_analysis = ?, updated_at = ? WHERE id = ?",
+                ("brief_ready", 1 if partial else 0, _now(), case_id),
+            )
+            await db.commit()
+        finally:
+            await db.close()
+
+    except Exception as e:
+        await _set_status(case_id, "failed")
+        # Store the error reason so the frontend can surface it
+        db = await get_db()
+        try:
+            await db.execute(
+                "UPDATE cases SET error_detail = ?, updated_at = ? WHERE id = ?",
+                (str(e), _now(), case_id),
+            )
+            await db.commit()
+        finally:
+            await db.close()
+
+
 @router.post("/api/cases")
 async def create_case(
+    background_tasks: BackgroundTasks,
     title: str = Form(...),
     jurisdiction: str = Form("England & Wales"),
     case_type: str = Form("other"),
@@ -100,16 +185,22 @@ async def create_case(
             (intake_id, case_id, party_position, current_strategy, "", email or "", now),
         )
 
-        # Save evidence files + extract text
+        # Validate and save evidence files
+        uploads = [f for f in (files or []) if f is not None and f.filename]
+        if len(uploads) > MAX_FILES:
+            raise HTTPException(status_code=400, detail=f"Maximum {MAX_FILES} files allowed.")
         case_upload_dir = UPLOAD_DIR / case_id
         case_upload_dir.mkdir(parents=True, exist_ok=True)
         evidence_records: list[dict] = []
-        for idx, upload in enumerate(files or []):
-            if upload is None or not upload.filename:
-                continue
+        for idx, upload in enumerate(uploads):
+            ext = Path(upload.filename).suffix.lower()
+            if ext not in ALLOWED_EXTENSIONS:
+                raise HTTPException(status_code=400, detail=f"File type '{ext}' is not accepted. Upload PDF, DOCX, or TXT.")
+            content = await upload.read()
+            if len(content) > MAX_FILE_SIZE:
+                raise HTTPException(status_code=400, detail=f"'{upload.filename}' exceeds the 10 MB limit.")
             safe_name = Path(upload.filename).name
             dest = case_upload_dir / safe_name
-            content = await upload.read()
             dest.write_bytes(content)
             upload_type = (file_types[idx] if idx < len(file_types) else "document") or "document"
             label = (file_labels[idx] if idx < len(file_labels) else "") or ""
@@ -146,93 +237,8 @@ async def create_case(
         "evidence": evidence_records,
     }
 
-    # ---- Stage 1: Optimistic Analyst ----
-    await _set_status(case_id, "analysing_optimistic")
-    try:
-        optimistic_agent = OptimisticAnalyst()
-        optimistic_result = await optimistic_agent.execute(base_input, case_id)
-        await _store_analysis(
-            case_id, "optimistic", "optimistic_analyst", None,
-            optimistic_agent.model, optimistic_result.data,
-        )
-    except Exception as e:
-        await _set_status(case_id, "failed")
-        raise HTTPException(status_code=500, detail=f"Optimistic stage failed: {e}")
-
-    # ---- Stage 2: Evidence Inspector (3 sub-agents in parallel) ----
-    await _set_status(case_id, "analysing_evidence")
-    try:
-        inspector = EvidenceInspector()
-        evidence_findings = await inspector.run(base_input, case_id)
-        await _store_analysis(
-            case_id, "evidence", "evidence_inspector", None,
-            "multi-subagent", evidence_findings,
-        )
-    except Exception as e:
-        await _set_status(case_id, "failed")
-        raise HTTPException(status_code=500, detail=f"Evidence stage failed: {e}")
-
-    # ---- Stage 3: Premortem Adversary (4 Opus sub-agents in parallel) ----
-    await _set_status(case_id, "analysing_premortem")
-    try:
-        premortem_input = {
-            **base_input,
-            "optimistic_case": optimistic_result.data,
-            "evidence_flags": evidence_findings.get("evidence_flags", []),
-        }
-        adversary = PremortemAdversary()
-        premortem_findings = await adversary.run(premortem_input, case_id)
-        await _store_analysis(
-            case_id, "premortem", "premortem_adversary", None,
-            "multi-subagent-opus", premortem_findings,
-        )
-    except Exception as e:
-        await _set_status(case_id, "failed")
-        raise HTTPException(status_code=500, detail=f"Premortem stage failed: {e}")
-
-    # ---- Stage 4: Synthesizer ----
-    await _set_status(case_id, "synthesising")
-    try:
-        synth_input = {
-            **base_input,
-            "optimistic_case": optimistic_result.data,
-            "evidence_findings": evidence_findings,
-            "premortem_findings": premortem_findings,
-        }
-        synthesizer = Synthesizer()
-        brief_result = await synthesizer.execute(synth_input, case_id)
-        await _store_analysis(
-            case_id, "synthesis", "synthesizer", None,
-            synthesizer.model, brief_result.data,
-        )
-    except Exception as e:
-        await _set_status(case_id, "failed")
-        raise HTTPException(status_code=500, detail=f"Synthesis stage failed: {e}")
-
-    # ---- Store final brief, flip status ----
-    brief_id = str(uuid.uuid4())
-    db = await get_db()
-    try:
-        await db.execute(
-            """INSERT INTO briefs (id, case_id, content_json, verdict, generated_at)
-               VALUES (?, ?, ?, ?, ?)""",
-            (
-                brief_id,
-                case_id,
-                json.dumps(brief_result.data),
-                brief_result.data.get("verdict"),
-                _now(),
-            ),
-        )
-        await db.execute(
-            "UPDATE cases SET status = ?, updated_at = ? WHERE id = ?",
-            ("brief_ready", _now(), case_id),
-        )
-        await db.commit()
-    finally:
-        await db.close()
-
-    return {"case_id": case_id, "status": "brief_ready"}
+    background_tasks.add_task(_run_pipeline, case_id, base_input)
+    return {"case_id": case_id, "status": "submitted"}
 
 
 @router.get("/api/cases/{case_id}")
@@ -269,6 +275,8 @@ async def get_case(case_id: str):
             "jurisdiction": case_row["jurisdiction"],
             "case_type": case_row["case_type"],
             "status": case_row["status"],
+            "partial_analysis": bool(case_row["partial_analysis"]),
+            "error_detail": case_row["error_detail"],
             "created_at": case_row["created_at"],
             "updated_at": case_row["updated_at"],
             "intake": {

@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
-const ACCEPTED_EXTENSIONS = ['.pdf', '.docx', '.doc', '.txt'];
-const ACCEPTED_MIME = 'application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,text/plain';
+const ACCEPTED_EXTENSIONS = ['.pdf', '.docx', '.txt'];
+const ACCEPTED_MIME = 'application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const MAX_FILES = 15;
 
@@ -84,7 +84,6 @@ const IntakeFlow = () => {
       body.append('jurisdiction', 'England & Wales');
       body.append('case_type', 'general');
       body.append('party_position_role', '');
-      // Send the same combined text to both backend fields — agents will work it out
       const text = form.case_text.trim() || `(See uploaded files: ${evidence.map(f => f.name).join(', ')})`;
       body.append('party_position', text);
       body.append('current_strategy', text);
@@ -94,13 +93,45 @@ const IntakeFlow = () => {
         body.append('file_types', 'document');
         body.append('file_labels', file.name);
       });
+
+      // POST returns immediately with case_id — pipeline runs in the background
       const res = await fetch(`${API_BASE}/api/cases`, { method: 'POST', body });
       if (!res.ok) {
         const txt = await res.text();
         throw new Error(`Submission failed (${res.status}): ${txt || 'unknown error'}`);
       }
-      const data = await res.json();
-      navigate(`/brief/${data.case_id}`);
+      const { case_id } = await res.json();
+
+      // Poll until the pipeline finishes
+      const POLL_INTERVAL = 6000;
+      const POLL_TIMEOUT = 300_000; // 5 min hard stop
+      const deadline = Date.now() + POLL_TIMEOUT;
+
+      const poll = async () => {
+        if (Date.now() > deadline) {
+          throw new Error('Analysis timed out — the pipeline is taking longer than expected. Check back in a moment.');
+        }
+        const r = await fetch(`${API_BASE}/api/cases/${case_id}`);
+        if (!r.ok) throw new Error(`Status check failed (${r.status})`);
+        const d = await r.json();
+        if (d.status === 'brief_ready') {
+          navigate(`/brief/${case_id}`);
+        } else if (d.status === 'failed') {
+          throw new Error(d.error_detail || 'The pipeline failed. Please try again.');
+        } else {
+          // Still running — advance stage message and poll again
+          const stageMap = {
+            analysing_optimistic: 0,
+            analysing_evidence: 1,
+            analysing_premortem: 2,
+            synthesising: 3,
+          };
+          setStageIdx(stageMap[d.status] ?? 0);
+          setTimeout(poll, POLL_INTERVAL);
+        }
+      };
+
+      setTimeout(poll, POLL_INTERVAL);
     } catch (e) {
       setError(e.message || String(e));
       setSubmitting(false);
@@ -441,7 +472,7 @@ const IntakeFlow = () => {
             </div>
 
             <div className="field-group">
-              <label className="field-label">Case files <span style={{textTransform: 'none', letterSpacing: 'normal', color: 'rgba(244,244,242,0.4)'}}>(PDF · DOCX · TXT, up to 15)</span></label>
+              <label className="field-label">Case files <span style={{textTransform: 'none', letterSpacing: 'normal', color: 'rgba(244,244,242,0.4)'}}>(PDF · DOCX · TXT — up to 15 files, 10 MB each)</span></label>
               <div
                 className={`drop-zone${dragOver ? ' drag-over' : ''}`}
                 onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}

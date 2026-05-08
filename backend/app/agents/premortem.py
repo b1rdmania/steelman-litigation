@@ -205,7 +205,9 @@ class PremortemAdversary:
                 s.setdefault("category", agent.category)
                 merged.append(s)
 
+        partial = any(isinstance(r, Exception) for r in results)
         return {
             "failure_scenarios": merged,
             "sub_agent_outputs": sub_results,
+            "partial_analysis": partial,
         }

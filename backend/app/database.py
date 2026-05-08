@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS cases (
     jurisdiction TEXT DEFAULT 'England & Wales',
     case_type TEXT DEFAULT 'other',
     status TEXT NOT NULL DEFAULT 'submitted',
+    partial_analysis INTEGER DEFAULT 0,
+    error_detail TEXT,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
 );

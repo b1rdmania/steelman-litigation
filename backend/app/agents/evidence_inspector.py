@@ -141,7 +141,9 @@ class EvidenceInspector:
                 f.setdefault("category", agent.sub_agent_id.replace("_subagent", ""))
                 merged_flags.append(f)
 
+        partial = any(isinstance(r, Exception) for r in results)
         return {
             "evidence_flags": merged_flags,
             "sub_agent_outputs": sub_results,
+            "partial_analysis": partial,
         }

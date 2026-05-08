@@ -350,6 +350,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
     );
   }
 
+  const partialAnalysis = data.partial_analysis;
   const verdictKey = (brief.verdict || '').toLowerCase();
   const verdictStyle = VERDICT_STYLES[verdictKey] || VERDICT_STYLES.borderline;
 
@@ -387,6 +388,21 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
         </nav>
 
         <main className="deep-dive-container" style={{paddingBottom: '80px'}}>
+          {partialAnalysis && (
+            <div style={{
+              background: 'rgba(255, 159, 10, 0.08)',
+              borderLeft: '3px solid #FFB340',
+              padding: '12px 20px',
+              marginBottom: '24px',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '0.75rem',
+              color: '#FFB340',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+            }}>
+              Partial analysis — one or more sub-agents did not complete. Results may be incomplete.
+            </div>
+          )}
           <header className="report-header">
             <div>
               <span className="label-meta" style={{color: '#666', display: 'block', marginBottom: '8px'}}>

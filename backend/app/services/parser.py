@@ -6,7 +6,7 @@ import fitz  # PyMuPDF
 from docx import Document as DocxDocument
 
 
-SUPPORTED_EXTRACTION = {".pdf", ".docx", ".doc", ".txt"}
+SUPPORTED_EXTRACTION = {".pdf", ".docx", ".txt"}
 
 
 def extract_text(file_path: Path) -> str:
@@ -15,7 +15,7 @@ def extract_text(file_path: Path) -> str:
     try:
         if suffix == ".pdf":
             return _extract_pdf(file_path)
-        elif suffix in (".docx", ".doc"):
+        elif suffix == ".docx":
             return _extract_docx(file_path)
         elif suffix == ".txt":
             return file_path.read_text(encoding="utf-8", errors="ignore")
