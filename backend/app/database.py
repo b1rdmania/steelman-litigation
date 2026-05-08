@@ -1,5 +1,7 @@
 """SQLite database for Premotion."""
 
+from datetime import datetime, timezone
+
 import aiosqlite
 from .config import DB_PATH
 
@@ -11,6 +13,7 @@ CREATE TABLE IF NOT EXISTS cases (
     case_type TEXT DEFAULT 'other',
     status TEXT NOT NULL DEFAULT 'submitted',
     partial_analysis INTEGER DEFAULT 0,
+    partial_detail TEXT,
     error_detail TEXT,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
@@ -90,5 +93,33 @@ async def get_db() -> aiosqlite.Connection:
 async def init_db():
     db = await get_db()
     await db.executescript(SCHEMA)
+    # Idempotent migrations for existing DBs (CREATE TABLE IF NOT EXISTS
+    # won't add new columns to a table that already exists).
+    migrations = [
+        "ALTER TABLE cases ADD COLUMN partial_analysis INTEGER DEFAULT 0",
+        "ALTER TABLE cases ADD COLUMN partial_detail TEXT",
+        "ALTER TABLE cases ADD COLUMN error_detail TEXT",
+    ]
+    for ddl in migrations:
+        try:
+            await db.execute(ddl)
+        except Exception:
+            # Column already exists — that's the happy path on subsequent boots.
+            pass
+    # Janitor: mark any case stuck mid-pipeline as failed. BackgroundTasks
+    # don't survive worker restarts (deploys, OOM, idle reaping), so a stuck
+    # row would otherwise sit in `analysing_*` forever.
+    try:
+        await db.execute(
+            """UPDATE cases
+               SET status = 'failed',
+                   error_detail = COALESCE(error_detail, 'Analysis was interrupted by a server restart. Please resubmit.'),
+                   updated_at = ?
+               WHERE status IN ('submitted', 'analysing_optimistic', 'analysing_evidence', 'analysing_premortem', 'synthesising')
+                 AND datetime(updated_at) < datetime('now', '-15 minutes')""",
+            (datetime.now(timezone.utc).isoformat(),),
+        )
+    except Exception:
+        pass
     await db.commit()
     await db.close()

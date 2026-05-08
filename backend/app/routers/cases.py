@@ -1,9 +1,12 @@
 """Cases router — full pipeline: intake → 4 stages → brief."""
 
 import json
+import logging
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 from fastapi import APIRouter, BackgroundTasks, File, Form, HTTPException, UploadFile
 
@@ -30,6 +33,17 @@ MAX_FILES = 15
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def _safe_get(row, key, default=None):
+    """Read a column from an aiosqlite Row without throwing if it's missing
+    (e.g. on an older DB before a migration has applied)."""
+    try:
+        if key in row.keys():
+            return row[key]
+    except Exception:
+        pass
+    return default
 
 
 async def _set_status(case_id: str, status: str) -> None:
@@ -122,7 +136,10 @@ async def _run_pipeline(case_id: str, base_input: dict) -> None:
 
         # Store brief + mark ready
         brief_id = str(uuid.uuid4())
-        partial = evidence_findings.get("partial_analysis") or premortem_findings.get("partial_analysis")
+        failed_subagents = list(evidence_findings.get("failed_subagents") or []) \
+                         + list(premortem_findings.get("failed_subagents") or [])
+        partial = bool(failed_subagents)
+        partial_detail = ", ".join(failed_subagents) if failed_subagents else None
         db = await get_db()
         try:
             await db.execute(
@@ -132,21 +149,24 @@ async def _run_pipeline(case_id: str, base_input: dict) -> None:
                  brief_result.data.get("verdict"), _now()),
             )
             await db.execute(
-                "UPDATE cases SET status = ?, partial_analysis = ?, updated_at = ? WHERE id = ?",
-                ("brief_ready", 1 if partial else 0, _now(), case_id),
+                """UPDATE cases
+                   SET status = ?, partial_analysis = ?, partial_detail = ?, updated_at = ?
+                   WHERE id = ?""",
+                ("brief_ready", 1 if partial else 0, partial_detail, _now(), case_id),
             )
             await db.commit()
         finally:
             await db.close()
 
     except Exception as e:
+        # Log the full error for debugging, but never leak it to the client.
+        logger.exception("Pipeline failed for case %s", case_id)
         await _set_status(case_id, "failed")
-        # Store the error reason so the frontend can surface it
         db = await get_db()
         try:
             await db.execute(
                 "UPDATE cases SET error_detail = ?, updated_at = ? WHERE id = ?",
-                (str(e), _now(), case_id),
+                ("Analysis failed during processing. Please try again.", _now(), case_id),
             )
             await db.commit()
         finally:
@@ -275,8 +295,9 @@ async def get_case(case_id: str):
             "jurisdiction": case_row["jurisdiction"],
             "case_type": case_row["case_type"],
             "status": case_row["status"],
-            "partial_analysis": bool(case_row["partial_analysis"]),
-            "error_detail": case_row["error_detail"],
+            "partial_analysis": bool(_safe_get(case_row, "partial_analysis")),
+            "partial_detail": _safe_get(case_row, "partial_detail"),
+            "error_detail": _safe_get(case_row, "error_detail"),
             "created_at": case_row["created_at"],
             "updated_at": case_row["updated_at"],
             "intake": {

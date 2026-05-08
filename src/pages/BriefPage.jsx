@@ -351,6 +351,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
   }
 
   const partialAnalysis = data.partial_analysis;
+  const partialDetail = data.partial_detail;
   const verdictKey = (brief.verdict || '').toLowerCase();
   const verdictStyle = VERDICT_STYLES[verdictKey] || VERDICT_STYLES.borderline;
 
@@ -400,7 +401,9 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
               letterSpacing: '0.04em',
               textTransform: 'uppercase',
             }}>
-              Partial analysis — one or more sub-agents did not complete. Results may be incomplete.
+              {partialDetail
+                ? `Partial analysis — these attack vectors did not complete: ${partialDetail}. Review accordingly.`
+                : 'Partial analysis — one or more sub-agents did not complete. Results may be incomplete.'}
             </div>
           )}
           <header className="report-header">

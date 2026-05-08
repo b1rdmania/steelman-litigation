@@ -130,9 +130,12 @@ class EvidenceInspector:
 
         merged_flags: list[dict] = []
         sub_results: dict = {}
+        failed: list[str] = []
         for agent, res in zip(sub_agents, results):
+            label = agent.sub_agent_id.replace("_subagent", "").replace("_", " ")
             if isinstance(res, Exception):
                 sub_results[agent.sub_agent_id] = {"error": str(res), "evidence_flags": []}
+                failed.append(label)
                 continue
             data = res.data or {}
             flags = data.get("evidence_flags", []) or []
@@ -141,9 +144,9 @@ class EvidenceInspector:
                 f.setdefault("category", agent.sub_agent_id.replace("_subagent", ""))
                 merged_flags.append(f)
 
-        partial = any(isinstance(r, Exception) for r in results)
         return {
             "evidence_flags": merged_flags,
             "sub_agent_outputs": sub_results,
-            "partial_analysis": partial,
+            "partial_analysis": bool(failed),
+            "failed_subagents": failed,
         }

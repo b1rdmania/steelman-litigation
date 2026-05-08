@@ -194,9 +194,11 @@ class PremortemAdversary:
 
         merged: list[dict] = []
         sub_results: dict = {}
+        failed: list[str] = []
         for agent, res in zip(sub_agents, results):
             if isinstance(res, Exception):
                 sub_results[agent.sub_agent_id] = {"error": str(res), "failure_scenarios": []}
+                failed.append(agent.category)
                 continue
             data = res.data or {}
             scenarios = data.get("failure_scenarios", []) or []
@@ -205,9 +207,9 @@ class PremortemAdversary:
                 s.setdefault("category", agent.category)
                 merged.append(s)
 
-        partial = any(isinstance(r, Exception) for r in results)
         return {
             "failure_scenarios": merged,
             "sub_agent_outputs": sub_results,
-            "partial_analysis": partial,
+            "partial_analysis": bool(failed),
+            "failed_subagents": failed,
         }

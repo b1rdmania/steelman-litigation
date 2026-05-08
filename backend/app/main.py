@@ -27,6 +27,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[FRONTEND_URL, "http://localhost:5173", "http://localhost:5174"],
+    # Allow Vercel preview deploys for this project (steelman-<hash>-boom-test-c54cde04.vercel.app)
+    allow_origin_regex=r"https://steelman-[a-z0-9]+-boom-test-c54cde04\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
