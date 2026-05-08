@@ -255,11 +255,40 @@ const SplashPage = () => {
         }
 
         @media (max-width: 768px) {
-          .hero { padding: calc(var(--space-lg) + 4rem) var(--space-md) var(--space-md); }
+          .hero {
+            padding: calc(var(--space-lg) + 4rem) var(--space-md) var(--space-md);
+            min-height: auto;
+          }
           .hero-text-block .body-editorial { font-size: 1.05rem; }
           .hero-text-block .body-editorial strong { font-size: 1.25rem; }
           .hero-floating-right { display: none; }
-          .nav-links { gap: var(--space-sm); }
+          .splash-nav { padding: var(--space-sm) var(--space-md); }
+          .nav-links { gap: var(--space-sm); flex-wrap: wrap; justify-content: flex-end; }
+          .nav-link { font-size: 0.7rem; }
+          .nav-cta { font-size: 0.75rem; }
+          .display-huge { font-size: clamp(3rem, 14vw, 5rem); white-space: normal; }
+          .hero-image-container {
+            width: 100vw;
+            height: 32vh;
+            bottom: 4vh;
+            opacity: 0.4;
+            max-width: 100vw;
+          }
+          .hero-footer {
+            position: relative;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            margin-top: var(--space-md);
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+          .code-accent { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+        }
+        @media (max-width: 480px) {
+          .display-huge { font-size: clamp(2.25rem, 12vw, 3.5rem); }
+          .nav-links { gap: 10px; }
+          .logo { font-size: 1.25rem; }
         }
 
         .dossier-section {

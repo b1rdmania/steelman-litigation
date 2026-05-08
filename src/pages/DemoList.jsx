@@ -264,6 +264,47 @@ const DemoList = () => {
           50% { opacity: 0.4; }
           100% { opacity: 1; }
         }
+
+        @media (max-width: 768px) {
+          .portfolio-nav {
+            padding: var(--space-sm) var(--space-md);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+          }
+          .nav-links { flex-wrap: wrap; gap: var(--space-sm); }
+          .nav-link { font-size: 0.7rem; }
+          .btn-new-case { padding: 8px 14px; font-size: 0.7rem; }
+          .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md);
+          }
+          .page-title { font-size: 3rem; }
+          .stats-bar { flex-wrap: wrap; gap: var(--space-sm); font-size: 0.7rem; }
+          .portfolio-grid {
+            grid-template-columns: 1fr;
+            margin: 0 var(--space-sm) var(--space-md);
+          }
+          .case-card {
+            height: auto;
+            min-height: 240px;
+            padding: var(--space-md);
+          }
+          .case-name { font-size: 1.75rem; word-break: normal; }
+          .risk-value { font-size: 2.5rem; }
+          .footer-minimal {
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-start;
+            padding: var(--space-sm) var(--space-md);
+          }
+        }
+        @media (max-width: 480px) {
+          .logo { font-size: 1.25rem; }
+          .page-title { font-size: 2.25rem; }
+          .case-name { font-size: 1.5rem; }
+        }
       `}</style>
 
       <div className="portfolio-shell">

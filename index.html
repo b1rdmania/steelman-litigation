@@ -9,6 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      /* Global iOS / mobile fixes — additive only, do not modify */
+      html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+      body { overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+      /* Prevent iOS Safari zoom-on-focus by ensuring form fields are >= 16px on phones */
+      @media (max-width: 768px) {
+        input, textarea, select { font-size: 16px !important; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

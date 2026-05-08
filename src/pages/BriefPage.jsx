@@ -293,6 +293,48 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
           display: flex;
           justify-content: space-between;
         }
+
+        @media (max-width: 1024px) {
+          .deep-dive-container {
+            grid-template-columns: 1fr;
+            padding: var(--space-md);
+            gap: var(--space-md);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .brief-nav { padding: var(--space-sm) var(--space-md); }
+          .deep-dive-container { padding: var(--space-sm) var(--space-md) 80px; }
+          .report-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-sm);
+          }
+          .finding-title { font-size: 2.25rem; line-height: 1; }
+          .comparison-grid { grid-template-columns: 1fr; }
+          .comparison-cell { padding: var(--space-md) var(--space-sm); }
+          .clause-text { font-size: 1rem; }
+          .gauge-container { height: 90px; }
+          .gauge-value { font-size: 3.5rem; }
+          .transcript-line {
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.8rem;
+          }
+          .speaker { min-width: 0; }
+          .terminal-block { font-size: 0.7rem; padding: var(--space-sm); }
+          .brief-footer {
+            padding: 6px var(--space-sm);
+            font-size: 0.6rem;
+            gap: 8px;
+          }
+          .brief-footer span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        }
+        @media (max-width: 480px) {
+          .logo { font-size: 1.25rem; }
+          .finding-title { font-size: 1.75rem; }
+          .gauge-value { font-size: 3rem; }
+        }
       `}</style>
     </div>
   );

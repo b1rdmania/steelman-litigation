@@ -436,9 +436,27 @@ const IntakeFlow = () => {
         }
 
         @media (max-width: 720px) {
-          .intake-nav { padding: 1.5rem 1.5rem; }
-          .intake-main { padding: 2.5rem 1.5rem 4rem; }
-          .submitting-state { padding: 4rem 1.5rem; }
+          .intake-nav {
+            padding: 1rem 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+          }
+          .intake-meta { font-size: 0.65rem; }
+          .intake-main { padding: 2rem 1rem 3rem; }
+          .submitting-state { padding: 3rem 1rem; }
+          .field-label { font-size: 0.7rem; }
+          .drop-zone { padding: 1.5rem 1rem; }
+          .drop-zone-title { font-size: 1rem; }
+          .field-group input[type="text"],
+          .field-group input[type="email"] { padding: 0.85rem 1rem; }
+          .submit-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
+          }
+        }
+        @media (max-width: 480px) {
+          .logo { font-size: 1.25rem; }
         }
       `}</style>
 
