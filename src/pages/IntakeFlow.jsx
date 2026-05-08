@@ -473,6 +473,19 @@ const IntakeFlow = () => {
 
             <div className="field-group">
               <label className="field-label">Case files <span style={{textTransform: 'none', letterSpacing: 'normal', color: 'rgba(244,244,242,0.4)'}}>(PDF · DOCX · TXT — up to 15 files, 10 MB each)</span></label>
+              <div style={{
+                background: 'rgba(255, 159, 10, 0.08)',
+                borderLeft: '3px solid #FFB340',
+                padding: '12px 16px',
+                marginBottom: '12px',
+                fontSize: '0.85rem',
+                lineHeight: 1.5,
+                color: 'rgba(244, 244, 242, 0.85)',
+                textTransform: 'none',
+                letterSpacing: 'normal',
+              }}>
+                <strong style={{color: '#FFB340'}}>This is an MVP.</strong> Don't upload anything confidential or privileged — use a synthetic or public fact pattern. Files are stored on a personal-tier server with no retention guarantees.
+              </div>
               <div
                 className={`drop-zone${dragOver ? ' drag-over' : ''}`}
                 onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
