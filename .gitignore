@@ -30,3 +30,4 @@ backend/steelman.db
 # IDE
 .idea/
 .vscode/
+.env*.local
