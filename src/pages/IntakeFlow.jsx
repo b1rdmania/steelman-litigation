@@ -543,9 +543,6 @@ const IntakeFlow = () => {
                 value={form.case_text}
                 onChange={(e) => update({ case_text: e.target.value })}
               />
-              <div className="field-hint">
-                Optional if you've uploaded files. Recommended if not — gives the agents your framing as well as the evidence.
-              </div>
             </div>
 
             <div className="field-group">

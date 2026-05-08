@@ -489,7 +489,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
 
             {brief.summary && (
               <div style={{marginBottom: 'var(--space-md)'}}>
-                <span className="label-meta" style={{color: '#444', marginBottom: '1rem', display: 'block'}}>SUMMARY // WHAT WE FOUND</span>
+                <span className="label-meta" style={{color: '#444', marginBottom: '1rem', display: 'block'}}>HOW THIS CASE LOSES</span>
                 <div style={{fontSize: '1rem', color: '#ccc', lineHeight: 1.7}}>
                   {(brief.summary || '').split('\n\n').filter(Boolean).map((para, i) => (
                     <p key={i} style={{marginBottom: '14px'}}>{para}</p>
@@ -535,7 +535,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
 
             {Array.isArray(brief.evidence_inconsistencies) && brief.evidence_inconsistencies.length > 0 && (
               <div className="transcript-container" style={{marginTop: 'var(--space-md)'}}>
-                <span className="label-meta" style={{color: '#444', marginBottom: '1rem', display: 'block'}}>EVIDENCE INCONSISTENCIES (AGENT_EVIDENCE_INSPECTOR)</span>
+                <span className="label-meta" style={{color: '#444', marginBottom: '1rem', display: 'block'}}>EVIDENCE PROBLEMS</span>
                 {brief.evidence_inconsistencies.map((it, i) => (
                   <div className="transcript-line" key={i}>
                     <span className="speaker">[EVD-{String(i + 1).padStart(2, '0')}]</span>
@@ -550,7 +550,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
 
             {Array.isArray(brief.blind_spots) && brief.blind_spots.length > 0 && (
               <div className="transcript-container">
-                <span className="label-meta" style={{color: '#444', marginBottom: '1rem', display: 'block'}}>BLIND SPOTS // WHAT THE OPTIMISTIC CASE IS MISSING</span>
+                <span className="label-meta" style={{color: '#444', marginBottom: '1rem', display: 'block'}}>WHAT YOU'RE NOT SEEING</span>
                 {brief.blind_spots.map((bs, i) => (
                   <div className="transcript-line" key={i}>
                     <span className="speaker">[BSP-{String(i + 1).padStart(2, '0')}]</span>
@@ -580,7 +580,7 @@ const BriefPage = ({ isDemo: isDemoProp = false }) => {
             </div>
 
             <div className="terminal-block">
-              <span className="label-meta" style={{color: '#00FF41', marginBottom: '0.5rem', display: 'block'}}>REVISION STRATEGY //</span>
+              <span className="label-meta" style={{color: '#00FF41', marginBottom: '0.5rem', display: 'block'}}>HOW TO FIX IT</span>
               {orderedCategories.slice(0, 2).map(cat => {
                 const s = scenariosByCategory[cat][0];
                 return s && s.mitigation ? (

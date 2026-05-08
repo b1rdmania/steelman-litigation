@@ -512,7 +512,7 @@ const SplashPage = () => {
                 The MVP runs Sonnet for the optimistic and synthesis passes, Opus for the four adversarial sub-agents. Each agent declares its own model — swapping any of them to Gemini, Llama, or a self-hosted local is one line.
               </p>
               <p style={{fontSize: '14px', lineHeight: 1.65, color: '#333', marginBottom: '12px'}}>
-                The same orchestrator runs 10+ specialised agents, each on the model best suited to its role. Different model families voting on the same evidence. Three independent passes before anything is treated as a finding.
+                Different model families voting on the same evidence. Three independent passes before anything is treated as a finding.
               </p>
               <p style={{fontSize: '13px', lineHeight: 1.6, color: '#555'}}>
                 See: <a href="https://github.com/aaronjmars/MiroShark" target="_blank" rel="noreferrer" style={{color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px'}}>aaronjmars/MiroShark</a> for the cross-agent verification reference architecture.
@@ -562,9 +562,7 @@ const SplashPage = () => {
                 title={'"Make this case as strong as possible."'}
                 body={
                   <>
-                    Premotion reads your intake, your strategy, and every uploaded document. It argues your side back at you. The strongest version of your case the evidence supports. Not the version you wish you had. The version that's there.
-                    <br /><br />
-                    This is the steelman of your case.
+                    Premotion reads your case summary, your strategy, and every uploaded document. It argues your side back at you — the strongest version the evidence actually supports. Not what you wish you had. What's there.
                   </>
                 }
               />
@@ -573,14 +571,7 @@ const SplashPage = () => {
                 title={'"Look for what doesn\'t add up."'}
                 body={
                   <>
-                    Three specialists read the documents independently. They don't talk to each other.
-                    <ul style={{margin: '14px 0 0 18px', padding: 0}}>
-                      <li style={{marginBottom: '6px'}}>One reads each document for what it says, not what you claim it says</li>
-                      <li style={{marginBottom: '6px'}}>One looks for inconsistencies between documents: dates that don't match, wording that contradicts, gaps in correspondence</li>
-                      <li>One verifies the chronology. Does your timeline match the documents in front of you?</li>
-                    </ul>
-                    <br />
-                    If one of them sees a problem and the others don't, that itself is signal.
+                    Three specialists read independently. One takes each document at face value. One looks for contradictions between them. One checks whether your chronology matches the paper trail. They don't compare notes. If one flags something the others don't, that's signal.
                   </>
                 }
               />
@@ -607,9 +598,9 @@ const SplashPage = () => {
                 title={'"Compare the two stories."'}
                 body={
                   <>
-                    A synthesis specialist reads everything: the optimistic case, the evidence flags, the four post-mortems. It compares them. The gaps between the two are your blind spots.
+                    A synthesiser reads the optimistic case, the evidence flags, and the four post-mortems, then maps the gaps between what you think you have and what the adversaries found. Those gaps are your brief.
                     <br /><br />
-                    You get back: a verdict (Steelman, Borderline, or Strawman), the top failure scenarios ranked by category, evidence inconsistencies, mitigations for each, and one sentence at the end. <em>"If you lose this, this will be why."</em>
+                    Verdict (Steelman, Borderline, or Strawman). Top failure scenarios by category. Evidence problems with mitigations. One sentence at the end: <em>"If you lose this, this will be why."</em>
                   </>
                 }
               />
@@ -628,22 +619,9 @@ const SplashPage = () => {
               Most useful before you commit a strategy to paper. A red team that doesn't bill by the hour and doesn't have a relationship to protect.
             </p>
 
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px'}}>
-              {[
-                { name: 'Solicitors', blurb: 'Boutique and mid-size UK firms running active litigation. Stress-test before serving.' },
-                { name: 'In-house counsel', blurb: 'Weighing whether to escalate, settle, or push back. A read on whether the case actually holds.' },
-                { name: 'Mediators', blurb: 'A third-voice red team on the positions both sides are bringing into the room.' },
-                { name: 'Litigation funders', blurb: 'Pre-investment evaluation. Where does this case break?' },
-              ].map(u => (
-                <div key={u.name} style={{
-                  backgroundColor: '#1A1A1C', border: '1px solid rgba(244, 244, 242, 0.06)',
-                  padding: '20px 22px',
-                }}>
-                  <div style={{fontFamily: "'Oswald', sans-serif", fontSize: '18px', fontWeight: 500, color: '#F4F4F2', marginBottom: '8px', letterSpacing: '0.5px', textTransform: 'uppercase'}}>{u.name}</div>
-                  <div style={{fontSize: '13px', color: 'rgba(244, 244, 242, 0.65)', lineHeight: 1.6}}>{u.blurb}</div>
-                </div>
-              ))}
-            </div>
+            <p style={{fontSize: 'clamp(15px, 1.4vw, 16px)', color: 'rgba(244, 244, 242, 0.75)', lineHeight: 1.7, maxWidth: '760px'}}>
+              Solicitors at boutique and mid-size UK firms who want to stress-test before they serve. In-house counsel weighing whether to escalate. Mediators who want a third-voice red team on both positions. Litigation funders asking where the case breaks before they back it.
+            </p>
 
             <div style={{
               marginTop: '40px', padding: '20px 24px',
