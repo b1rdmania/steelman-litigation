@@ -583,7 +583,7 @@ const SplashPage = () => {
             </p>
             <div style={{display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '14px'}}>
               <button
-                onClick={startCase}
+                onClick={seeDemo}
                 onMouseEnter={() => setFinalCtaHover(true)}
                 onMouseLeave={() => setFinalCtaHover(false)}
                 style={{
@@ -595,13 +595,13 @@ const SplashPage = () => {
                   transform: finalCtaHover ? 'translateY(-1px)' : 'translateY(0)',
                 }}
               >
-                Stress-test a case →
+                See a demo brief →
               </button>
               <button
-                onClick={seeDemo}
+                onClick={startCase}
                 style={{background: 'none', border: 'none', color: 'rgba(244, 244, 242, 0.7)', fontSize: '13px', fontWeight: 500, cursor: 'pointer', fontFamily, textDecoration: 'underline', textDecorationColor: 'rgba(244, 244, 242, 0.25)', textUnderlineOffset: '4px'}}
               >
-                See a demo brief →
+                Stress-test a case →
               </button>
             </div>
           </div>

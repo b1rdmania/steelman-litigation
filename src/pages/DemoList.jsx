@@ -311,10 +311,9 @@ const DemoList = () => {
         <nav className="portfolio-nav">
           <button className="logo" onClick={() => navigate('/')}>PREMOTION<span className="dot">.</span></button>
           <div className="nav-links">
-            <button className="nav-link active" onClick={() => navigate('/demo')}>Portfolio</button>
-            <button className="nav-link" onClick={() => navigate('/')}>Intelligence</button>
-            <button className="nav-link" onClick={() => navigate('/')}>Archive</button>
-            <button className="btn-new-case" onClick={() => navigate('/start')}>+ Initiate Analysis</button>
+            <button className="nav-link" onClick={() => navigate('/#about')}>About</button>
+            <button className="nav-link active" onClick={() => navigate('/demo')}>See a demo</button>
+            <button className="btn-new-case" onClick={() => navigate('/start')}>Stress-Test a Case</button>
           </div>
         </nav>
 

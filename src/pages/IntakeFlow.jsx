@@ -531,6 +531,13 @@ const IntakeFlow = () => {
                   ))}
                 </div>
               )}
+              <div style={{marginTop: '12px', fontSize: '0.85rem', color: 'rgba(244, 244, 242, 0.55)', textTransform: 'none', letterSpacing: 'normal'}}>
+                Don't have a case to test? <button
+                  type="button"
+                  onClick={() => navigate('/demo')}
+                  style={{background: 'none', border: 'none', padding: 0, color: '#E63935', textDecoration: 'underline', textUnderlineOffset: '3px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit'}}
+                >See a demo brief instead →</button>
+              </div>
             </div>
 
             <div className="field-group">
